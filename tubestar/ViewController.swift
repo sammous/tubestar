@@ -41,6 +41,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     func getSSID() -> String{
         
         var currentSSID = ""
+        var currentBSSID = ""
         
         let interfaces = CNCopySupportedInterfaces()
         
@@ -59,11 +60,16 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
                     let interfaceData = unsafeInterfaceData.takeRetainedValue() as Dictionary!
                     
                     currentSSID = interfaceData[kCNNetworkInfoKeySSID] as! String
+                    currentBSSID = interfaceData[kCNNetworkInfoKeyBSSID] as! String
                     
-                    let ssiddata = NSString(data:interfaceData[kCNNetworkInfoKeySSIDData]! as! NSData, encoding:NSUTF8StringEncoding) as! String
+//                    let ssiddata = NSString(data:interfaceData[kCNNetworkInfoKeySSID]! as! NSData, encoding:NSUTF8StringEncoding) as! String
                     
                     //ssid data from hex
-                    println(ssiddata)
+//                    println(ssiddata)
+                    println(currentSSID + " with BSSID=" + currentBSSID)
+//                    println("")
+//                    println(currentBSSID)
+                    println("===================")
                 }
             }
             
@@ -72,6 +78,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         return currentSSID
         
     }
+    
     
     @IBAction func scanButton(sender: UIButton) {
         self.getSSID()
