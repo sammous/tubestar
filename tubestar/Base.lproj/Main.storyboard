@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TubeStar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upl-DZ-OYi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="TubeStar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upl-DZ-OYi">
                                 <rect key="frame" x="266" y="28" width="69" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -31,13 +31,13 @@
                                     <constraint firstAttribute="width" constant="414" id="nkr-DM-AHh"/>
                                 </constraints>
                                 <state key="normal" title="Scan">
-                                    <color key="titleShadowColor" patternImage="D14FAE0F-DF68-4561-A1CC-313088828CE3" colorSpace="pattern"/>
+                                    <color key="titleShadowColor" patternImage="215A9C06-42C6-427B-B7FB-AE1D869F16BF" colorSpace="pattern"/>
                                 </state>
                                 <connections>
                                     <action selector="scanButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="m3T-sz-UIa"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ocq-nY-DqP">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ocq-nY-DqP">
                                 <rect key="frame" x="0.0" y="105" width="414" height="574"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -53,6 +53,12 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="78d-N6-awK"/>
+                                        <exclude reference="fAR-RJ-QGu"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="rk6-k7-cXf"/>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="aHQ-5m-EIt"/>
@@ -82,7 +88,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="D14FAE0F-DF68-4561-A1CC-313088828CE3" width="640" height="920">
+        <image name="215A9C06-42C6-427B-B7FB-AE1D869F16BF" width="640" height="920">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

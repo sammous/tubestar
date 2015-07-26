@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		173E0F051B652BFC007FE050 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */; };
 		73A7DA7D1B6408B0002F4483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A7DA7C1B6408B0002F4483 /* AppDelegate.swift */; };
 		73A7DA801B6408B0002F4483 /* tubestar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 73A7DA7E1B6408B0002F4483 /* tubestar.xcdatamodeld */; };
 		73A7DA821B6408B0002F4483 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A7DA811B6408B0002F4483 /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		73A7DA771B6408B0002F4483 /* tubestar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tubestar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73A7DA7B1B6408B0002F4483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73A7DA7C1B6408B0002F4483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				73A7DA7C1B6408B0002F4483 /* AppDelegate.swift */,
 				73A7DA811B6408B0002F4483 /* ViewController.swift */,
+				173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */,
 				73A7DA831B6408B0002F4483 /* Main.storyboard */,
 				73A7DA861B6408B0002F4483 /* Images.xcassets */,
 				73A7DA881B6408B0002F4483 /* LaunchScreen.xib */,
@@ -217,6 +220,7 @@
 			files = (
 				73A7DA821B6408B0002F4483 /* ViewController.swift in Sources */,
 				73A7DA7D1B6408B0002F4483 /* AppDelegate.swift in Sources */,
+				173E0F051B652BFC007FE050 /* CustomTableViewCell.swift in Sources */,
 				73A7DA801B6408B0002F4483 /* tubestar.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
