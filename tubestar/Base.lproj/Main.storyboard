@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYC-ch-73U">
-                                <rect key="frame" x="0.0" y="641" width="398" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYC-ch-73U">
+                                <rect key="frame" x="16" y="641" width="382" height="30"/>
                                 <color key="backgroundColor" red="0.30663437319999998" green="0.70810920659999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="dqM-Ux-lZL"/>
@@ -37,15 +37,15 @@
                                     <action selector="sendButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="r0w-Eq-sVU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAK-KR-1jg">
-                                <rect key="frame" x="0.0" y="679" width="430" height="57"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAK-KR-1jg">
+                                <rect key="frame" x="0.0" y="679" width="414" height="57"/>
                                 <color key="backgroundColor" red="0.36078432202339172" green="0.98431378602981567" blue="0.18431372940540314" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="FOu-kS-ToQ"/>
                                     <constraint firstAttribute="width" constant="414" id="nkr-DM-AHh"/>
                                 </constraints>
                                 <state key="normal" title="Scan">
-                                    <color key="titleShadowColor" patternImage="2C49C79A-8257-45D9-A8B2-18855E60E8A7" colorSpace="pattern"/>
+                                    <color key="titleShadowColor" patternImage="909602A3-ECE7-4147-B4A0-E7F68A6561DB" colorSpace="pattern"/>
                                 </state>
                                 <connections>
                                     <action selector="scanButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="m3T-sz-UIa"/>
@@ -98,7 +98,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="jYC-ch-73U" secondAttribute="trailing" id="7xa-K9-Kz3"/>
                             <constraint firstItem="cAK-KR-1jg" firstAttribute="top" secondItem="jYC-ch-73U" secondAttribute="bottom" constant="8" id="941-vY-F9p"/>
                             <constraint firstItem="Ocq-nY-DqP" firstAttribute="top" secondItem="upl-DZ-OYi" secondAttribute="bottom" constant="113" id="BlK-4R-fxf"/>
-                            <constraint firstItem="cAK-KR-1jg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="CYD-H9-62y"/>
+                            <constraint firstItem="cAK-KR-1jg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="CYD-H9-62y"/>
                             <constraint firstItem="Ocq-nY-DqP" firstAttribute="top" secondItem="upl-DZ-OYi" secondAttribute="bottom" id="LHd-dR-jiQ"/>
                             <constraint firstItem="jYC-ch-73U" firstAttribute="top" secondItem="Ocq-nY-DqP" secondAttribute="bottom" id="OD6-Z3-m4O"/>
                             <constraint firstItem="jYC-ch-73U" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="SNv-uB-Sko"/>
@@ -144,7 +144,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2C49C79A-8257-45D9-A8B2-18855E60E8A7" width="640" height="920">
+        <image name="909602A3-ECE7-4147-B4A0-E7F68A6561DB" width="640" height="920">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
