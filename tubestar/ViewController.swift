@@ -135,6 +135,11 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         println(items)
         self.outputTable.reloadData()
     }
+    @IBAction func sendButton(sender: UIButton){
+        var alert = UIAlertController(title: "Thank you", message: "Your contribution is appreciated ! Thank you !", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     
     
     func saveWifi(ssid: String, bssid: String) {
