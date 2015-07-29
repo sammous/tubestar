@@ -15,6 +15,7 @@ import CoreData
 class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var items: [String] = []
     var wifis = [NSManagedObject]()
+    @IBOutlet weak var outputTable: UITableView!
     
     let textCellIdentifier = "cell"
     
@@ -51,6 +52,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         self.outputTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         outputTable.delegate = self
         outputTable.dataSource = self
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,14 +67,17 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! CustomTableViewCell
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
         
         let wifi = wifis[indexPath.row]
         
         let ssid_label = wifi.valueForKey("ssid") as? String
         let bssid_label = wifi.valueForKey("bssid") as? String
         
-        cell.textLabel?.text = "SSID: " + ssid_label! + " BSSID: " + bssid_label!
+        
+        var text = "SSID: " + ssid_label! + " BSSID: " + bssid_label!
+        
+        cell.textLabel?.text=text
         
         return cell
         
@@ -82,7 +87,6 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
     }
   
-    @IBOutlet weak var outputTable: UITableView!
     
     func getSSID() -> String{
         
@@ -111,15 +115,10 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
 //                    let ssiddata = NSString(data:interfaceData[kCNNetworkInfoKeySSID]! as! NSData, encoding:NSUTF8StringEncoding) as! String
                     
                     //ssid data from hex
-                    
-                    if !contains(items,currentSSID + " with BSSID=" + currentBSSID) {
-                        items.append(currentSSID + " with BSSID=" + currentBSSID)
-                        saveWifi(currentSSID,bssid: currentBSSID)
-                    }
-//                    println(ssiddata)
+    
+                    saveWifi(currentSSID,bssid: currentBSSID)
+                        
                     println(currentSSID + " with BSSID=" + currentBSSID)
-//                    println("")
-//                    println(currentBSSID)
                     println("===================")
 
                 }
@@ -150,20 +149,36 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             inManagedObjectContext:
             managedContext)
         
-        let wifi = NSManagedObject(entity: entity!,
-            insertIntoManagedObjectContext:managedContext)
+
         
-        //3
-        wifi.setValue(ssid, forKey: "ssid")
-        wifi.setValue(bssid, forKey: "bssid")
+        let resultPredicate = NSPredicate(format: "bssid = %@", bssid)
+
+        let fetchRequest = NSFetchRequest(entityName:"Wifi_data")
         
-        //4
         var error: NSError?
-        if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
-        }  
-        //5
-        wifis.append(wifi)
+
+        fetchRequest.predicate = resultPredicate
+        
+        let fetchedResults =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as? [NSManagedObject]
+        
+        if fetchedResults?.count == 0 {
+            let wifi = NSManagedObject(entity: entity!,
+                insertIntoManagedObjectContext:managedContext)
+
+            wifi.setValue(ssid, forKey: "ssid")
+            wifi.setValue(bssid, forKey: "bssid")
+            println(ssid + "has been added in db")
+            //4
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+            }
+            //5
+            wifis.append(wifi)
+        } else {
+            println("bssid already in db")
+        }
     }
 
 }
