@@ -43,7 +43,7 @@
                                     <constraint firstAttribute="height" constant="57" id="4BV-fT-tRN"/>
                                 </constraints>
                                 <state key="normal" title="Scan">
-                                    <color key="titleShadowColor" patternImage="2D6489C3-63A8-457B-85AA-D0FD5A2F5676" colorSpace="pattern"/>
+                                    <color key="titleShadowColor" patternImage="BAA37B1C-7150-478F-ACB1-06E3749246F7" colorSpace="pattern"/>
                                 </state>
                                 <connections>
                                     <action selector="scanButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="m3T-sz-UIa"/>
@@ -143,7 +143,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2D6489C3-63A8-457B-85AA-D0FD5A2F5676" width="640" height="920">
+        <image name="BAA37B1C-7150-478F-ACB1-06E3749246F7" width="640" height="920">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
