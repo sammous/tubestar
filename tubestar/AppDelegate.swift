@@ -17,8 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        Parse.setApplicationId("Y00YVfbIvMJ4uyqiRSUi0svEVcvZUHbjvfMfKB8Z",
+            clientKey: "ExKznnuhcyc61E0IqGDIYP1SKsp7o69SimE7rvIG")
+//        Parse.setApplicationId(“Y00YVfbIvMJ4uyqiRSUi0svEVcvZUHbjvfMfKB8Z”, clientKey: “ExKznnuhcyc61E0IqGDIYP1SKsp7o69SimE7rvIG”) // DAMN STUPID QUOTEMARKS - BEWARE of them on PARSE.COM
+        PFUser.enableAutomaticUser()
         
-
+        var defaultACL = PFACL()
+        // If you would like all objects to be private by default, remove this line.
+        defaultACL.setPublicReadAccess(true)
+        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
         
         return true
     }
@@ -45,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+        
     }
 
     // MARK: - Core Data stack
@@ -109,6 +117,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    
+    
 
 }
 
