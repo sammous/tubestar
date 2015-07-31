@@ -104,13 +104,16 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         self.outputTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         outputTable.delegate = self
         outputTable.dataSource = self
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
         
         var object = PFObject(className: "historyAppViewDidLoad")
         object.addObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "UDID")
         object.addObject(UIDevice.currentDevice().modelName, forKey: "Model")
         object.addObject(NSDate().timeIntervalSince1970, forKey: "timestamp")
-        object.save()
+        object.saveEventually()
     }
 
     override func didReceiveMemoryWarning() {
@@ -212,20 +215,24 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         self.outputTable.reloadData()
     }
     @IBAction func sendButton(sender: UIButton){
+        scanWifis()
+    }
+
+    
+    func scanWifis() {
         for wifi in wifis {
             var object = PFObject(className: "locations")
             object.addObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "UDID")
             object.addObject((wifi.valueForKey("ssid") as? String)!, forKey: "ssid")
             object.addObject((wifi.valueForKey("bssid") as? String)!, forKey: "bssid")
             object.addObject((wifi.valueForKey("timestamp"))!, forKey: "timestamp")
-            object.save()
+            object.saveEventually()
         }
-
+        
         var alert = UIAlertController(title: "Thank you", message: "Your contribution is appreciated ! Thank you !", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
-
     
     
     func saveWifi(ssid: String, bssid: String, timestamp: Float64) {
@@ -271,6 +278,11 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         } else {
             println("bssid already in db")
         }
+        
+        dispatch_after(5,
+            dispatch_get_main_queue()){
+                self.scanWifis()
+        };
     }
 
 }
