@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		173E0F051B652BFC007FE050 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */; };
 		177B86671B66838A001F4DE8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177B86661B66838A001F4DE8 /* Reachability.swift */; };
+		17C8290F1B6A7C3800522661 /* PickerviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C8290E1B6A7C3800522661 /* PickerviewViewController.swift */; };
 		731549C01B699FB4005CC183 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549BF1B699FB4005CC183 /* libsqlite3.dylib */; };
 		731549CB1B69A01B005CC183 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549C11B69A01B005CC183 /* AudioToolbox.framework */; };
 		731549CC1B69A01B005CC183 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549C21B69A01B005CC183 /* CFNetwork.framework */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		177B86661B66838A001F4DE8 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		17C8290E1B6A7C3800522661 /* PickerviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerviewViewController.swift; sourceTree = "<group>"; };
 		731549BF1B699FB4005CC183 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		731549C11B69A01B005CC183 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		731549C21B69A01B005CC183 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -163,6 +165,7 @@
 			children = (
 				73A7DA7C1B6408B0002F4483 /* AppDelegate.swift */,
 				73A7DA811B6408B0002F4483 /* ViewController.swift */,
+				17C8290E1B6A7C3800522661 /* PickerviewViewController.swift */,
 				173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */,
 				73A7DA831B6408B0002F4483 /* Main.storyboard */,
 				73A7DA861B6408B0002F4483 /* Images.xcassets */,
@@ -309,6 +312,7 @@
 				173E0F051B652BFC007FE050 /* CustomTableViewCell.swift in Sources */,
 				177B86671B66838A001F4DE8 /* Reachability.swift in Sources */,
 				73A7DA801B6408B0002F4483 /* tubestar.xcdatamodeld in Sources */,
+				17C8290F1B6A7C3800522661 /* PickerviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

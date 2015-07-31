@@ -63,6 +63,10 @@ public extension UIDevice {
 class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var items: [String] = []
     var wifis = [NSManagedObject]()
+    
+    var ssidScanned=""
+    var bssidScanned=""
+    
     @IBOutlet weak var outputTable: UITableView!
     
     let textCellIdentifier = "cell"
@@ -112,8 +116,21 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
+        
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "segueID") {
+            var svc = segue.destinationViewController as! PickerviewViewController;
+            
+            svc.ssid = ssidScanned
+            svc.bssid = bssidScanned
+            
+            println("avant transition :" + ssidScanned)
+            
+        }
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return wifis.count
@@ -171,6 +188,11 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
                     //ssid data from hex
     
                     saveWifi(currentSSID, bssid: currentBSSID, timestamp: NSDate().timeIntervalSince1970)
+                    
+                    
+                    ssidScanned = "test"
+                    bssidScanned = "test"
+                    println("getssid triggerred" + ssidScanned)
                     
                     println(currentSSID + " with BSSID=" + currentBSSID)
                     println("===================")
