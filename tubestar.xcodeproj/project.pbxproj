@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		173E0F051B652BFC007FE050 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */; };
 		177B86671B66838A001F4DE8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177B86661B66838A001F4DE8 /* Reachability.swift */; };
+		177F6FE21B6EA82B00B342A4 /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F6FE11B6EA82B00B342A4 /* StationViewController.swift */; };
+		177F6FE41B6EA87A00B342A4 /* Tfl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F6FE31B6EA87A00B342A4 /* Tfl.swift */; };
 		17A692901B6E64DD0097B549 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6928F1B6E64DD0097B549 /* NavViewController.swift */; };
 		17A692921B6E6D8D0097B549 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17A692911B6E6D8D0097B549 /* Images.xcassets */; };
 		17C8290F1B6A7C3800522661 /* PickerviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C8290E1B6A7C3800522661 /* PickerviewViewController.swift */; };
@@ -50,6 +52,8 @@
 /* Begin PBXFileReference section */
 		173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		177B86661B66838A001F4DE8 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		177F6FE11B6EA82B00B342A4 /* StationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationViewController.swift; sourceTree = "<group>"; };
+		177F6FE31B6EA87A00B342A4 /* Tfl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tfl.swift; sourceTree = "<group>"; };
 		17A6928F1B6E64DD0097B549 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		17A692911B6E6D8D0097B549 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		17C8290E1B6A7C3800522661 /* PickerviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerviewViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 				73A7DA811B6408B0002F4483 /* ViewController.swift */,
 				17C8290E1B6A7C3800522661 /* PickerviewViewController.swift */,
 				17A6928F1B6E64DD0097B549 /* NavViewController.swift */,
+				177F6FE11B6EA82B00B342A4 /* StationViewController.swift */,
+				177F6FE31B6EA87A00B342A4 /* Tfl.swift */,
 				173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */,
 				73A7DA831B6408B0002F4483 /* Main.storyboard */,
 				73A7DA881B6408B0002F4483 /* LaunchScreen.xib */,
@@ -316,7 +322,9 @@
 				173E0F051B652BFC007FE050 /* CustomTableViewCell.swift in Sources */,
 				177B86671B66838A001F4DE8 /* Reachability.swift in Sources */,
 				73A7DA801B6408B0002F4483 /* tubestar.xcdatamodeld in Sources */,
+				177F6FE41B6EA87A00B342A4 /* Tfl.swift in Sources */,
 				17C8290F1B6A7C3800522661 /* PickerviewViewController.swift in Sources */,
+				177F6FE21B6EA82B00B342A4 /* StationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

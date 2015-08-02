@@ -107,6 +107,16 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         outputTable.delegate = self
         outputTable.dataSource = self
         
+        
+        var refreshButton : UIBarButtonItem = UIBarButtonItem(title: "Refresh", style: UIBarButtonItemStyle.Plain, target: self, action: "refreshData:")
+        
+        var submitData : UIBarButtonItem = UIBarButtonItem(title: "Submit", style: UIBarButtonItemStyle.Plain, target: self, action: "sendButton:")
+        
+        self.navigationItem.rightBarButtonItem = refreshButton
+        self.navigationItem.leftBarButtonItem = submitData
+        
+        self.navigationItem.title = "List"
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -213,9 +223,8 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
     }
     
-    @IBAction func scanButton(sender: UIButton) {
+    @IBAction func refreshData(sender: UIButton) {
 //        self.getSSID()
-        println(items)
         populateTable()
         self.outputTable.reloadData()
         scrollToBottom(self.outputTable)
