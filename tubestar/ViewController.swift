@@ -112,6 +112,8 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         self.outputTable.reloadData()
+        scrollToBottom(self.outputTable)
+
 
     }
 
@@ -199,8 +201,6 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
                     saveWifi(currentSSID, bssid: currentBSSID)
                     
                     
-                    println("getssid triggerred" + ssidScanned)
-                    
                     println(currentSSID + " with BSSID=" + currentBSSID)
                     println("===================")
 
@@ -216,7 +216,9 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     @IBAction func scanButton(sender: UIButton) {
 //        self.getSSID()
         println(items)
+        populateTable()
         self.outputTable.reloadData()
+        scrollToBottom(self.outputTable)
     }
     
     func autoScan() {
@@ -312,6 +314,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             }
             //5
             wifis.append(wifi)
+
         } else {
             println("same bssid as last check")
             var result = fetchedResults?.last
@@ -356,6 +359,19 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             
         }
         return result;
+    }
+    
+    
+    func scrollToBottom(tableView: UITableView){
+        
+        let numberOfSections = tableView.numberOfSections()
+        let numberOfRows = tableView.numberOfRowsInSection(0)
+        
+        if numberOfRows > 0 {
+            let indexPath = NSIndexPath(forRow: numberOfRows-1, inSection: (numberOfSections-1))
+            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+        }
+        
     }
 
 }
