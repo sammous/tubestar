@@ -294,7 +294,8 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         managedContext.executeFetchRequest(fetchRequest,
             error: &error) as? [NSManagedObject]
         
-        if fetchedResults?.count == 0 {
+        var lastScanned = getLastScanned()
+        if (fetchedResults?.count == 0 || lastScanned["bssid"] as! String != bssid)  {
             let wifi = NSManagedObject(entity: entity!,
                 insertIntoManagedObjectContext:managedContext)
 
@@ -311,22 +312,19 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             //5
             wifis.append(wifi)
         } else {
-            var lastScanned = getLastScanned()
-            if(lastScanned["bssid"] as! String == bssid) {
-                println("same bssid as last check")
-                var result = fetchedResults?.last
-                var newTimespan = NSDate().timeIntervalSinceDate(NSDate(timeIntervalSince1970: result?.valueForKey("timestamp") as! NSTimeInterval  ))
-                result!.setValue(newTimespan, forKey: "timespan")
-                result!.setValue(false, forKey: "submitted")
-                println(newTimespan)
-                var saveError : NSError? = nil
-                if !managedContext.save(&saveError) {
-                    println("Could not update record")
-                } else {
-    //                wifis.last = result
-                    populateTable()
-//                    ViewController().outputTable.reloadData()
-                }
+            println("same bssid as last check")
+            var result = fetchedResults?.last
+            var newTimespan = NSDate().timeIntervalSinceDate(NSDate(timeIntervalSince1970: result?.valueForKey("timestamp") as! NSTimeInterval  ))
+            result!.setValue(newTimespan, forKey: "timespan")
+            result!.setValue(false, forKey: "submitted")
+            println(newTimespan)
+            var saveError : NSError? = nil
+            if !managedContext.save(&saveError) {
+                println("Could not update record")
+            } else {
+//                wifis.last = result
+                populateTable()
+//                ViewController().outputTable.reloadData()
             }
         }
         
