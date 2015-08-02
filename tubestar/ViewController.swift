@@ -64,8 +64,6 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     var items: [String] = []
     var wifis = [NSManagedObject]()
     
-    var ssidScanned=""
-    var bssidScanned=""
     
     @IBOutlet weak var outputTable: UITableView!
     
@@ -108,10 +106,13 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         self.outputTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         outputTable.delegate = self
         outputTable.dataSource = self
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+        self.outputTable.reloadData()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -121,8 +122,9 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
     }
 
+    /*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "segueID") {
+        if (segue.identifier == "") {
             var svc = segue.destinationViewController as! PickerviewViewController;
             
             svc.ssid = ssidScanned
@@ -132,6 +134,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             
         }
     }
+    */
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return wifis.count
@@ -196,8 +199,6 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
                     saveWifi(currentSSID, bssid: currentBSSID)
                     
                     
-                    self.ssidScanned = "test"
-                    bssidScanned = "test"
                     println("getssid triggerred" + ssidScanned)
                     
                     println(currentSSID + " with BSSID=" + currentBSSID)
