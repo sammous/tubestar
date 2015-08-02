@@ -574,23 +574,6 @@ class NavViewController: UIViewController{
         }
         return results
         
-        
-//        var result:[String:AnyObject]
-//        if((last) != nil) {
-//            result = [
-//                "timestamp": last?.valueForKey("timestamp") as! Double,
-//                "timespan":last?.valueForKey("timespan") as! Double,
-//                "bssid":last?.valueForKey("bssid")! as! String
-//            ]
-//        } else {
-//            result = [
-//                "timestamp": 0 as Double,
-//                "timespan": 0 as Double,
-//                "bssid":"00:aa:00:aa:00:aa" as String
-//            ]
-//            
-//        }
-//        return result;
     }
     
 */
