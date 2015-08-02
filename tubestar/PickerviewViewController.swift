@@ -21,8 +21,8 @@ class PickerviewViewController: UIViewController {
 
     var delegate:PickerviewVCDelegate!=nil
     
-    var ssid:String!
-    var bssid:String!
+    var ssid=""
+    var bssid=""
 
     @IBOutlet weak var ssidLabel: UILabel!
     @IBOutlet weak var bssidLabel: UILabel!
@@ -36,9 +36,10 @@ class PickerviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var back = UIBarButtonItem(title: "Back", style: .Done, target: self, action: "barButtonItemClicked:")
-
+        var back = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action: "barButtonItemClicked:")
+        
         self.navigationItem.setLeftBarButtonItem(back, animated: true)
+        self.navigationItem.title = "Select a location"
         
         updateLabel()
         println("---")
@@ -52,7 +53,6 @@ class PickerviewViewController: UIViewController {
 
     func barButtonItemClicked(sender: UIBarButtonItem){
         navigationController?.popViewControllerAnimated(true)
-        delegate.didFinishpickerVC(self)
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView!) -> Int
