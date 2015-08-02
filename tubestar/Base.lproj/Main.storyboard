@@ -106,6 +106,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jhV-Sq-AJP" id="c3R-jm-ad0">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="uCZ-zw-Qds" kind="show" identifier="getStation" id="Rp1-TX-dhV"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -166,6 +169,34 @@
             </objects>
             <point key="canvasLocation" x="823" y="2169"/>
         </scene>
+        <!--Station View Contoller-->
+        <scene sceneID="BeT-Pi-Y2b">
+            <objects>
+                <viewController id="uCZ-zw-Qds" customClass="StationViewContoller" customModule="tubestar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GKy-BB-Du4"/>
+                        <viewControllerLayoutGuide type="bottom" id="oJM-kH-hra"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="klL-XX-2t5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SJ1-K7-1Sb">
+                                <rect key="frame" x="-1" y="1" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="stationTableView" destination="SJ1-K7-1Sb" id="rB9-cw-0or"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vEW-Og-32k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1485" y="2151"/>
+        </scene>
         <!--SettingViewController-->
         <scene sceneID="1UB-iw-xsg">
             <objects>
@@ -177,7 +208,20 @@
                     <view key="view" contentMode="scaleToFill" id="WzZ-Oi-NJG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageWorkInProgress" translatesAutoresizingMaskIntoConstraints="NO" id="pRi-Zz-LHN">
+                                <rect key="frame" x="107" y="268" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="POL-Fh-I2e"/>
+                                    <constraint firstAttribute="width" constant="200" id="XE5-PA-DNt"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pRi-Zz-LHN" firstAttribute="centerX" secondItem="WzZ-Oi-NJG" secondAttribute="centerX" id="UJA-mn-p2E"/>
+                            <constraint firstItem="pRi-Zz-LHN" firstAttribute="centerY" secondItem="WzZ-Oi-NJG" secondAttribute="centerY" id="jpQ-5r-zrG"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Setting" image="TabSettingIcon" id="ouB-RF-zUW"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -228,6 +272,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ImageWorkInProgress" width="200" height="200"/>
         <image name="TabSettingIcon" width="30" height="30"/>
         <image name="TabTrainIcon" width="30" height="30"/>
         <image name="TabWifiIcon" width="30" height="30"/>
