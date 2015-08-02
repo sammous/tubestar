@@ -576,6 +576,4 @@ class NavViewController: UIViewController{
         
     }
     
-*/
-    
 }
