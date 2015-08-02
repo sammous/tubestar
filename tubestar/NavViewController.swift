@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class NavViewController: UIViewController{
-    let lines = [
+    let lines:[String:String] = [
         "B": "Bakerloo",
         "C": "Central",
         "D": "District",
@@ -24,7 +24,7 @@ class NavViewController: UIViewController{
     ]
     
     
-    let stations = [
+    let stations:[String:String] = [
         "BST": "Baker Street",
         "CHX": "Charing Cross",
         "ERB": "Edgware Road (Bakerloo)",
@@ -289,7 +289,7 @@ class NavViewController: UIViewController{
     
     
     
-    let stationsOnLine = [
+    let stationsOnLine:[String:[String]] = [
         "B": ["BST", "CHX", "ERB", "ELE", "EMB", "HSD", "HAW", "KGN", "KNT", "KPK", "LAM", "MDV", "MYB", "NWM", "OXC", "PAD", "PIC", "QPK", "RPK", "SKT", "SPK", "WAR", "WLO", "WEM", "WJN"],
         "C": ["BNK", "BDE", "BNG", "BDS", "BHL", "CYL", "CHG", "DEB", "EBY", "EAC", "EPP", "FLP", "GHL", "GRH", "GFD", "HAI", "HLN", "HOL", "HPK", "LAN", "LEY", "LYS", "LST", "LTN", "MAR", "MLE", "NEP", "NAC", "NHT", "NHG", "OXC", "PER", "QWY", "RED", "ROD", "RUG", "SBC", "SNB", "SRP", "SWF", "STP", "SFD", "THB", "TCR", "WAN", "WAC", "WRP", "WCT", "WFD"],
         "D": ["ACT", "ALE", "BKG", "BCT", "BEC", "BLF", "BWR", "BBB", "CST", "CHP", "DGE", "DGH", "EBY", "ECM", "ECT", "EHM", "EPY", "ERD", "EPK", "EMB", "FBY", "GRD", "GUN", "HMD", "HST", "HCH", "OLY", "KEW", "MAN", "MLE", "MON", "OLY", "PGR", "PLW", "PUT", "RCP", "RMD", "SSQ", "SKN", "SFS", "SJP", "STB", "STG", "TEM", "THL", "TGR", "UPM", "UPB", "UPY", "UPK", "VIC", "WBT", "WHM", "WKN", "WMS", "WCL", "WDN", "WMP"],
@@ -303,7 +303,7 @@ class NavViewController: UIViewController{
     ]
     
     
-    let linesAtStation = [
+    let linesAtStation:[String:[String]] = [
         "BST": ["B", "H", "J", "M"],
         "CHX": ["B", "N"],
         "ERB": ["B"],
@@ -565,17 +565,32 @@ class NavViewController: UIViewController{
         "WAL": ["V"]
     ]
     
-    func getStationsOnLine(lineName: String) -> [AnyObject] {
-        let stations = self.stationsOnLine[lineName]
-        var results:[AnyObject]
+    func getStationsOnLine(lineName: String) -> [String:String] {
+        let stations:[String] = stationsOnLine[lineName]!
+        var results = [String:String]()
         
         for station in stations {
-            var result:NSObject
-            result.setValue(station, forKey: "code")
-            result.setValue(self.stations[station], forKey: "name")
-            results.append(result)
+            results[station] = self.stations[station]! as String
         }
         return results
+        
+        
+//        var result:[String:AnyObject]
+//        if((last) != nil) {
+//            result = [
+//                "timestamp": last?.valueForKey("timestamp") as! Double,
+//                "timespan":last?.valueForKey("timespan") as! Double,
+//                "bssid":last?.valueForKey("bssid")! as! String
+//            ]
+//        } else {
+//            result = [
+//                "timestamp": 0 as Double,
+//                "timespan": 0 as Double,
+//                "bssid":"00:aa:00:aa:00:aa" as String
+//            ]
+//            
+//        }
+//        return result;
     }
     
 }
