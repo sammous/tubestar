@@ -10,6 +10,7 @@
 		173E0F051B652BFC007FE050 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */; };
 		177B86671B66838A001F4DE8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177B86661B66838A001F4DE8 /* Reachability.swift */; };
 		17A692901B6E64DD0097B549 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6928F1B6E64DD0097B549 /* NavViewController.swift */; };
+		17A692921B6E6D8D0097B549 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17A692911B6E6D8D0097B549 /* Images.xcassets */; };
 		17C8290F1B6A7C3800522661 /* PickerviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C8290E1B6A7C3800522661 /* PickerviewViewController.swift */; };
 		731549C01B699FB4005CC183 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549BF1B699FB4005CC183 /* libsqlite3.dylib */; };
 		731549CB1B69A01B005CC183 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549C11B69A01B005CC183 /* AudioToolbox.framework */; };
@@ -32,7 +33,6 @@
 		73A7DA801B6408B0002F4483 /* tubestar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 73A7DA7E1B6408B0002F4483 /* tubestar.xcdatamodeld */; };
 		73A7DA821B6408B0002F4483 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A7DA811B6408B0002F4483 /* ViewController.swift */; };
 		73A7DA851B6408B0002F4483 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73A7DA831B6408B0002F4483 /* Main.storyboard */; };
-		73A7DA871B6408B0002F4483 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73A7DA861B6408B0002F4483 /* Images.xcassets */; };
 		73A7DA8A1B6408B0002F4483 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A7DA881B6408B0002F4483 /* LaunchScreen.xib */; };
 		73A7DA961B6408B0002F4483 /* tubestarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A7DA951B6408B0002F4483 /* tubestarTests.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +51,7 @@
 		173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		177B86661B66838A001F4DE8 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		17A6928F1B6E64DD0097B549 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
+		17A692911B6E6D8D0097B549 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		17C8290E1B6A7C3800522661 /* PickerviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerviewViewController.swift; sourceTree = "<group>"; };
 		731549BF1B699FB4005CC183 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		731549C11B69A01B005CC183 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -76,7 +77,6 @@
 		73A7DA7F1B6408B0002F4483 /* tubestar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tubestar.xcdatamodel; sourceTree = "<group>"; };
 		73A7DA811B6408B0002F4483 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		73A7DA841B6408B0002F4483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		73A7DA861B6408B0002F4483 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		73A7DA891B6408B0002F4483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		73A7DA8F1B6408B0002F4483 /* tubestarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tubestarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73A7DA941B6408B0002F4483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -145,6 +145,7 @@
 		73A7DA6E1B6408B0002F4483 = {
 			isa = PBXGroup;
 			children = (
+				17A692911B6E6D8D0097B549 /* Images.xcassets */,
 				17C8290D1B6A193700522661 /* Lib */,
 				73A7DA791B6408B0002F4483 /* tubestar */,
 				73A7DA921B6408B0002F4483 /* tubestarTests */,
@@ -171,7 +172,6 @@
 				17A6928F1B6E64DD0097B549 /* NavViewController.swift */,
 				173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */,
 				73A7DA831B6408B0002F4483 /* Main.storyboard */,
-				73A7DA861B6408B0002F4483 /* Images.xcassets */,
 				73A7DA881B6408B0002F4483 /* LaunchScreen.xib */,
 				73A7DA7E1B6408B0002F4483 /* tubestar.xcdatamodeld */,
 				73A7DA7A1B6408B0002F4483 /* Supporting Files */,
@@ -290,9 +290,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17A692921B6E6D8D0097B549 /* Images.xcassets in Resources */,
 				73A7DA851B6408B0002F4483 /* Main.storyboard in Resources */,
 				73A7DA8A1B6408B0002F4483 /* LaunchScreen.xib in Resources */,
-				73A7DA871B6408B0002F4483 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
