@@ -20,13 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("Y00YVfbIvMJ4uyqiRSUi0svEVcvZUHbjvfMfKB8Z",
             clientKey: "ExKznnuhcyc61E0IqGDIYP1SKsp7o69SimE7rvIG")
 //        Parse.setApplicationId(“Y00YVfbIvMJ4uyqiRSUi0svEVcvZUHbjvfMfKB8Z”, clientKey: “ExKznnuhcyc61E0IqGDIYP1SKsp7o69SimE7rvIG”) // DAMN STUPID QUOTEMARKS - BEWARE of them on PARSE.COM
+        println("Parse.com >>> setApplicationId : Done")
+        
         PFUser.enableAutomaticUser()
+        println("Parse.com >>> enableAutomaticUser : Done")
         
         var defaultACL = PFACL()
         // If you would like all objects to be private by default, remove this line.
         defaultACL.setPublicReadAccess(true)
-        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+        println("Parse.com >>> defaultACL.setPublicReadAccess(true) : Done")
         
+        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+        println("Parse.com >>> setDefaultACL : Done")
         return true
     }
 
@@ -38,20 +43,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        timer(false)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        
+        timer(true)
+    }
+    
+    var autoScanTimer = NSTimer()
+    
+    func timer(actionCalled: Bool) {
+        if(actionCalled==true) {
+            dispatch_after(5,
+                dispatch_get_main_queue()){
+                    if(!self.autoScanTimer.valid) {
+                        self.autoScanTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: ViewController(), selector: Selector("autoScan"), userInfo: nil, repeats: true)
+                    }
+            };
+            
+        } else {
+            autoScanTimer.invalidate()
+            println("autoScanTimer.invalidate() called")
+        }
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        
+        var object = PFObject(className: "historyAppViewDidAppear")
+        println("Parse.com >>> Created PFObject(className: \""+object.parseClassName+"\")")
+        object.addObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "UDID")
+        object.addObject(UIDevice.currentDevice().modelName, forKey: "Model")
+        object.addObject(NSDate().timeIntervalSince1970, forKey: "timestamp")
+        object.saveEventually()
+        println("Parse.com >>> PFObject(className: \""+object.parseClassName+"\").saveEventually() called")
+        timer(true)
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+        timer(false)
         
     }
 

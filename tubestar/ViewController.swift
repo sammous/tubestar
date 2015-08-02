@@ -74,6 +74,11 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        populateTable()
+    }
+
+    
+    func populateTable() {
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
@@ -96,7 +101,6 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             println("Could not fetch \(error), \(error!.userInfo)")
         }
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,12 +112,6 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        
-        var object = PFObject(className: "historyAppViewDidLoad")
-        object.addObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "UDID")
-        object.addObject(UIDevice.currentDevice().modelName, forKey: "Model")
-        object.addObject(NSDate().timeIntervalSince1970, forKey: "timestamp")
-        object.saveEventually()
     }
 
     override func didReceiveMemoryWarning() {
@@ -145,11 +143,16 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
         let wifi = wifis[indexPath.row]
         
-        let ssid_label = wifi.valueForKey("ssid") as? String
-        let bssid_label = wifi.valueForKey("bssid") as? String
+        let ssid_label = wifi.valueForKey("ssid")!.substringToIndex(5) as String
+        let bssid_label = wifi.valueForKey("bssid")!.substringFromIndex(9) as String
+        var text = "T:";
+        text += String(format:"%.1f", wifi.valueForKey("timespan") as! Double)
         
         
-        var text = "SSID: " + ssid_label! + " BSSID: " + bssid_label!
+        text += " SSID: "
+        text +=  ssid_label
+        text += " BSSID: "
+        text += bssid_label
         
         cell.textLabel?.text=text
         
@@ -190,10 +193,10 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
                     
                     //ssid data from hex
     
-                    saveWifi(currentSSID, bssid: currentBSSID, timestamp: NSDate().timeIntervalSince1970)
+                    saveWifi(currentSSID, bssid: currentBSSID)
                     
                     
-                    ssidScanned = "test"
+                    self.ssidScanned = "test"
                     bssidScanned = "test"
                     println("getssid triggerred" + ssidScanned)
                     
@@ -207,27 +210,57 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
         return currentSSID
         
-    }    
+    }
     
     @IBAction func scanButton(sender: UIButton) {
-        self.getSSID()
+//        self.getSSID()
         println(items)
         self.outputTable.reloadData()
     }
+    
+    func autoScan() {
+        self.getSSID()
+        println(items)
+        if(!(getLastScanned()["timestamp"]! as! NSObject==0)) {
+//            self.outputTable.reloadData()
+        }
+    }
+    
     @IBAction func sendButton(sender: UIButton){
-        scanWifis()
+        sendWifis()
     }
 
     
-    func scanWifis() {
+    func sendWifis() {
+        var object = PFObject(className: "locations")
+        
+        var temp_wifi_ssid_array:[String] = []
+        var temp_wifi_bssid_array:[String] = []
+        var temp_wifi_timestamp_array:[Double] = []
+        var temp_wifi_timespan_array:[Float] = []
         for wifi in wifis {
-            var object = PFObject(className: "locations")
-            object.addObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "UDID")
-            object.addObject((wifi.valueForKey("ssid") as? String)!, forKey: "ssid")
-            object.addObject((wifi.valueForKey("bssid") as? String)!, forKey: "bssid")
-            object.addObject((wifi.valueForKey("timestamp"))!, forKey: "timestamp")
-            object.saveEventually()
+            if( wifi.valueForKey("submitted") !== true) {
+                temp_wifi_ssid_array.append((wifi.valueForKey("ssid") as? String)!)
+                temp_wifi_bssid_array.append((wifi.valueForKey("bssid") as? String)!)
+                temp_wifi_timestamp_array.append((wifi.valueForKey("timestamp")) as! Double)
+                temp_wifi_timespan_array.append((wifi.valueForKey("timespan") as? Float)!)
+                wifi.setValue(true, forKey: "submitted")
+            }
         }
+        
+
+        object.addObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "UDID")
+        object.addObject((temp_wifi_ssid_array), forKey: "ssid")
+        object.addObject((temp_wifi_bssid_array), forKey: "bssid")
+        object.addObject((temp_wifi_timestamp_array), forKey: "timestamp")
+        object.addObject((temp_wifi_timespan_array), forKey: "timespan")
+        
+        temp_wifi_ssid_array.removeAll(keepCapacity: false)
+        temp_wifi_bssid_array.removeAll(keepCapacity: false)
+        temp_wifi_timestamp_array.removeAll(keepCapacity: false)
+        temp_wifi_timespan_array.removeAll(keepCapacity: false)
+        
+        object.saveEventually()
         
         var alert = UIAlertController(title: "Thank you", message: "Your contribution is appreciated ! Thank you !", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.Default, handler: nil))
@@ -235,7 +268,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }
     
     
-    func saveWifi(ssid: String, bssid: String, timestamp: Float64) {
+    func saveWifi(ssid: String, bssid: String) {
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
@@ -267,7 +300,9 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
 
             wifi.setValue(ssid, forKey: "ssid")
             wifi.setValue(bssid, forKey: "bssid")
-            wifi.setValue(timestamp, forKey: "timestamp")
+            wifi.setValue(NSDate().timeIntervalSince1970, forKey: "timestamp")
+            wifi.setValue(0, forKey: "timespan")
+            wifi.setValue(false, forKey: "submitted")
             println(ssid + "has been added in db")
             //4
             if !managedContext.save(&error) {
@@ -276,13 +311,52 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             //5
             wifis.append(wifi)
         } else {
-            println("bssid already in db")
+            var lastScanned = getLastScanned()
+            if(lastScanned["bssid"] as! String == bssid) {
+                println("same bssid as last check")
+                var result = fetchedResults?.last
+                var newTimespan = NSDate().timeIntervalSinceDate(NSDate(timeIntervalSince1970: result?.valueForKey("timestamp") as! NSTimeInterval  ))
+                result!.setValue(newTimespan, forKey: "timespan")
+                result!.setValue(false, forKey: "submitted")
+                println(newTimespan)
+                var saveError : NSError? = nil
+                if !managedContext.save(&saveError) {
+                    println("Could not update record")
+                } else {
+    //                wifis.last = result
+                    populateTable()
+//                    ViewController().outputTable.reloadData()
+                }
+            }
         }
         
-        dispatch_after(5,
-            dispatch_get_main_queue()){
-                self.scanWifis()
-        };
+//        dispatch_after(5,
+//            dispatch_get_main_queue()){
+//                self.scanWifis()
+//        };
+    }
+    
+    
+    
+    
+    func getLastScanned() -> [String:AnyObject] {
+        var last = wifis.last
+        var result:[String:AnyObject]
+        if((last) != nil) {
+            result = [
+                "timestamp": last?.valueForKey("timestamp") as! Double,
+                "timespan":last?.valueForKey("timespan") as! Double,
+                "bssid":last?.valueForKey("bssid")! as! String
+            ]
+        } else {
+            result = [
+                "timestamp": 0 as Double,
+                "timespan": 0 as Double,
+                "bssid":"00:aa:00:aa:00:aa" as String
+            ]
+            
+        }
+        return result;
     }
 
 }
