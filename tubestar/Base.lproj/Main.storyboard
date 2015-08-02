@@ -37,7 +37,7 @@
                                     <constraint firstAttribute="height" constant="57" id="4BV-fT-tRN"/>
                                 </constraints>
                                 <state key="normal" title="Scan">
-                                    <color key="titleShadowColor" patternImage="D53D4597-5269-4948-8213-0B20CCEF9241" colorSpace="pattern"/>
+                                    <color key="titleShadowColor" patternImage="23D3DBB9-066B-48B7-8887-52D43FFA1CEC" colorSpace="pattern"/>
                                 </state>
                                 <connections>
                                     <action selector="scanButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="m3T-sz-UIa"/>
@@ -252,7 +252,27 @@
                     <view key="view" contentMode="scaleToFill" id="2O1-q5-ZEh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iIj-bZ-cii">
+                                <rect key="frame" x="-1" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iIj-bZ-cii" firstAttribute="bottom" secondItem="2O1-q5-ZEh" secondAttribute="bottomMargin" id="7TE-7x-Lih"/>
+                            <constraint firstItem="iIj-bZ-cii" firstAttribute="leading" secondItem="2O1-q5-ZEh" secondAttribute="leadingMargin" constant="-17" id="8qr-9h-iym"/>
+                            <constraint firstItem="iIj-bZ-cii" firstAttribute="top" secondItem="2O1-q5-ZEh" secondAttribute="topMargin" id="O6i-fs-bOo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iIj-bZ-cii" secondAttribute="trailing" id="R8M-Sl-W9X"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iIj-bZ-cii" secondAttribute="trailing" constant="-15" id="aK9-CW-7D6"/>
+                            <constraint firstItem="iIj-bZ-cii" firstAttribute="leading" secondItem="2O1-q5-ZEh" secondAttribute="leadingMargin" id="c4r-N5-5KT"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="R8M-Sl-W9X"/>
+                                <exclude reference="c4r-N5-5KT"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="m11-15-FGq"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -301,7 +321,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="D53D4597-5269-4948-8213-0B20CCEF9241" width="16" height="16">
+        <image name="23D3DBB9-066B-48B7-8887-52D43FFA1CEC" width="16" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGODlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKwHCBEW
 GxwiIyksMjVVJG51bGzUCQoLDA0ODxBWJGNsYXNzXE5TSW1hZ2VGbGFnc1ZOU1JlcHNXTlNDb2xvcoAL
