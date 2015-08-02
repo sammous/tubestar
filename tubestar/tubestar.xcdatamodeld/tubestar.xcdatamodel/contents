@@ -10,11 +10,13 @@
     <entity name="Wifi_data" syncable="YES">
         <attribute name="bssid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ssid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="submitted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="timespan" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
         <element name="Location" positionX="-4025" positionY="-2649" width="128" height="75"/>
         <element name="Station" positionX="-3764" positionY="-2500" width="128" height="60"/>
-        <element name="Wifi_data" positionX="-3762" positionY="-2740" width="128" height="90"/>
+        <element name="Wifi_data" positionX="-3762" positionY="-2740" width="128" height="118"/>
     </elements>
 </model>
