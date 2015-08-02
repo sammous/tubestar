@@ -37,11 +37,10 @@
                                     <constraint firstAttribute="height" constant="57" id="4BV-fT-tRN"/>
                                 </constraints>
                                 <state key="normal" title="Scan">
-                                    <color key="titleShadowColor" patternImage="779A111C-943D-4DD8-8D4B-0622DC2BC9BA" colorSpace="pattern"/>
+                                    <color key="titleShadowColor" patternImage="F9B5868D-B143-40F9-B9EB-4185F0CEDDBB" colorSpace="pattern"/>
                                 </state>
                                 <connections>
                                     <action selector="scanButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="m3T-sz-UIa"/>
-                                    <segue destination="nb6-8e-eQd" kind="show" id="zm1-rq-DCd"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ocq-nY-DqP">
@@ -102,123 +101,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1611" y="473"/>
-        </scene>
-        <!--Pickerview View Controller-->
-        <scene sceneID="4e2-fm-a3e">
-            <objects>
-                <viewController id="nb6-8e-eQd" customClass="PickerviewViewController" customModule="tubestar" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="mF7-aj-RCI"/>
-                        <viewControllerLayoutGuide type="bottom" id="U6B-FA-E98"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EKb-b4-X5M">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cjy-BT-e9a">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <subviews>
-                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Biq-ME-zal">
-                                        <rect key="frame" x="12" y="249" width="382" height="162"/>
-                                    </pickerView>
-                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="70V-fF-2eh">
-                                        <rect key="frame" x="12" y="449" width="382" height="162"/>
-                                    </pickerView>
-                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09G-u5-QNU">
-                                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="414" id="J0r-Cp-G7e"/>
-                                            <constraint firstAttribute="width" constant="382" id="Jqe-1M-8Af"/>
-                                            <constraint firstAttribute="height" constant="44" id="dIg-fr-peQ"/>
-                                        </constraints>
-                                        <color key="barTintColor" red="0.30340116140000001" green="0.63181564440000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <items>
-                                            <navigationItem title="Select a location" id="ky7-hQ-W1k">
-                                                <barButtonItem key="leftBarButtonItem" title="Back" id="h2B-RQ-QuU"/>
-                                            </navigationItem>
-                                        </items>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="Jqe-1M-8Af"/>
-                                            </mask>
-                                        </variation>
-                                    </navigationBar>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SSID :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGf-C4-XG5">
-                                        <rect key="frame" x="42" y="99" width="49" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0QB-TF-HE4">
-                                        <rect key="frame" x="112" y="99" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BSSID :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctJ-i7-8s6">
-                                        <rect key="frame" x="31" y="148" width="60" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVv-Uh-oEQ">
-                                        <rect key="frame" x="112" y="148" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="09G-u5-QNU" secondAttribute="trailing" id="F9I-jM-giV"/>
-                                    <constraint firstItem="09G-u5-QNU" firstAttribute="top" secondItem="cjy-BT-e9a" secondAttribute="top" id="Nr8-5A-CsN"/>
-                                    <constraint firstItem="09G-u5-QNU" firstAttribute="top" secondItem="cjy-BT-e9a" secondAttribute="top" constant="20" id="Pbq-FB-IvX"/>
-                                    <constraint firstItem="09G-u5-QNU" firstAttribute="leading" secondItem="cjy-BT-e9a" secondAttribute="leading" id="Qzs-dJ-QOV"/>
-                                    <constraint firstAttribute="trailing" secondItem="09G-u5-QNU" secondAttribute="trailing" id="qjg-Ov-1Xh"/>
-                                    <constraint firstItem="09G-u5-QNU" firstAttribute="leading" secondItem="cjy-BT-e9a" secondAttribute="leading" id="zdT-dK-YOR"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="09G-u5-QNU"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <exclude reference="F9I-jM-giV"/>
-                                        <exclude reference="Nr8-5A-CsN"/>
-                                        <exclude reference="zdT-dK-YOR"/>
-                                    </mask>
-                                </variation>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="cjy-BT-e9a" secondAttribute="trailing" id="6SX-rD-bEA"/>
-                            <constraint firstItem="U6B-FA-E98" firstAttribute="top" secondItem="cjy-BT-e9a" secondAttribute="bottom" id="C3a-XW-yJY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cjy-BT-e9a" secondAttribute="trailing" constant="-16" id="Mhd-wL-aRx"/>
-                            <constraint firstItem="cjy-BT-e9a" firstAttribute="top" secondItem="mF7-aj-RCI" secondAttribute="bottom" id="PNp-TV-O5p"/>
-                            <constraint firstItem="cjy-BT-e9a" firstAttribute="leading" secondItem="EKb-b4-X5M" secondAttribute="leadingMargin" constant="-16" id="SL7-RM-ppc"/>
-                            <constraint firstItem="cjy-BT-e9a" firstAttribute="leading" secondItem="EKb-b4-X5M" secondAttribute="leadingMargin" id="dao-pL-cjG"/>
-                            <constraint firstItem="cjy-BT-e9a" firstAttribute="top" secondItem="EKb-b4-X5M" secondAttribute="topMargin" id="s8l-12-j06"/>
-                            <constraint firstItem="U6B-FA-E98" firstAttribute="top" secondItem="cjy-BT-e9a" secondAttribute="bottom" id="vb6-H4-QjA"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="6SX-rD-bEA"/>
-                                <exclude reference="PNp-TV-O5p"/>
-                                <exclude reference="dao-pL-cjG"/>
-                                <exclude reference="C3a-XW-yJY"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <connections>
-                        <outlet property="bssidLabel" destination="zVv-Uh-oEQ" id="nNt-jR-wm8"/>
-                        <outlet property="picker1" destination="Biq-ME-zal" id="Gd1-ei-7wI"/>
-                        <outlet property="picker2" destination="70V-fF-2eh" id="2u9-mO-DgZ"/>
-                        <outlet property="ssidLabel" destination="0QB-TF-HE4" id="UMx-qX-Ctt"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3UM-zk-JIQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2542" y="501"/>
         </scene>
         <!--Wifi-->
         <scene sceneID="kdP-hH-Lry">
@@ -342,7 +224,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="779A111C-943D-4DD8-8D4B-0622DC2BC9BA" width="16" height="16">
+        <image name="F9B5868D-B143-40F9-B9EB-4185F0CEDDBB" width="16" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGODlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKwHCBEW
 GxwiIyksMjVVJG51bGzUCQoLDA0ODxBWJGNsYXNzXE5TSW1hZ2VGbGFnc1ZOU1JlcHNXTlNDb2xvcoAL
@@ -357,8 +239,8 @@ pwCuALYAwgDEAMYAyAFHAUwBVwFgAWYBaQFyAXcBfwGCAYkBkQGeAaMBpQGnAawBtAG3AbwBxAHHAdkB
 3AHhAAAAAAAAAgEAAAAAAAAAPAAAAAAAAAAAAAAAAAAAAeM
 </mutableData>
         </image>
-        <image name="TabSettingIcon" width="20" height="20"/>
-        <image name="TabTrainIcon" width="20" height="20"/>
-        <image name="TabWifiIcon" width="20" height="20"/>
+        <image name="TabSettingIcon" width="30" height="30"/>
+        <image name="TabTrainIcon" width="30" height="30"/>
+        <image name="TabWifiIcon" width="30" height="30"/>
     </resources>
 </document>

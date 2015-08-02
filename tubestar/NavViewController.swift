@@ -23,7 +23,7 @@ class NavViewController: UIViewController{
         "W": "Waterloo & City"
     ]
     
-    
+   /*
     let stations = [
         "BST": "Baker Street",
         "CHX": "Charing Cross",
@@ -564,7 +564,7 @@ class NavViewController: UIViewController{
         "VUX": ["V"],
         "WAL": ["V"]
     ]
-    
+
     func getStationsOnLine(lineName: String) -> [AnyObject] {
         let stations = self.stationsOnLine[lineName]
         var results:[AnyObject]
@@ -577,5 +577,7 @@ class NavViewController: UIViewController{
         }
         return results
     }
+    
+*/
     
 }
