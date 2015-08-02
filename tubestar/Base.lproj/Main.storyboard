@@ -37,7 +37,7 @@
                                     <constraint firstAttribute="height" constant="57" id="4BV-fT-tRN"/>
                                 </constraints>
                                 <state key="normal" title="Scan">
-                                    <color key="titleShadowColor" patternImage="89B2CF75-90B2-482A-BB77-FAB402C3DFB6" colorSpace="pattern"/>
+                                    <color key="titleShadowColor" patternImage="779A111C-943D-4DD8-8D4B-0622DC2BC9BA" colorSpace="pattern"/>
                                 </state>
                                 <connections>
                                     <action selector="scanButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="m3T-sz-UIa"/>
@@ -220,11 +220,11 @@
             </objects>
             <point key="canvasLocation" x="2542" y="501"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Wifi-->
         <scene sceneID="kdP-hH-Lry">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qae-qp-jj5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="kQF-eq-EQR">
+                    <tabBarItem key="tabBarItem" title="Wifi" image="TabWifiIcon" id="kQF-eq-EQR">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -342,7 +342,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="89B2CF75-90B2-482A-BB77-FAB402C3DFB6" width="16" height="16">
+        <image name="779A111C-943D-4DD8-8D4B-0622DC2BC9BA" width="16" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGODlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKwHCBEW
 GxwiIyksMjVVJG51bGzUCQoLDA0ODxBWJGNsYXNzXE5TSW1hZ2VGbGFnc1ZOU1JlcHNXTlNDb2xvcoAL
@@ -357,7 +357,8 @@ pwCuALYAwgDEAMYAyAFHAUwBVwFgAWYBaQFyAXcBfwGCAYkBkQGeAaMBpQGnAawBtAG3AbwBxAHHAdkB
 3AHhAAAAAAAAAgEAAAAAAAAAPAAAAAAAAAAAAAAAAAAAAeM
 </mutableData>
         </image>
-        <image name="TabSettingIcon" width="50" height="50"/>
-        <image name="TabTrainIcon" width="30" height="30"/>
+        <image name="TabSettingIcon" width="20" height="20"/>
+        <image name="TabTrainIcon" width="20" height="20"/>
+        <image name="TabWifiIcon" width="20" height="20"/>
     </resources>
 </document>
