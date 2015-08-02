@@ -26,19 +26,22 @@ class PickerviewViewController: UIViewController {
 
     @IBOutlet weak var ssidLabel: UILabel!
     @IBOutlet weak var bssidLabel: UILabel!
-
+    @IBOutlet weak var picker1: UIPickerView!
+    @IBOutlet weak var picker2: UIPickerView!
+    
+    
+    
+    
     @IBAction func backButton(sender: UIButton) {
         navigationController?.popViewControllerAnimated(false)
         delegate.didFinishpickerVC(self)
     }
     
-    @IBOutlet weak var picker1: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var back = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action: "barButtonItemClicked:")
         
-        self.navigationItem.setLeftBarButtonItem(back, animated: true)
+
         self.navigationItem.title = "Select a location"
         
         updateLabel()
