@@ -103,6 +103,8 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hasDisconnected = true
+        
         self.outputTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         outputTable.delegate = self
         outputTable.dataSource = self
@@ -213,11 +215,19 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
                     
                     println(currentSSID + " with BSSID=" + currentBSSID)
                     println("===================")
-
+//                    hasDisconnected = false
+                } else {
+                    hasDisconnected = true
                 }
+            } else {
+                hasDisconnected = true
             }
             
+        } else {
+            hasDisconnected = true
         }
+        
+        println("just called getSSID(), after which hasDisconnected has a value of \(hasDisconnected)")
         
         return currentSSID
         
@@ -241,38 +251,117 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     @IBAction func sendButton(sender: UIButton){
         sendWifis()
     }
-
+    
+    var hasDisconnected = false
     
     func sendWifis() {
-        var object = PFObject(className: "locations")
         
-        var temp_wifi_ssid_array:[String] = []
-        var temp_wifi_bssid_array:[String] = []
-        var temp_wifi_timestamp_array:[Double] = []
-        var temp_wifi_timespan_array:[Float] = []
-        for wifi in wifis {
-            if( wifi.valueForKey("submitted") !== true) {
-                temp_wifi_ssid_array.append((wifi.valueForKey("ssid") as? String)!)
-                temp_wifi_bssid_array.append((wifi.valueForKey("bssid") as? String)!)
-                temp_wifi_timestamp_array.append((wifi.valueForKey("timestamp")) as! Double)
-                temp_wifi_timespan_array.append((wifi.valueForKey("timespan") as? Float)!)
-                wifi.setValue(true, forKey: "submitted")
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let entity =  NSEntityDescription.entityForName("Wifi_data",
+            inManagedObjectContext:
+            managedContext)
+        
+        
+        
+        let resultPredicate = NSPredicate(format: "submitted = %@", false)
+        
+        let fetchRequest = NSFetchRequest(entityName:"Wifi_data")
+        
+        var error: NSError?
+        
+        fetchRequest.predicate = resultPredicate
+        
+        let fetchedResults =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as? [NSManagedObject]
+        
+        if (fetchedResults?.count !== 0)  {
+            if let results = fetchedResults {
+                println("found unsubmitted bssid's")
+            
+                var parseObjects: [PFObject] = [PFObject]()
+                var key = 0
+                for wifi in results {
+                    
+                    var parseObject = PFObject(className: "locationRecords")
+                    println("created parseObject")
+                    
+                    parseObject.addObject((wifi.valueForKey("ssid") as? String)!, forKey: "ssid")
+                    println("added property 'ssid'")
+                    parseObject["bssid"] = wifi.valueForKey("bssid") as? String
+                    parseObject["timestamp"] = wifi.valueForKey("timestamp")
+                    parseObject["timespan"] = wifi.valueForKey("timespan")
+                    
+                    wifi.setValue(true, forKey: "submitted")
+                    var saveError : NSError? = nil
+                    if !managedContext.save(&saveError) {
+                        println("Could not update record")
+                    } else {
+                        //                wifis.last = result
+                        populateTable()
+                        //                ViewController().outputTable.reloadData()
+                    }
+                    parseObjects.insert(parseObject, atIndex: key)
+                    key++
+                }
+                println("will call saveAllInBackground now!")
+                PFObject.saveAllInBackground(parseObjects)
+                println("called saveAllInBackground!")
             }
         }
-        
 
-        object.addObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "UDID")
-        object.addObject((temp_wifi_ssid_array), forKey: "ssid")
-        object.addObject((temp_wifi_bssid_array), forKey: "bssid")
-        object.addObject((temp_wifi_timestamp_array), forKey: "timestamp")
-        object.addObject((temp_wifi_timespan_array), forKey: "timespan")
         
-        temp_wifi_ssid_array.removeAll(keepCapacity: false)
-        temp_wifi_bssid_array.removeAll(keepCapacity: false)
-        temp_wifi_timestamp_array.removeAll(keepCapacity: false)
-        temp_wifi_timespan_array.removeAll(keepCapacity: false)
         
-        object.saveEventually()
+        
+        
+//        var object = PFObject(className: "locations")
+        
+//        var temp_wifi_ssid_array:[String] = []
+//        var temp_wifi_bssid_array:[String] = []
+//        var temp_wifi_timestamp_array:[Double] = []
+//        var temp_wifi_timespan_array:[Float] = []
+        
+//        var parseObjects: [PFObject] = [PFObject]()
+//        
+//        for wifi in wifis {
+//            if( wifi.valueForKey("submitted") === false) {
+////                temp_wifi_ssid_array.append((wifi.valueForKey("ssid") as? String)!)
+////                temp_wifi_bssid_array.append((wifi.valueForKey("bssid") as? String)!)
+////                temp_wifi_timestamp_array.append((wifi.valueForKey("timestamp")) as! Double)
+////                temp_wifi_timespan_array.append((wifi.valueForKey("timespan") as? Float)!)
+////                wifi.setValue(true, forKey: "submitted")
+//                
+//                var parseObject = PFObject(className: "locationRecords")
+//                println("created parseObject")
+//                parseObject["ssid"] = wifi.valueForKey("ssid") as? String
+//                println("added property 'ssid'")
+//                parseObject["bssid"] = wifi.valueForKey("bssid") as? String
+//                parseObject["timestamp"] = wifi.valueForKey("timestamp") as? String
+//                parseObject["timespan"] = wifi.valueForKey("timespan") as? String
+//            }
+//        }
+//        println("will call saveAllInBackground now!")
+//        PFObject.saveAllInBackground(parseObjects)
+//        println("called saveAllInBackground!")
+
+//        object.addObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "UDID")
+//        object.addObject((temp_wifi_ssid_array), forKey: "ssid")
+//        object.addObject((temp_wifi_bssid_array), forKey: "bssid")
+//        object.addObject((temp_wifi_timestamp_array), forKey: "timestamp")
+//        object.addObject((temp_wifi_timespan_array), forKey: "timespan")
+//        
+//        temp_wifi_ssid_array.removeAll(keepCapacity: false)
+//        temp_wifi_bssid_array.removeAll(keepCapacity: false)
+//        temp_wifi_timestamp_array.removeAll(keepCapacity: false)
+//        temp_wifi_timespan_array.removeAll(keepCapacity: false)
+//        
+//        object.saveEventually()
         
         var alert = UIAlertController(title: "Thank you", message: "Your contribution is appreciated ! Thank you !", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.Default, handler: nil))
@@ -307,7 +396,9 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             error: &error) as? [NSManagedObject]
         
         var lastScanned = getLastScanned()
-        if (fetchedResults?.count == 0 || lastScanned["bssid"] as! String != bssid)  {
+        if ((fetchedResults?.count == 0 && lastScanned["bssid"] as! String != bssid) || hasDisconnected == true)  {
+            println("line 398 now will set hasDisconnected = false !!!!!!#!#!#!#!#!#!#")
+            hasDisconnected = false
             let wifi = NSManagedObject(entity: entity!,
                 insertIntoManagedObjectContext:managedContext)
 
