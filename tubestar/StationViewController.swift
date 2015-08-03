@@ -12,18 +12,19 @@ import UIKit
 
 class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
+    var line:String?
     
     let tfl = Tfl()
     
     let textCellIdentifier = "MyCell"
-
+    
     
     @IBOutlet weak var stationTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "test"
+        self.navigationItem.title = line!
         
         stationTableView.delegate = self
         stationTableView.dataSource = self
@@ -34,6 +35,15 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         stationTableView.tableFooterView = tblViewFooter
         stationTableView.backgroundColor = UIColor.clearColor()
         
+
+        
+        var lineID = String(Array(line!)[0])
+        
+        let station = tfl.stationsOnLine[lineID]
+        
+        print(station)
+        
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -50,16 +60,22 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
-        //return tfl.stationsOnLine[line!]!.count
-        return 0
+
+        var lineID = String(Array(line!)[0])
+        
+        return tfl.stationsOnLine[lineID]!.count
     }
+    
     
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: textCellIdentifier)
         
-    
+        var lineID = String(Array(line!)[0])
+
+        let station = tfl.stationsOnLine[lineID]
         
+        cell.textLabel!.text = tfl.stations[station![indexPath.row]]
         
         return cell
     }

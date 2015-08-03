@@ -19,6 +19,8 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     let selectedRow = 0
     
+    var labelSelected:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,10 +35,15 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         tableViewLines.tableFooterView = tblViewFooter
         tableViewLines.backgroundColor = UIColor.clearColor()
         
-    
+
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        if ( self.tableViewLines.indexPathForSelectedRow() != nil ){
+            tableViewLines.deselectRowAtIndexPath(self.tableViewLines.indexPathForSelectedRow()!, animated: true)
+        }
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -77,7 +84,7 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         let linesName = [Array](tfl.lines.values)
         
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.Default
         cell.textLabel?.text = linesName[indexPath.row][0] as? String
 
         //cell.backgroundColor = linesName[indexPath.row][1] as? UIColor
@@ -85,25 +92,23 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         return cell
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = tableViewLines.cellForRowAtIndexPath(indexPath)
+        labelSelected = cell?.textLabel?.text
         self.performSegueWithIdentifier("getStation", sender: indexPath);
-
     }
     
+        
     override func prepareForSegue(segue: UIStoryboardSegue,
         sender: AnyObject?) {
-            
-            if segue.identifier == "getStation" {
-                let stationViewController = segue.destinationViewController
+                let stationVC = segue.destinationViewController
                     as! StationViewContoller
+            
+                stationVC.line = labelSelected
+                println(labelSelected)
                 
-                let myIndexPath = tableViewLines.indexPathForSelectedRow()
-                let row = (sender as! NSIndexPath).row
-                let linesName = [Array](tfl.lines.values)
-                let lineselected = linesName[row]
-                println(linesName)
-                
-            }
+
     }
     
 }
