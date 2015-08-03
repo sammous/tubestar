@@ -32,6 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
         println("Parse.com >>> setDefaultACL : Done")
+        
+        
+        //Allow sending notifications
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound |
+            UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        
+        
         return true
     }
 

@@ -182,12 +182,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SJ1-K7-1Sb">
-                                <rect key="frame" x="-1" y="1" width="414" height="686"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SJ1-K7-1Sb">
+                                <rect key="frame" x="16" y="64" width="382" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="SJ1-K7-1Sb" secondAttribute="trailing" id="EGB-IB-edG"/>
+                            <constraint firstItem="SJ1-K7-1Sb" firstAttribute="top" secondItem="GKy-BB-Du4" secondAttribute="bottom" id="PVf-fH-H3z"/>
+                            <constraint firstItem="SJ1-K7-1Sb" firstAttribute="leading" secondItem="klL-XX-2t5" secondAttribute="leadingMargin" id="bXc-r6-O8V"/>
+                            <constraint firstItem="oJM-kH-hra" firstAttribute="top" secondItem="SJ1-K7-1Sb" secondAttribute="bottom" id="bcm-E7-bac"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>

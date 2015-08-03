@@ -19,7 +19,7 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     let selectedRow = 0
     
-    var labelSelected:String?
+    var labelSelected:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,11 +95,11 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let cell = tableViewLines.cellForRowAtIndexPath(indexPath)
-        labelSelected = cell?.textLabel?.text
+        labelSelected = cell!.textLabel!.text!
         self.performSegueWithIdentifier("getStation", sender: indexPath);
     }
     
-        
+    
     override func prepareForSegue(segue: UIStoryboardSegue,
         sender: AnyObject?) {
                 let stationVC = segue.destinationViewController
