@@ -12,6 +12,8 @@ import SystemConfiguration.CaptiveNetwork
 
 import CoreData
 
+import AVFoundation
+
 private let DeviceList = [
     /* iPod 5 */          "iPod5,1": "iPod Touch 5",
     /* iPhone 4 */        "iPhone3,1":  "iPhone 4", "iPhone3,2": "iPhone 4", "iPhone3,3": "iPhone 4",
@@ -64,18 +66,23 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     var items: [String] = []
     var wifis = [NSManagedObject]()
     
+
+    var player: AVQueuePlayer!
+
     
     @IBOutlet weak var outputTable: UITableView!
     
     let textCellIdentifier = "cell"
     
+    
+
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         populateTable()
     }
 
-    
+
     func populateTable() {
         //1
         let appDelegate =
@@ -119,6 +126,49 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
         self.navigationItem.title = "List"
 
+
+        var error: NSError?
+        var success = AVAudioSession.sharedInstance().setCategory(
+            AVAudioSessionCategoryPlayAndRecord,
+            withOptions: .MixWithOthers, error: &error)
+        if !success {
+            NSLog("Failed to set audio session category.  Error: \(error)")
+        }
+        
+        let songNames = ["Mesmerize"]
+        let songs = songNames.map {
+            AVPlayerItem(URL: NSBundle.mainBundle().URLForResource($0, withExtension: "mp3"))
+        }
+        
+        player = AVQueuePlayer(items: songs)
+        player.actionAtItemEnd = .Advance
+        
+        
+        player.addObserver(self, forKeyPath: "currentItem", options: .New | .Initial , context: nil)
+
+
+        
+        player.addPeriodicTimeObserverForInterval(CMTimeMake(1, 100), queue: dispatch_get_main_queue()) {
+            [unowned self] time in
+            let timeString = String(format: "%02.2f", CMTimeGetSeconds(time))
+            if UIApplication.sharedApplication().applicationState == .Active {
+                println(timeString)
+            } else {
+                self.autoScan()
+                NSLog("Background time remaining = %.1f seconds", UIApplication.sharedApplication().backgroundTimeRemaining)
+                println("Background: \(timeString)")
+            }
+        }
+        
+        player.play()
+        player.volume = 0.0
+    }
+   
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        if keyPath == "currentItem", let player = object as? AVPlayer,
+            currentItem = player.currentItem?.asset as? AVURLAsset {
+                println(currentItem.URL?.lastPathComponent ?? "Unknown")
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -238,6 +288,9 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         populateTable()
         self.outputTable.reloadData()
         scrollToBottom(self.outputTable)
+        player.play()
+        player.volume = 0.0
+
     }
     
     func autoScan() {

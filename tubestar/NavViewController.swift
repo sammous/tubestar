@@ -61,8 +61,6 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
 
     
-    
-    
     func getStationsOnLine(lineName: String) -> [String:String] {
         let stations:[String] = tfl.stationsOnLine[lineName]!
         var results = [String:String]()
