@@ -467,6 +467,14 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             }
             //5
             wifis.append(wifi)
+            
+            //Notification
+            var localNotification:UILocalNotification = UILocalNotification()
+            localNotification.alertAction = "New wifi"
+            localNotification.alertBody = "You just found a new wifi !"
+            localNotification.fireDate = nil
+            localNotification.soundName = UILocalNotificationDefaultSoundName
+            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
 
         } else {
             println("same bssid as last check")
