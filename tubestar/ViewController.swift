@@ -153,6 +153,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             let timeString = String(format: "%02.2f", CMTimeGetSeconds(time))
             if UIApplication.sharedApplication().applicationState == .Active {
                 println(timeString)
+                self.outputTable.reloadData()
             } else {
                 self.autoScan()
                 NSLog("Background time remaining = %.1f seconds", UIApplication.sharedApplication().backgroundTimeRemaining)
@@ -475,6 +476,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             localNotification.fireDate = nil
             localNotification.soundName = UILocalNotificationDefaultSoundName
             UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+            self.outputTable.reloadData()
 
         } else {
             println("same bssid as last check")
