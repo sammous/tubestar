@@ -23,8 +23,16 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.title = "Navigation"
+
+        let font = UIFont(name: "Aller", size: 18)
+        let color =  UIColor(red: 28 / 255, green: 186 / 255, blue: 156 / 255, alpha: 1.0)
+        self.navigationController?.navigationBar.tintColor = color
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : font!, NSForegroundColorAttributeName : color]
+        self.navigationItem.title = "Tubelines"
+
+        let backButton = UIBarButtonItem(title: "Tubelines", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
+        backButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Aller", size: 16)!], forState: UIControlState.Normal)
+        self.navigationItem.backBarButtonItem = backButton
         
         tableViewLines.delegate = self
         tableViewLines.dataSource = self
@@ -78,12 +86,13 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: textCellIdentifier)
-        
+        let font = UIFont(name: "Aller", size: 18)
         let linesName = [Array](tfl.lines.values)
         
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         cell.selectionStyle = UITableViewCellSelectionStyle.Default
         cell.textLabel?.text = linesName[indexPath.row][0] as? String
+        cell.textLabel?.font = font
 
         //cell.backgroundColor = linesName[indexPath.row][1] as? UIColor
         

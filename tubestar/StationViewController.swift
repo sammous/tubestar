@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewDataSource{
+class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate{
     
     var line:String = ""
     
@@ -20,17 +20,27 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
     
     var destinationSelected:String = ""
     
+    var filteredStations = [String]()
+    
+
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     @IBOutlet weak var stationTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = line
-        
+        self.navigationItem.backBarButtonItem?.title = "Tubelines"
         stationTableView.delegate = self
         stationTableView.dataSource = self
         
-        
+        let color_text =  UIColor(red: 28 / 255, green: 186 / 255, blue: 156 / 255, alpha: 1.0)
+        let color_background = UIColor(red: 45.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 1.0)
+        self.searchBar.tintColor = color_text
+//        searchBar.backgroundColor = UIColor.whiteColor()
+        var textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = color_text
         var tblViewFooter = UIView(frame: CGRectZero)
         
         stationTableView.tableFooterView = tblViewFooter
@@ -40,7 +50,7 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         
         var lineID = String(Array(line)[0])
         
-        let station = tfl.stationsOnLine[lineID]
+        var station = tfl.stationsOnLine[lineID]
         
         
         /* Handling long press
@@ -67,14 +77,19 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
 
         var lineID = String(Array(line)[0])
         
-        return tfl.stationsOnLine[lineID]!.count
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            return self.filteredStations.count
+        } else {
+            return tfl.stationsOnLine[lineID]!.count
+        }
     }
     
     
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: textCellIdentifier)
-        
+        let font = UIFont(name: "Aller", size: 18)
+
         var lineID = String(Array(line)[0])
 
         let station = tfl.stationsOnLine[lineID]
@@ -82,6 +97,7 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         cell.selectionStyle = UITableViewCellSelectionStyle.None
 
         cell.textLabel!.text = tfl.stations[station![indexPath.row]]
+        cell.textLabel?.font = font
         
         return cell
     }
@@ -127,6 +143,30 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         localNotification.alertBody = "alert body"
         localNotification.fireDate = NSDate(timeIntervalSinceNow: 10)
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
+    
+    func filterContentForSearchText(searchText: String) {
+        // Filter the array using the filter method
+        
+        var lineID = String(Array(line)[0])
+        
+        var station = tfl.stationsOnLine[lineID]
+        println(station)
+        
+        filteredStations = station!.filter({( station: String) -> Bool in
+            let stringMatch = station.rangeOfString(searchText)
+            return (stringMatch != nil)
+        })
+    }
+    
+    func searchDisplayController(controller: UISearchController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
+        self.filterContentForSearchText(searchString)
+        return true
+    }
+    
+    func searchDisplayController(controller: UISearchController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
+        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
+        return true
     }
     
     

@@ -7,15 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171C8AA71B979FBE0015222D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171C8AA61B979FBE0015222D /* Database.swift */; };
 		173C64491B7B45B300F0834C /* BackgroundMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173C64481B7B45B300F0834C /* BackgroundMode.swift */; };
 		173E0F051B652BFC007FE050 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */; };
-		1756F0021B7CD4E200433659 /* Mesmerize.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1756F0011B7CD4E200433659 /* Mesmerize.mp3 */; };
 		177B86671B66838A001F4DE8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177B86661B66838A001F4DE8 /* Reachability.swift */; };
 		177F6FE21B6EA82B00B342A4 /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F6FE11B6EA82B00B342A4 /* StationViewController.swift */; };
 		177F6FE41B6EA87A00B342A4 /* Tfl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F6FE31B6EA87A00B342A4 /* Tfl.swift */; };
 		17A692901B6E64DD0097B549 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6928F1B6E64DD0097B549 /* NavViewController.swift */; };
-		17A692921B6E6D8D0097B549 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17A692911B6E6D8D0097B549 /* Images.xcassets */; };
 		17C8290F1B6A7C3800522661 /* PickerviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C8290E1B6A7C3800522661 /* PickerviewViewController.swift */; };
+		17CD46C91BA487ED007A4A9C /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CD46C81BA487ED007A4A9C /* ApiManager.swift */; };
+		17CD46CB1BA4895B007A4A9C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CD46CA1BA4895B007A4A9C /* SwiftyJSON.swift */; };
+		17F35FD31BA86D3A005BEF25 /* Aller_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FCC1BA86D39005BEF25 /* Aller_Bd.ttf */; };
+		17F35FD41BA86D3A005BEF25 /* Aller_BdIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FCD1BA86D39005BEF25 /* Aller_BdIt.ttf */; };
+		17F35FD51BA86D3A005BEF25 /* Aller_It.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FCE1BA86D39005BEF25 /* Aller_It.ttf */; };
+		17F35FD61BA86D3A005BEF25 /* Aller_Lt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FCF1BA86D39005BEF25 /* Aller_Lt.ttf */; };
+		17F35FD71BA86D3A005BEF25 /* Aller_LtIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FD01BA86D39005BEF25 /* Aller_LtIt.ttf */; };
+		17F35FD81BA86D3A005BEF25 /* Aller_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FD11BA86D3A005BEF25 /* Aller_Rg.ttf */; };
+		17F35FD91BA86D3A005BEF25 /* AllerDisplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FD21BA86D3A005BEF25 /* AllerDisplay.ttf */; };
+		17F35FDB1BA87B38005BEF25 /* Mesmerize.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FDA1BA87B38005BEF25 /* Mesmerize.mp3 */; };
+		17F35FE11BA9A084005BEF25 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FE01BA9A084005BEF25 /* Media.xcassets */; };
 		731549C01B699FB4005CC183 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549BF1B699FB4005CC183 /* libsqlite3.dylib */; };
 		731549CB1B69A01B005CC183 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549C11B69A01B005CC183 /* AudioToolbox.framework */; };
 		731549CC1B69A01B005CC183 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549C21B69A01B005CC183 /* CFNetwork.framework */; };
@@ -52,15 +62,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		171C8AA61B979FBE0015222D /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		173C64481B7B45B300F0834C /* BackgroundMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundMode.swift; sourceTree = "<group>"; };
 		173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		1756F0011B7CD4E200433659 /* Mesmerize.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Mesmerize.mp3; path = ../../../../Downloads/Mesmerize.mp3; sourceTree = "<group>"; };
 		177B86661B66838A001F4DE8 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		177F6FE11B6EA82B00B342A4 /* StationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationViewController.swift; sourceTree = "<group>"; };
 		177F6FE31B6EA87A00B342A4 /* Tfl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tfl.swift; sourceTree = "<group>"; };
 		17A6928F1B6E64DD0097B549 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
-		17A692911B6E6D8D0097B549 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		17C8290E1B6A7C3800522661 /* PickerviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerviewViewController.swift; sourceTree = "<group>"; };
+		17CD46C81BA487ED007A4A9C /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		17CD46CA1BA4895B007A4A9C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		17F35FCC1BA86D39005BEF25 /* Aller_Bd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_Bd.ttf; sourceTree = "<group>"; };
+		17F35FCD1BA86D39005BEF25 /* Aller_BdIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_BdIt.ttf; sourceTree = "<group>"; };
+		17F35FCE1BA86D39005BEF25 /* Aller_It.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_It.ttf; sourceTree = "<group>"; };
+		17F35FCF1BA86D39005BEF25 /* Aller_Lt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_Lt.ttf; sourceTree = "<group>"; };
+		17F35FD01BA86D39005BEF25 /* Aller_LtIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_LtIt.ttf; sourceTree = "<group>"; };
+		17F35FD11BA86D3A005BEF25 /* Aller_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_Rg.ttf; sourceTree = "<group>"; };
+		17F35FD21BA86D3A005BEF25 /* AllerDisplay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AllerDisplay.ttf; sourceTree = "<group>"; };
+		17F35FDA1BA87B38005BEF25 /* Mesmerize.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mesmerize.mp3; sourceTree = "<group>"; };
+		17F35FE01BA9A084005BEF25 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		731549BF1B699FB4005CC183 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		731549C11B69A01B005CC183 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		731549C21B69A01B005CC183 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -150,10 +170,43 @@
 			name = Lib;
 			sourceTree = "<group>";
 		};
+		17CD46C11BA47E8F007A4A9C /* api */ = {
+			isa = PBXGroup;
+			children = (
+				171C8AA61B979FBE0015222D /* Database.swift */,
+				17CD46C81BA487ED007A4A9C /* ApiManager.swift */,
+				17CD46CA1BA4895B007A4A9C /* SwiftyJSON.swift */,
+			);
+			name = api;
+			sourceTree = "<group>";
+		};
+		17F35FB51BA86C0D005BEF25 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				17F35FE01BA9A084005BEF25 /* Media.xcassets */,
+				17F35FB61BA86C44005BEF25 /* fonts */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		17F35FB61BA86C44005BEF25 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				17F35FCC1BA86D39005BEF25 /* Aller_Bd.ttf */,
+				17F35FCD1BA86D39005BEF25 /* Aller_BdIt.ttf */,
+				17F35FCE1BA86D39005BEF25 /* Aller_It.ttf */,
+				17F35FCF1BA86D39005BEF25 /* Aller_Lt.ttf */,
+				17F35FD01BA86D39005BEF25 /* Aller_LtIt.ttf */,
+				17F35FD11BA86D3A005BEF25 /* Aller_Rg.ttf */,
+				17F35FD21BA86D3A005BEF25 /* AllerDisplay.ttf */,
+			);
+			name = fonts;
+			sourceTree = "<group>";
+		};
 		73A7DA6E1B6408B0002F4483 = {
 			isa = PBXGroup;
 			children = (
-				17A692911B6E6D8D0097B549 /* Images.xcassets */,
+				17F35FB51BA86C0D005BEF25 /* Resources */,
 				17C8290D1B6A193700522661 /* Lib */,
 				73A7DA791B6408B0002F4483 /* tubestar */,
 				73A7DA921B6408B0002F4483 /* tubestarTests */,
@@ -174,7 +227,7 @@
 		73A7DA791B6408B0002F4483 /* tubestar */ = {
 			isa = PBXGroup;
 			children = (
-				1756F0011B7CD4E200433659 /* Mesmerize.mp3 */,
+				17F35FDA1BA87B38005BEF25 /* Mesmerize.mp3 */,
 				73A7DA7C1B6408B0002F4483 /* AppDelegate.swift */,
 				73A7DA811B6408B0002F4483 /* ViewController.swift */,
 				17C8290E1B6A7C3800522661 /* PickerviewViewController.swift */,
@@ -183,6 +236,7 @@
 				177F6FE31B6EA87A00B342A4 /* Tfl.swift */,
 				173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */,
 				173C64481B7B45B300F0834C /* BackgroundMode.swift */,
+				17CD46C11BA47E8F007A4A9C /* api */,
 				73A7DA831B6408B0002F4483 /* Main.storyboard */,
 				73A7DA881B6408B0002F4483 /* LaunchScreen.xib */,
 				73A7DA7E1B6408B0002F4483 /* tubestar.xcdatamodeld */,
@@ -302,10 +356,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1756F0021B7CD4E200433659 /* Mesmerize.mp3 in Resources */,
-				17A692921B6E6D8D0097B549 /* Images.xcassets in Resources */,
+				17F35FD91BA86D3A005BEF25 /* AllerDisplay.ttf in Resources */,
+				17F35FDB1BA87B38005BEF25 /* Mesmerize.mp3 in Resources */,
+				17F35FD81BA86D3A005BEF25 /* Aller_Rg.ttf in Resources */,
+				17F35FD41BA86D3A005BEF25 /* Aller_BdIt.ttf in Resources */,
+				17F35FD31BA86D3A005BEF25 /* Aller_Bd.ttf in Resources */,
 				73A7DA851B6408B0002F4483 /* Main.storyboard in Resources */,
 				73A7DA8A1B6408B0002F4483 /* LaunchScreen.xib in Resources */,
+				17F35FD51BA86D3A005BEF25 /* Aller_It.ttf in Resources */,
+				17F35FD71BA86D3A005BEF25 /* Aller_LtIt.ttf in Resources */,
+				17F35FE11BA9A084005BEF25 /* Media.xcassets in Resources */,
+				17F35FD61BA86D3A005BEF25 /* Aller_Lt.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,9 +387,12 @@
 				73A7DA821B6408B0002F4483 /* ViewController.swift in Sources */,
 				173C64491B7B45B300F0834C /* BackgroundMode.swift in Sources */,
 				17A692901B6E64DD0097B549 /* NavViewController.swift in Sources */,
+				171C8AA71B979FBE0015222D /* Database.swift in Sources */,
 				73A7DA7D1B6408B0002F4483 /* AppDelegate.swift in Sources */,
+				17CD46C91BA487ED007A4A9C /* ApiManager.swift in Sources */,
 				173E0F051B652BFC007FE050 /* CustomTableViewCell.swift in Sources */,
 				177B86671B66838A001F4DE8 /* Reachability.swift in Sources */,
+				17CD46CB1BA4895B007A4A9C /* SwiftyJSON.swift in Sources */,
 				73A7DA801B6408B0002F4483 /* tubestar.xcdatamodeld in Sources */,
 				177F6FE41B6EA87A00B342A4 /* Tfl.swift in Sources */,
 				17C8290F1B6A7C3800522661 /* PickerviewViewController.swift in Sources */,
@@ -458,6 +522,8 @@
 		73A7DA9A1B6408B0002F4483 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -478,6 +544,8 @@
 		73A7DA9B1B6408B0002F4483 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (

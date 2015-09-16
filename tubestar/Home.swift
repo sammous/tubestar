@@ -1,4 +1,12 @@
 //
+//  Home.swift
+//  tubestar
+//
+//  Created by Sami MOUSTACHIR on 12/09/2015.
+//  Copyright (c) 2015 Myintranet. All rights reserved.
+//
+
+//
 //  ViewController.swift
 //  tubestar
 //
@@ -13,8 +21,6 @@ import SystemConfiguration.CaptiveNetwork
 import CoreData
 
 import AVFoundation
-
-import Darwin
 
 private let DeviceList = [
     /* iPod 5 */          "iPod5,1": "iPod Touch 5",
@@ -64,23 +70,49 @@ public extension UIDevice {
     
 }
 
-class ViewController: UIViewController {
+class Home: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var items: [String] = []
     var wifis = [NSManagedObject]()
     
     
     var player: AVQueuePlayer!
     
-    var fact: [String] = []
+    
+    @IBOutlet weak var outputTable: UITableView!
     
     let textCellIdentifier = "cell"
     
     
-    @IBOutlet weak var homeFact: UILabel!
-
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        populateTable()
+    }
+    
+    
+    func populateTable() {
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName:"Wifi_data")
+        
+        //3
+        var error: NSError?
+        
+        let fetchedResults =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as? [NSManagedObject]
+        
+        if let results = fetchedResults {
+            wifis = results
+        } else {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
     }
     
     override func viewDidLoad() {
@@ -90,14 +122,16 @@ class ViewController: UIViewController {
         
         
         
-        println("devide id:\n")
-        println(UIDevice.currentDevice().identifierForVendor.UUIDString)
-
+        var refreshButton : UIBarButtonItem = UIBarButtonItem(title: "Refresh", style: UIBarButtonItemStyle.Plain, target: self, action: "refreshData:")
         
-        let backButton = UIBarButtonItem(title: "Home", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
-        backButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Aller", size: 20)!], forState: UIControlState.Normal)
-        self.navigationItem.backBarButtonItem = backButton
-
+        var submitData : UIBarButtonItem = UIBarButtonItem(title: "Submit", style: UIBarButtonItemStyle.Plain, target: self, action: "sendButton:")
+        
+        self.navigationItem.rightBarButtonItem = refreshButton
+        self.navigationItem.leftBarButtonItem = submitData
+        
+        self.navigationItem.title = "List"
+        
+        
         var error: NSError?
         var success = AVAudioSession.sharedInstance().setCategory(
             AVAudioSessionCategoryPlayAndRecord,
@@ -116,8 +150,8 @@ class ViewController: UIViewController {
         
         
         player.addObserver(self, forKeyPath: "currentItem", options: .New | .Initial , context: nil)
-
-
+        
+        
         
         player.addPeriodicTimeObserverForInterval(CMTimeMake(100,100), queue: dispatch_get_main_queue()) {
             [unowned self] time in
@@ -133,13 +167,8 @@ class ViewController: UIViewController {
         
         player.play()
         player.volume = 0.0
-        
-        fact = ["The busiest Tube station is Oxford Circus, used by around 98 million passengers in 2014", "Compared to Paris, London sucks"]
-        
-        loadFact(homeFact,fact: fact)
-        
     }
-   
+    
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if keyPath == "currentItem", let player = object as? AVPlayer,
             currentItem = player.currentItem?.asset as? AVURLAsset {
@@ -150,36 +179,68 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
 
-
+        
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
         
     }
-
+    
     /*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "") {
-            var svc = segue.destinationViewController as! PickerviewViewController;
-            
-            svc.ssid = ssidScanned
-            svc.bssid = bssidScanned
-            
-            println("avant transition :" + ssidScanned)
-            
-        }
+    if (segue.identifier == "") {
+    var svc = segue.destinationViewController as! PickerviewViewController;
+    
+    svc.ssid = ssidScanned
+    svc.bssid = bssidScanned
+    
+    println("avant transition :" + ssidScanned)
+    
+    }
     }
     */
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return wifis.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        
+        let wifi = wifis[indexPath.row]
+        
+        let ssid_label = wifi.valueForKey("ssid")!.substringToIndex(5) as String
+        let bssid_label = wifi.valueForKey("bssid")!.substringFromIndex(9) as String
+        var text = "T:";
+        text += String(format:"%.1f", wifi.valueForKey("timespan") as! Double)
+        
+        
+        text += " SSID: "
+        text +=  ssid_label
+        text += " BSSID: "
+        text += bssid_label
+        
+        cell.textLabel?.text=text
+        
+        return cell
+        
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
     
     func getSSID() -> String{
         
         var currentSSID = ""
         var currentBSSID = ""
-        var array = ["50:a7:33:f:ca:58","3c:ce:73:f6:9e:1d","3c:ce:73:f6:9e:12","c8:f9:f9:2a:3e:ed","3c:ce:73:f8:3d:7d","3c:ce:73:f8:3d:72","c8:f9:f9:2a:3e:e2","3c:ce:73:6c:84:fc","3c:ce:73:6c:84:fc","3c:ce:73:6c:84:f3","c8:f9:f9:72:0b:b3","c8:f9:f9:72:0b:bc","3c:ce:73:6c:84:fc","3c:ce:73:6c:84:f3","c8:f9:f9:72:0b:b3","c8:f9:f9:72:0b:bc","3c:ce:73:f6:f3:1c","3c:ce:73:f6:f3:13","3c:ce:73:6c:84:fc","c8:f9:f9:72:0b:b3","c8:f9:f9:72:0b:bc","3c:ce:73:f6:f3:1c","3c:ce:73:f6:f3:1c","3c:ce:73:6c:84:fc","3c:ce:73:6c:84:f3","c8:f9:f9:72:0b:b3","c8:f9:f9:72:0b:bc","3c:ce:73:f6:f3:1c","3c:ce:73:f6:f3:13","50:a7:33:f:ca:58"]
-
+        
         let interfaces = CNCopySupportedInterfaces()
         
         if interfaces != nil {
@@ -199,25 +260,16 @@ class ViewController: UIViewController {
                     currentSSID = interfaceData[kCNNetworkInfoKeySSID] as! String
                     currentBSSID = interfaceData[kCNNetworkInfoKeyBSSID] as! String
                     
-//                    let ssiddata = NSString(data:interfaceData[kCNNetworkInfoKeySSID]! as! NSData, encoding:NSUTF8StringEncoding) as! String
+                    //                    let ssiddata = NSString(data:interfaceData[kCNNetworkInfoKeySSID]! as! NSData, encoding:NSUTF8StringEncoding) as! String
                     
                     //ssid data from hex
-    
-                    if contains(array,currentBSSID){
-                        var localNotification:UILocalNotification = UILocalNotification()
-                        localNotification.alertAction = "Arrived at station"
-                        localNotification.alertBody = ""
-                        localNotification.fireDate = nil
-                        localNotification.soundName = UILocalNotificationDefaultSoundName
-                        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-                    }
                     
                     saveWifi(currentSSID, bssid: currentBSSID)
                     
                     
                     println(currentSSID + " with BSSID=" + currentBSSID)
                     println("===================")
-//                    hasDisconnected = false
+                    //                    hasDisconnected = false
                 } else {
                     hasDisconnected = true
                 }
@@ -236,11 +288,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func refreshData(sender: UIButton) {
-//        self.getSSID()
-
+        //        self.getSSID()
         player.play()
         player.volume = 0.0
-
+        
         ApiManager.sharedInstance.getData {
             json -> Void in
             let results = json["data"]
@@ -249,29 +300,18 @@ class ViewController: UIViewController {
                 let name: String = subJson["name"].string!
                 let tflid: String = subJson["tflid"].string!
                 println("id:\(id) name: \(name) tflid: \(tflid)")
-                ApiManager.sharedInstance.saveLine(id.toInt()!, name: name, tflid: tflid)
+                ApiManager.sharedInstance.saveData(id.toInt()!, name: name, tflid: tflid)
             }
         }
     }
     
-    func loadFact(label: UILabel, fact:[String]){
-        let diceRoll = Int(arc4random_uniform(UInt32(fact.count)))
-        let font = UIFont(name: "Aller", size: 18.0)
-        label.numberOfLines = 0
-        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        label.font = font
-        label.text = fact[diceRoll]
-        
-        label.sizeToFit()
-
-    }
     
     
     func autoScan() {
         self.getSSID()
         println(items)
         if(!(getLastScanned()["timestamp"]! as! NSObject==0)) {
-//            self.outputTable.reloadData()
+            //            self.outputTable.reloadData()
         }
     }
     
@@ -311,7 +351,7 @@ class ViewController: UIViewController {
         if (fetchedResults?.count !== 0)  {
             if let results = fetchedResults {
                 println("found unsubmitted bssid's")
-            
+                
                 var parseObjects: [PFObject] = [PFObject]()
                 var key = 0
                 for wifi in results {
@@ -330,7 +370,9 @@ class ViewController: UIViewController {
                     if !managedContext.save(&saveError) {
                         println("Could not update record")
                     } else {
-
+                        //                wifis.last = result
+                        populateTable()
+                        //                ViewController().outputTable.reloadData()
                     }
                     parseObjects.insert(parseObject, atIndex: key)
                     key++
@@ -340,53 +382,53 @@ class ViewController: UIViewController {
                 println("called saveAllInBackground!")
             }
         }
-
         
         
         
         
-//        var object = PFObject(className: "locations")
         
-//        var temp_wifi_ssid_array:[String] = []
-//        var temp_wifi_bssid_array:[String] = []
-//        var temp_wifi_timestamp_array:[Double] = []
-//        var temp_wifi_timespan_array:[Float] = []
+        //        var object = PFObject(className: "locations")
         
-//        var parseObjects: [PFObject] = [PFObject]()
-//        
-//        for wifi in wifis {
-//            if( wifi.valueForKey("submitted") === false) {
-////                temp_wifi_ssid_array.append((wifi.valueForKey("ssid") as? String)!)
-////                temp_wifi_bssid_array.append((wifi.valueForKey("bssid") as? String)!)
-////                temp_wifi_timestamp_array.append((wifi.valueForKey("timestamp")) as! Double)
-////                temp_wifi_timespan_array.append((wifi.valueForKey("timespan") as? Float)!)
-////                wifi.setValue(true, forKey: "submitted")
-//                
-//                var parseObject = PFObject(className: "locationRecords")
-//                println("created parseObject")
-//                parseObject["ssid"] = wifi.valueForKey("ssid") as? String
-//                println("added property 'ssid'")
-//                parseObject["bssid"] = wifi.valueForKey("bssid") as? String
-//                parseObject["timestamp"] = wifi.valueForKey("timestamp") as? String
-//                parseObject["timespan"] = wifi.valueForKey("timespan") as? String
-//            }
-//        }
-//        println("will call saveAllInBackground now!")
-//        PFObject.saveAllInBackground(parseObjects)
-//        println("called saveAllInBackground!")
-
-//        object.addObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "UDID")
-//        object.addObject((temp_wifi_ssid_array), forKey: "ssid")
-//        object.addObject((temp_wifi_bssid_array), forKey: "bssid")
-//        object.addObject((temp_wifi_timestamp_array), forKey: "timestamp")
-//        object.addObject((temp_wifi_timespan_array), forKey: "timespan")
-//        
-//        temp_wifi_ssid_array.removeAll(keepCapacity: false)
-//        temp_wifi_bssid_array.removeAll(keepCapacity: false)
-//        temp_wifi_timestamp_array.removeAll(keepCapacity: false)
-//        temp_wifi_timespan_array.removeAll(keepCapacity: false)
-//        
-//        object.saveEventually()
+        //        var temp_wifi_ssid_array:[String] = []
+        //        var temp_wifi_bssid_array:[String] = []
+        //        var temp_wifi_timestamp_array:[Double] = []
+        //        var temp_wifi_timespan_array:[Float] = []
+        
+        //        var parseObjects: [PFObject] = [PFObject]()
+        //
+        //        for wifi in wifis {
+        //            if( wifi.valueForKey("submitted") === false) {
+        ////                temp_wifi_ssid_array.append((wifi.valueForKey("ssid") as? String)!)
+        ////                temp_wifi_bssid_array.append((wifi.valueForKey("bssid") as? String)!)
+        ////                temp_wifi_timestamp_array.append((wifi.valueForKey("timestamp")) as! Double)
+        ////                temp_wifi_timespan_array.append((wifi.valueForKey("timespan") as? Float)!)
+        ////                wifi.setValue(true, forKey: "submitted")
+        //
+        //                var parseObject = PFObject(className: "locationRecords")
+        //                println("created parseObject")
+        //                parseObject["ssid"] = wifi.valueForKey("ssid") as? String
+        //                println("added property 'ssid'")
+        //                parseObject["bssid"] = wifi.valueForKey("bssid") as? String
+        //                parseObject["timestamp"] = wifi.valueForKey("timestamp") as? String
+        //                parseObject["timespan"] = wifi.valueForKey("timespan") as? String
+        //            }
+        //        }
+        //        println("will call saveAllInBackground now!")
+        //        PFObject.saveAllInBackground(parseObjects)
+        //        println("called saveAllInBackground!")
+        
+        //        object.addObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "UDID")
+        //        object.addObject((temp_wifi_ssid_array), forKey: "ssid")
+        //        object.addObject((temp_wifi_bssid_array), forKey: "bssid")
+        //        object.addObject((temp_wifi_timestamp_array), forKey: "timestamp")
+        //        object.addObject((temp_wifi_timespan_array), forKey: "timespan")
+        //
+        //        temp_wifi_ssid_array.removeAll(keepCapacity: false)
+        //        temp_wifi_bssid_array.removeAll(keepCapacity: false)
+        //        temp_wifi_timestamp_array.removeAll(keepCapacity: false)
+        //        temp_wifi_timespan_array.removeAll(keepCapacity: false)
+        //
+        //        object.saveEventually()
         
         var alert = UIAlertController(title: "Thank you", message: "Your contribution is appreciated ! Thank you !", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.Default, handler: nil))
@@ -406,14 +448,14 @@ class ViewController: UIViewController {
             inManagedObjectContext:
             managedContext)
         
-
+        
         
         let resultPredicate = NSPredicate(format: "bssid = %@", bssid)
-
+        
         let fetchRequest = NSFetchRequest(entityName:"Wifi_data")
         
         var error: NSError?
-
+        
         fetchRequest.predicate = resultPredicate
         
         let fetchedResults =
@@ -426,7 +468,7 @@ class ViewController: UIViewController {
             hasDisconnected = false
             let wifi = NSManagedObject(entity: entity!,
                 insertIntoManagedObjectContext:managedContext)
-
+            
             wifi.setValue(ssid, forKey: "ssid")
             wifi.setValue(bssid, forKey: "bssid")
             wifi.setValue(NSDate().timeIntervalSince1970, forKey: "timestamp")
@@ -447,7 +489,7 @@ class ViewController: UIViewController {
             localNotification.fireDate = nil
             localNotification.soundName = UILocalNotificationDefaultSoundName
             UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-
+            
         } else {
             println("same bssid as last check")
             var result = fetchedResults?.last
@@ -459,14 +501,16 @@ class ViewController: UIViewController {
             if !managedContext.save(&saveError) {
                 println("Could not update record")
             } else {
-
+                //                wifis.last = result
+                populateTable()
+                //                ViewController().outputTable.reloadData()
             }
         }
         
-//        dispatch_after(5,
-//            dispatch_get_main_queue()){
-//                self.scanWifis()
-//        };
+        //        dispatch_after(5,
+        //            dispatch_get_main_queue()){
+        //                self.scanWifis()
+        //        };
     }
     
     
@@ -504,7 +548,7 @@ class ViewController: UIViewController {
         }
         
     }
-
+    
 }
 
 

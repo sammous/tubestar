@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="LastUpdate" syncable="YES">
+        <attribute name="last_updated" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="Line" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tflid" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Location" syncable="YES">
         <attribute name="lat" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="long" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Station" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="lines" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lon" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tflid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wifi" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Wifi_data" syncable="YES">
         <attribute name="bssid" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,8 +29,10 @@
         <attribute name="timestamp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Location" positionX="-4025" positionY="-2649" width="128" height="75"/>
-        <element name="Station" positionX="-3764" positionY="-2500" width="128" height="60"/>
-        <element name="Wifi_data" positionX="-3762" positionY="-2740" width="128" height="118"/>
+        <element name="LastUpdate" positionX="-3969" positionY="-2515" width="128" height="58"/>
+        <element name="Location" positionX="-3944" positionY="-2730" width="128" height="75"/>
+        <element name="Station" positionX="-3782" positionY="-2590" width="128" height="148"/>
+        <element name="Wifi_data" positionX="-3762" positionY="-2728" width="128" height="118"/>
+        <element name="Line" positionX="-4113" positionY="-2599" width="128" height="88"/>
     </elements>
 </model>
