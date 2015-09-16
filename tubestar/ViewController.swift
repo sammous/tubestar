@@ -134,7 +134,7 @@ class ViewController: UIViewController {
         player.play()
         player.volume = 0.0
         
-        fact = ["The busiest Tube station is Oxford Circus, used by around 98 million passengers in 2014", "Compared to Paris, London sucks"]
+        fact = ["The busiest Tube station is Oxford Circus, used by around 98 million passengers in 2014", "Compared to Paris, London sucks zhzufhzeufhiuzhe fiuzhefuh zef uziefh uzehf uizehf uzehf iuhzef uhzef uhzefh zeufh zeiuhf uizehf iuzehf uizehf uhzefuih zefuh zaefhzeof uzoefuia izofu oziefo azeuf pazmfizeif azeifu aizoef sdhvaevo   avjamqcja mvazemvh aev oevh erhv eohv erohv erv ezoh"]
         
         loadFact(homeFact,fact: fact)
         
@@ -260,6 +260,7 @@ class ViewController: UIViewController {
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.ByWordWrapping
         label.font = font
+        label.adjustsFontSizeToFitWidth = true
         label.text = fact[diceRoll]
         
         label.sizeToFit()

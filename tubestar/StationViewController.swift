@@ -119,22 +119,6 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         })
     }
     
-    
-    /* handling long press
-    func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        
-        if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
-            
-            let touchPoint = longPressGestureRecognizer.locationInView(self.view)
-            if let indexPath = stationTableView.indexPathForRowAtPoint(touchPoint) {
-                var alert = UIAlertController(title: "Alert", message: stationTableView.cellForRowAtIndexPath(indexPath)!.textLabel!.text, preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            }
-        }
-    }
-    */
-    
     func sendData(destination: String){
         println(destinationSelected)
         

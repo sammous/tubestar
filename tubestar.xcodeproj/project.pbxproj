@@ -27,6 +27,7 @@
 		17F35FDB1BA87B38005BEF25 /* Mesmerize.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FDA1BA87B38005BEF25 /* Mesmerize.mp3 */; };
 		17F35FE11BA9A084005BEF25 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FE01BA9A084005BEF25 /* Media.xcassets */; };
 		17F35FE31BA9B4DD005BEF25 /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F35FE21BA9B4DD005BEF25 /* DestinationViewController.swift */; };
+		17F35FE51BA9BE0B005BEF25 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F35FE41BA9BE0B005BEF25 /* NavigationController.swift */; };
 		731549C01B699FB4005CC183 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549BF1B699FB4005CC183 /* libsqlite3.dylib */; };
 		731549CB1B69A01B005CC183 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549C11B69A01B005CC183 /* AudioToolbox.framework */; };
 		731549CC1B69A01B005CC183 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549C21B69A01B005CC183 /* CFNetwork.framework */; };
@@ -83,6 +84,7 @@
 		17F35FDA1BA87B38005BEF25 /* Mesmerize.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mesmerize.mp3; sourceTree = "<group>"; };
 		17F35FE01BA9A084005BEF25 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		17F35FE21BA9B4DD005BEF25 /* DestinationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
+		17F35FE41BA9BE0B005BEF25 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		731549BF1B699FB4005CC183 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		731549C11B69A01B005CC183 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		731549C21B69A01B005CC183 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -232,6 +234,7 @@
 				17F35FDA1BA87B38005BEF25 /* Mesmerize.mp3 */,
 				73A7DA7C1B6408B0002F4483 /* AppDelegate.swift */,
 				73A7DA811B6408B0002F4483 /* ViewController.swift */,
+				17F35FE41BA9BE0B005BEF25 /* NavigationController.swift */,
 				17C8290E1B6A7C3800522661 /* PickerviewViewController.swift */,
 				17A6928F1B6E64DD0097B549 /* NavViewController.swift */,
 				177F6FE11B6EA82B00B342A4 /* StationViewController.swift */,
@@ -394,6 +397,7 @@
 				73A7DA7D1B6408B0002F4483 /* AppDelegate.swift in Sources */,
 				17CD46C91BA487ED007A4A9C /* ApiManager.swift in Sources */,
 				173E0F051B652BFC007FE050 /* CustomTableViewCell.swift in Sources */,
+				17F35FE51BA9BE0B005BEF25 /* NavigationController.swift in Sources */,
 				17F35FE31BA9B4DD005BEF25 /* DestinationViewController.swift in Sources */,
 				177B86671B66838A001F4DE8 /* Reachability.swift in Sources */,
 				17CD46CB1BA4895B007A4A9C /* SwiftyJSON.swift in Sources */,
