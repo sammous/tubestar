@@ -5,7 +5,15 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Aller_Bd.ttf">
+            <string>Aller-Bold</string>
+            <string>Aller-Bold</string>
+            <string>Aller-Bold</string>
+        </mutableArray>
         <mutableArray key="Aller_Rg.ttf">
+            <string>Aller</string>
+            <string>Aller</string>
+            <string>Aller</string>
             <string>Aller</string>
             <string>Aller</string>
         </mutableArray>
@@ -20,7 +28,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLZ-tN-Fg7">
@@ -284,7 +292,7 @@
         <!--Home-->
         <scene sceneID="kdP-hH-Lry">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qae-qp-jj5" userLabel="Home" customClass="NavigationController" customModule="tubestar" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qae-qp-jj5" userLabel="Home" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="mjc-02-aDJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -309,7 +317,7 @@
                         <viewControllerLayoutGuide type="bottom" id="GN2-BP-fxC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2O1-q5-ZEh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iIj-bZ-cii">
@@ -407,7 +415,7 @@
                         <viewControllerLayoutGuide type="bottom" id="oJM-kH-hra"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="klL-XX-2t5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SJ1-K7-1Sb">
@@ -480,7 +488,7 @@
         <!--Destination ViewController-->
         <scene sceneID="uBj-gi-um1">
             <objects>
-                <viewController id="b5c-oP-7CI" userLabel="Destination ViewController" customClass="DestinationViewController" customModule="tubestar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="destinationViewController" id="b5c-oP-7CI" userLabel="Destination ViewController" customClass="DestinationViewController" customModule="tubestar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jt2-bB-byz"/>
                         <viewControllerLayoutGuide type="bottom" id="KQr-XD-wcS"/>
@@ -488,18 +496,130 @@
                     <view key="view" contentMode="scaleToFill" id="EPU-RJ-Vcc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destination Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IzU-0A-FYw">
+                                <rect key="frame" x="21" y="89" width="372" height="32"/>
+                                <fontDescription key="fontDescription" name="Aller-Bold" family="Aller" pointSize="27"/>
+                                <color key="textColor" red="0.29803921568627451" green="0.68627450980392157" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3x-d8-9Wc">
+                                <rect key="frame" x="127" y="157" width="160" height="30"/>
+                                <color key="backgroundColor" red="0.18431372549019609" green="0.22352941176470589" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="er7-X4-tLP"/>
+                                    <constraint firstAttribute="width" constant="160" id="sDW-wQ-O2A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Aller" family="Aller" pointSize="15"/>
+                                <state key="normal" title="Change Destination">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENJOY YOUR TRAVEL" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYM-ty-bZm">
+                                <rect key="frame" x="50" y="623" width="315" height="23"/>
+                                <fontDescription key="fontDescription" name="Aller-Bold" family="Aller" pointSize="19"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="❤️ TUBESTER ❤️" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8er-7Q-L0L">
+                                <rect key="frame" x="91" y="654" width="233" height="22"/>
+                                <fontDescription key="fontDescription" name="Aller-Bold" family="Aller" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Funny joke" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxd-Gl-8Pn">
+                                <rect key="frame" x="0.0" y="475" width="414" height="22"/>
+                                <color key="backgroundColor" red="0.13725490196078433" green="0.2196078431372549" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Aller" family="Aller" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will be notified when you arrive at your destination" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUW-H1-DMR">
+                                <rect key="frame" x="16" y="237" width="382" height="17"/>
+                                <fontDescription key="fontDescription" name="Aller" family="Aller" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1333333333" green="0.1843137255" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="VUW-H1-DMR" firstAttribute="trailing" secondItem="EPU-RJ-Vcc" secondAttribute="trailingMargin" id="3iS-CW-eua"/>
+                            <constraint firstAttribute="centerX" secondItem="M3x-d8-9Wc" secondAttribute="centerX" id="3wP-Ec-EfO"/>
+                            <constraint firstAttribute="centerY" secondItem="M3x-d8-9Wc" secondAttribute="centerY" constant="196" id="5tJ-sR-Xek"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yYM-ty-bZm" secondAttribute="trailing" constant="93" id="6ZQ-IZ-jRJ"/>
+                            <constraint firstItem="yYM-ty-bZm" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="34" id="8n6-gj-jxs"/>
+                            <constraint firstItem="M3x-d8-9Wc" firstAttribute="top" secondItem="IzU-0A-FYw" secondAttribute="bottom" constant="36" id="AH3-Eu-Nc0"/>
+                            <constraint firstItem="Rxd-Gl-8Pn" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leading" id="BtX-bf-GmW"/>
+                            <constraint firstItem="yYM-ty-bZm" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="94" id="GmN-I3-8hM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rxd-Gl-8Pn" secondAttribute="trailing" constant="-16" id="Ike-78-ylv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IzU-0A-FYw" secondAttribute="trailing" constant="5" id="KP1-Fx-Z3R"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IzU-0A-FYw" secondAttribute="trailing" constant="5" id="MVM-XO-k8b"/>
+                            <constraint firstItem="IzU-0A-FYw" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="5" id="Oex-aK-KM6"/>
+                            <constraint firstItem="M3x-d8-9Wc" firstAttribute="top" secondItem="IzU-0A-FYw" secondAttribute="bottom" constant="36" id="Pab-FT-z6T"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8er-7Q-L0L" secondAttribute="trailing" constant="74" id="RTI-2X-hRB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rxd-Gl-8Pn" secondAttribute="trailing" constant="-16" id="SRb-S9-A8d"/>
+                            <constraint firstItem="IzU-0A-FYw" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="5" id="UdF-8Y-u5Y"/>
+                            <constraint firstItem="yYM-ty-bZm" firstAttribute="top" secondItem="Rxd-Gl-8Pn" secondAttribute="bottom" constant="126" id="Vgg-Lb-HSZ"/>
+                            <constraint firstItem="KQr-XD-wcS" firstAttribute="top" secondItem="8er-7Q-L0L" secondAttribute="bottom" constant="60" id="WZv-zN-nj5"/>
+                            <constraint firstItem="VUW-H1-DMR" firstAttribute="trailing" secondItem="EPU-RJ-Vcc" secondAttribute="trailingMargin" id="aVj-fn-0lf"/>
+                            <constraint firstItem="VUW-H1-DMR" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" id="bIb-cT-23U"/>
+                            <constraint firstItem="IzU-0A-FYw" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="5" id="eAE-Tb-R6V"/>
+                            <constraint firstItem="8er-7Q-L0L" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="75" id="eOd-nq-wik"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IzU-0A-FYw" secondAttribute="trailing" constant="5" id="eTo-9Q-Wnw"/>
+                            <constraint firstItem="8er-7Q-L0L" firstAttribute="top" secondItem="yYM-ty-bZm" secondAttribute="bottom" constant="8" id="eqQ-vl-gp3"/>
+                            <constraint firstItem="IzU-0A-FYw" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="5" id="fRH-FV-Wxj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M3x-d8-9Wc" secondAttribute="trailing" constant="111" id="fZB-b7-pPN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yYM-ty-bZm" secondAttribute="trailing" constant="33" id="jIK-Xu-69u"/>
+                            <constraint firstItem="M3x-d8-9Wc" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="111" id="jQE-AZ-bWH"/>
+                            <constraint firstItem="VUW-H1-DMR" firstAttribute="top" secondItem="M3x-d8-9Wc" secondAttribute="bottom" constant="50" id="k1C-k4-Ljs"/>
+                            <constraint firstItem="VUW-H1-DMR" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" id="laN-cc-7P7"/>
+                            <constraint firstItem="yYM-ty-bZm" firstAttribute="top" secondItem="Rxd-Gl-8Pn" secondAttribute="bottom" constant="126" id="o5c-Ol-zkc"/>
+                            <constraint firstItem="VUW-H1-DMR" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="1" id="tJm-EK-V3P"/>
+                            <constraint firstItem="Rxd-Gl-8Pn" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="-16" id="tby-W4-lhI"/>
+                            <constraint firstItem="VUW-H1-DMR" firstAttribute="trailing" secondItem="EPU-RJ-Vcc" secondAttribute="trailingMargin" id="tkB-kL-LMj"/>
+                            <constraint firstItem="IzU-0A-FYw" firstAttribute="top" secondItem="jt2-bB-byz" secondAttribute="bottom" constant="69" id="ut5-l5-2He"/>
+                            <constraint firstItem="VUW-H1-DMR" firstAttribute="top" secondItem="M3x-d8-9Wc" secondAttribute="bottom" constant="50" id="vOs-qL-4F8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IzU-0A-FYw" secondAttribute="trailing" constant="5" id="yR8-IY-rqI"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="MVM-XO-k8b"/>
+                                <exclude reference="UdF-8Y-u5Y"/>
+                                <exclude reference="eAE-Tb-R6V"/>
+                                <exclude reference="eTo-9Q-Wnw"/>
+                                <exclude reference="fRH-FV-Wxj"/>
+                                <exclude reference="yR8-IY-rqI"/>
+                                <exclude reference="AH3-Eu-Nc0"/>
+                                <exclude reference="fZB-b7-pPN"/>
+                                <exclude reference="jQE-AZ-bWH"/>
+                                <exclude reference="3iS-CW-eua"/>
+                                <exclude reference="aVj-fn-0lf"/>
+                                <exclude reference="bIb-cT-23U"/>
+                                <exclude reference="tJm-EK-V3P"/>
+                                <exclude reference="vOs-qL-4F8"/>
+                                <exclude reference="SRb-S9-A8d"/>
+                                <exclude reference="tby-W4-lhI"/>
+                                <exclude reference="6ZQ-IZ-jRJ"/>
+                                <exclude reference="GmN-I3-8hM"/>
+                                <exclude reference="Vgg-Lb-HSZ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="changeDestination" destination="M3x-d8-9Wc" id="yrM-0f-uGC"/>
+                        <outlet property="lineTitle" destination="IzU-0A-FYw" id="VZs-l4-MwO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ok7-Xx-HhI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="649" y="2122"/>
+            <point key="canvasLocation" x="715" y="1686"/>
         </scene>
         <!--SettingViewController-->
         <scene sceneID="1UB-iw-xsg">
             <objects>
-                <viewController id="UTJ-Fx-AzV" userLabel="SettingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UTJ-Fx-AzV" userLabel="SettingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="97m-C5-BA6"/>
                         <viewControllerLayoutGuide type="bottom" id="O97-Lw-ZPz"/>
@@ -508,7 +628,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageWorkInProgress" translatesAutoresizingMaskIntoConstraints="NO" id="pRi-Zz-LHN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="settingViewController" image="Setting" translatesAutoresizingMaskIntoConstraints="NO" id="pRi-Zz-LHN">
                                 <rect key="frame" x="107" y="268" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="POL-Fh-I2e"/>
@@ -522,20 +642,18 @@
                             <constraint firstItem="pRi-Zz-LHN" firstAttribute="centerY" secondItem="WzZ-Oi-NJG" secondAttribute="centerY" id="jpQ-5r-zrG"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Setting" image="TabSettingIcon" id="ouB-RF-zUW"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xC-2q-f0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1966" y="-754"/>
+            <point key="canvasLocation" x="1254" y="-522"/>
         </scene>
     </scenes>
     <resources>
         <image name="Bigben" width="59" height="188"/>
-        <image name="ImageWorkInProgress" width="200" height="200"/>
         <image name="Logo" width="594" height="594"/>
+        <image name="Setting" width="66" height="66"/>
         <image name="Shard" width="67" height="142"/>
-        <image name="TabSettingIcon" width="30" height="30"/>
         <image name="Towerbridge" width="388" height="225"/>
     </resources>
 </document>

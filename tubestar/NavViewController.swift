@@ -34,6 +34,14 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         backButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Aller", size: 16)!], forState: UIControlState.Normal)
         self.navigationItem.backBarButtonItem = backButton
         
+        let buttonSetting: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        buttonSetting.frame = CGRectMake(0, 0, 40, 40)
+        buttonSetting.setImage(UIImage(named:"Setting.png"), forState: UIControlState.Normal)
+        buttonSetting.addTarget(self, action: "rightNavItemClick:", forControlEvents: UIControlEvents.TouchUpInside)
+        var rightBarButtonSetting: UIBarButtonItem = UIBarButtonItem(customView: buttonSetting)
+        
+        self.navigationItem.setRightBarButtonItem(rightBarButtonSetting, animated: false)
+        
         tableViewLines.delegate = self
         tableViewLines.dataSource = self
         
@@ -116,6 +124,13 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                 println(labelSelected)
                 
 
+    }
+    
+    func rightNavItemClick(sender: UIButton){
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("settingViewController") as! UIViewController
+        self.navigationController?.pushViewController(settingViewController, animated: true)
+        println("settings clicked")
     }
     
 }

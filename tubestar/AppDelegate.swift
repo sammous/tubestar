@@ -40,6 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AVAudioPlayerDelegate {
             UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
         
         
+
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
         return true
     }
 

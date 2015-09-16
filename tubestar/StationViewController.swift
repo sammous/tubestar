@@ -43,6 +43,15 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         textFieldInsideSearchBar?.textColor = color_text
         var tblViewFooter = UIView(frame: CGRectZero)
         
+        
+        let buttonSetting: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        buttonSetting.frame = CGRectMake(0, 0, 40, 40)
+        buttonSetting.setImage(UIImage(named:"Setting.png"), forState: UIControlState.Normal)
+        buttonSetting.addTarget(self, action: "rightNavItemClick:", forControlEvents: UIControlEvents.TouchUpInside)
+        var rightBarButtonSetting: UIBarButtonItem = UIBarButtonItem(customView: buttonSetting)
+        
+        self.navigationItem.setRightBarButtonItem(rightBarButtonSetting, animated: false)
+        
         stationTableView.tableFooterView = tblViewFooter
         stationTableView.backgroundColor = UIColor.clearColor()
         
@@ -110,6 +119,11 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         var alert = UIAlertController(title: "Destination", message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
             self.destinationSelected = destination!
+            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("destinationViewController") as! UIViewController
+            println(self.destinationSelected)
+            self.navigationController?.pushViewController(settingViewController, animated: true)
+            
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         
@@ -153,5 +167,13 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         return true
     }
     
+    
+    func rightNavItemClick(sender: UIButton){
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("settingViewController") as! UIViewController
+        self.navigationController?.pushViewController(settingViewController, animated: true)
+    }
+    
+
     
 }
