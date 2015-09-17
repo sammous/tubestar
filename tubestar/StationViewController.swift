@@ -61,6 +61,7 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         
         var station = tfl.stationsOnLine[lineID]
         
+        self.searchBar.keyboardAppearance = UIKeyboardAppearance.Dark
         
         /* Handling long press
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
