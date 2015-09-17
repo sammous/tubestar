@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6A9982B37FC68531F4303D697F10AC91A13C64C3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C16D8B361EAC1C46CDE6526D113F77D26B0A7D7E" : 0,
+    "6A9982B37FC68531F4303D697F10AC91A13C64C3" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E0F5517F-E2E0-4BE3-822C-A253458A34E0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C16D8B361EAC1C46CDE6526D113F77D26B0A7D7E" : "",
+    "6A9982B37FC68531F4303D697F10AC91A13C64C3" : "tubestar\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "tubestar",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "tubestar.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sammous\/tubestar.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6A9982B37FC68531F4303D697F10AC91A13C64C3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sammous\/SI242.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C16D8B361EAC1C46CDE6526D113F77D26B0A7D7E"
+    }
+  ]
+}

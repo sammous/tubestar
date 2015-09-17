@@ -39,16 +39,16 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         let color_background = UIColor(red: 45.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 1.0)
         self.searchBar.tintColor = color_text
 //        searchBar.backgroundColor = UIColor.whiteColor()
-        var textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
+        let textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
         textFieldInsideSearchBar?.textColor = color_text
-        var tblViewFooter = UIView(frame: CGRectZero)
+        let tblViewFooter = UIView(frame: CGRectZero)
         
         
-        let buttonSetting: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let buttonSetting: UIButton = UIButton(type: UIButtonType.Custom)
         buttonSetting.frame = CGRectMake(0, 0, 40, 40)
         buttonSetting.setImage(UIImage(named:"Setting.png"), forState: UIControlState.Normal)
         buttonSetting.addTarget(self, action: "rightNavItemClick:", forControlEvents: UIControlEvents.TouchUpInside)
-        var rightBarButtonSetting: UIBarButtonItem = UIBarButtonItem(customView: buttonSetting)
+        let rightBarButtonSetting: UIBarButtonItem = UIBarButtonItem(customView: buttonSetting)
         
         self.navigationItem.setRightBarButtonItem(rightBarButtonSetting, animated: false)
         
@@ -57,7 +57,7 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         
 
         
-        var lineID = String(Array(line)[0])
+        let lineID = String(Array(line.characters)[0])
         
         var station = tfl.stationsOnLine[lineID]
         
@@ -84,7 +84,7 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
 
-        var lineID = String(Array(line)[0])
+        let lineID = String(Array(line.characters)[0])
         
         if tableView == self.searchDisplayController!.searchResultsTableView {
             return self.filteredStations.count
@@ -99,7 +99,7 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: textCellIdentifier)
         let font = UIFont(name: "Aller", size: 18)
 
-        var lineID = String(Array(line)[0])
+        let lineID = String(Array(line.characters)[0])
 
         let station = tfl.stationsOnLine[lineID]
         
@@ -116,12 +116,12 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         let destination = stationTableView.cellForRowAtIndexPath(indexPath)?.textLabel!.text!
         let message = "Do you want to go to " + destination! + " ?"
         
-        var alert = UIAlertController(title: "Destination", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
+        let alert = UIAlertController(title: "Destination", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction) in
             self.destinationSelected = destination!
             let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("destinationViewController") as! UIViewController
-            println(self.destinationSelected)
+            let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("destinationViewController") 
+            print(self.destinationSelected)
             self.navigationController?.pushViewController(settingViewController, animated: true)
             
         }))
@@ -134,9 +134,9 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func sendData(destination: String){
-        println(destinationSelected)
+        print(destinationSelected)
         
-        var localNotification: UILocalNotification = UILocalNotification()
+        let localNotification: UILocalNotification = UILocalNotification()
         localNotification.alertAction = "alertAction"
         localNotification.alertBody = "alert body"
         localNotification.fireDate = NSDate(timeIntervalSinceNow: 10)
@@ -146,10 +146,10 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
     func filterContentForSearchText(searchText: String) {
         // Filter the array using the filter method
         
-        var lineID = String(Array(line)[0])
+        let lineID = String(Array(line.characters)[0])
         
-        var station = tfl.stationsOnLine[lineID]
-        println(station)
+        let station = tfl.stationsOnLine[lineID]
+        print(station)
         
         filteredStations = station!.filter({( station: String) -> Bool in
             let stringMatch = station.rangeOfString(searchText)
@@ -163,14 +163,14 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func searchDisplayController(controller: UISearchController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
-        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
+        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text!)
         return true
     }
     
     
     func rightNavItemClick(sender: UIButton){
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("settingViewController") as! UIViewController
+        let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("settingViewController") 
         self.navigationController?.pushViewController(settingViewController, animated: true)
     }
     

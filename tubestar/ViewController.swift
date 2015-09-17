@@ -43,21 +43,21 @@ public extension UIDevice {
         uname(&systemInfo)
         
         let machine = systemInfo.machine
-        let mirror = reflect(machine)                // Swift 1.2
-        // let mirror = Mirror(reflecting: machine)  // Swift 2.0
+        //let mirror = reflect(machine)                // Swift 1.2
+        let mirror = Mirror(reflecting: machine)  // Swift 2.0
         var identifier = ""
         
         // Swift 1.2 - if you use Swift 2.0 comment this loop out.
-        for i in 0..<mirror.count {
-            if let value = mirror[i].1.value as? Int8 where value != 0 {
-                identifier.append(UnicodeScalar(UInt8(value)))
-            }
-        }
+//        for i in 0..<mirror.count {
+//            if let value = mirror[i].1.value as? Int8 where value != 0 {
+//                identifier.append(UnicodeScalar(UInt8(value)))
+//            }
+//        }
         
         // Swift 2.0 and later - if you use Swift 2.0 uncomment his loop
-        // for child in mirror.children where child.value as? Int8 != 0 {
-        //     identifier.append(UnicodeScalar(UInt8(child.value as! Int8)))
-        // }
+         for child in mirror.children where child.value as? Int8 != 0 {
+             identifier.append(UnicodeScalar(UInt8(child.value as! Int8)))
+         }
         
         return DeviceList[identifier] ?? identifier
     }
@@ -90,40 +90,47 @@ class ViewController: UIViewController {
         
         
         
-        println("devide id:\n")
-        println(UIDevice.currentDevice().identifierForVendor.UUIDString)
+        print("devide id:\n")
+        print(UIDevice.currentDevice().identifierForVendor!.UUIDString)
 
         
         let backButton = UIBarButtonItem(title: "Home", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
         backButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Aller", size: 20)!], forState: UIControlState.Normal)
         self.navigationItem.backBarButtonItem = backButton
         
-        let buttonSetting: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let buttonSetting: UIButton = UIButton(type: UIButtonType.Custom)
         buttonSetting.frame = CGRectMake(0, 0, 40, 40)
         buttonSetting.setImage(UIImage(named:"Setting.png"), forState: UIControlState.Normal)
         buttonSetting.addTarget(self, action: "rightNavItemClick:", forControlEvents: UIControlEvents.TouchUpInside)
-        var rightBarButtonSetting: UIBarButtonItem = UIBarButtonItem(customView: buttonSetting)
+        let rightBarButtonSetting: UIBarButtonItem = UIBarButtonItem(customView: buttonSetting)
         
         self.navigationItem.setRightBarButtonItem(rightBarButtonSetting, animated: false)
 
         var error: NSError?
-        var success = AVAudioSession.sharedInstance().setCategory(
-            AVAudioSessionCategoryPlayAndRecord,
-            withOptions: .MixWithOthers, error: &error)
+        var success: Bool
+        do {
+            try AVAudioSession.sharedInstance().setCategory(
+                        AVAudioSessionCategoryPlayAndRecord,
+                        withOptions: .MixWithOthers)
+            success = true
+        } catch let error1 as NSError {
+            error = error1
+            success = false
+        }
         if !success {
             NSLog("Failed to set audio session category.  Error: \(error)")
         }
         
         let songNames = ["Mesmerize"]
         let songs = songNames.map {
-            AVPlayerItem(URL: NSBundle.mainBundle().URLForResource($0, withExtension: "mp3"))
+            AVPlayerItem(URL: NSBundle.mainBundle().URLForResource($0, withExtension: "mp3")!)
         }
         
         player = AVQueuePlayer(items: songs)
         player.actionAtItemEnd = .Advance
         
         
-        player.addObserver(self, forKeyPath: "currentItem", options: .New | .Initial , context: nil)
+        player.addObserver(self, forKeyPath: "currentItem", options: [.New, .Initial] , context: nil)
 
 
         
@@ -131,11 +138,11 @@ class ViewController: UIViewController {
             [unowned self] time in
             let timeString = String(format: "%02.2f", CMTimeGetSeconds(time))
             if UIApplication.sharedApplication().applicationState == .Active {
-                println(timeString)
+                print(timeString)
             } else {
                 self.autoScan()
                 NSLog("Background time remaining = %.1f seconds", UIApplication.sharedApplication().backgroundTimeRemaining)
-                println("Background: \(timeString)")
+                print("Background: \(timeString)")
             }
         }
         
@@ -148,10 +155,10 @@ class ViewController: UIViewController {
         
     }
    
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath == "currentItem", let player = object as? AVPlayer,
             currentItem = player.currentItem?.asset as? AVURLAsset {
-                println(currentItem.URL?.lastPathComponent ?? "Unknown")
+                print(currentItem.URL.lastPathComponent ?? "Unknown")
         }
     }
     
@@ -186,33 +193,48 @@ class ViewController: UIViewController {
         
         var currentSSID = ""
         var currentBSSID = ""
-        var array = ["50:a7:33:f:ca:58","3c:ce:73:f6:9e:1d","3c:ce:73:f6:9e:12","c8:f9:f9:2a:3e:ed","3c:ce:73:f8:3d:7d","3c:ce:73:f8:3d:72","c8:f9:f9:2a:3e:e2","3c:ce:73:6c:84:fc","3c:ce:73:6c:84:fc","3c:ce:73:6c:84:f3","c8:f9:f9:72:0b:b3","c8:f9:f9:72:0b:bc","3c:ce:73:6c:84:fc","3c:ce:73:6c:84:f3","c8:f9:f9:72:0b:b3","c8:f9:f9:72:0b:bc","3c:ce:73:f6:f3:1c","3c:ce:73:f6:f3:13","3c:ce:73:6c:84:fc","c8:f9:f9:72:0b:b3","c8:f9:f9:72:0b:bc","3c:ce:73:f6:f3:1c","3c:ce:73:f6:f3:1c","3c:ce:73:6c:84:fc","3c:ce:73:6c:84:f3","c8:f9:f9:72:0b:b3","c8:f9:f9:72:0b:bc","3c:ce:73:f6:f3:1c","3c:ce:73:f6:f3:13","50:a7:33:f:ca:58"]
-
-        let interfaces = CNCopySupportedInterfaces()
+        let array = ["50:a7:33:f:ca:58","3c:ce:73:f6:9e:1d","3c:ce:73:f6:9e:12","c8:f9:f9:2a:3e:ed","3c:ce:73:f8:3d:7d","3c:ce:73:f8:3d:72","c8:f9:f9:2a:3e:e2","3c:ce:73:6c:84:fc","3c:ce:73:6c:84:fc","3c:ce:73:6c:84:f3","c8:f9:f9:72:0b:b3","c8:f9:f9:72:0b:bc","3c:ce:73:6c:84:fc","3c:ce:73:6c:84:f3","c8:f9:f9:72:0b:b3","c8:f9:f9:72:0b:bc","3c:ce:73:f6:f3:1c","3c:ce:73:f6:f3:13","3c:ce:73:6c:84:fc","c8:f9:f9:72:0b:b3","c8:f9:f9:72:0b:bc","3c:ce:73:f6:f3:1c","3c:ce:73:f6:f3:1c","3c:ce:73:6c:84:fc","3c:ce:73:6c:84:f3","c8:f9:f9:72:0b:b3","c8:f9:f9:72:0b:bc","3c:ce:73:f6:f3:1c","3c:ce:73:f6:f3:13","50:a7:33:f:ca:58"]
+// Swift 1.2
+//        let interfaces = CNCopySupportedInterfaces()
+//        
+//        if interfaces != nil {
+//            
+//            let interfacesArray = interfaces.takeRetainedValue() as! [String]
+//            
+//            if interfacesArray.count > 0 {
+//                
+//                let interfaceName = interfacesArray[0] as String
+//                
+//                let unsafeInterfaceData = CNCopyCurrentNetworkInfo(interfaceName)
+//                
+//                if unsafeInterfaceData != nil {
+//                    
+//                    let interfaceData = unsafeInterfaceData.takeRetainedValue() as Dictionary!
         
-        if interfaces != nil {
-            
-            let interfacesArray = interfaces.takeRetainedValue() as! [String]
-            
-            if interfacesArray.count > 0 {
-                
-                let interfaceName = interfacesArray[0] as String
-                
-                let unsafeInterfaceData = CNCopyCurrentNetworkInfo(interfaceName)
-                
+//Swift 2.0
+            let interfaces:CFArray! = CNCopySupportedInterfaces()
+            for i in 0..<CFArrayGetCount(interfaces){
+                let interfaceName: UnsafePointer<Void> = CFArrayGetValueAtIndex(interfaces, i)
+                let rec = unsafeBitCast(interfaceName, AnyObject.self)
+                let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)")
                 if unsafeInterfaceData != nil {
+                    let interfaceData = unsafeInterfaceData! as NSDictionary
                     
-                    let interfaceData = unsafeInterfaceData.takeRetainedValue() as Dictionary!
-                    
-                    currentSSID = interfaceData[kCNNetworkInfoKeySSID] as! String
-                    currentBSSID = interfaceData[kCNNetworkInfoKeyBSSID] as! String
-                    
+                currentBSSID = interfaceData.valueForKey("BSSID")! as! String
+                currentSSID = interfaceData.valueForKey("SSID")! as! String
+
+
+                }
+            }
+
+        
+        
 //                    let ssiddata = NSString(data:interfaceData[kCNNetworkInfoKeySSID]! as! NSData, encoding:NSUTF8StringEncoding) as! String
                     
                     //ssid data from hex
     
-                    if contains(array,currentBSSID){
-                        var localNotification:UILocalNotification = UILocalNotification()
+                    if array.contains(currentBSSID){
+                        let localNotification:UILocalNotification = UILocalNotification()
                         localNotification.alertAction = "Arrived at station"
                         localNotification.alertBody = ""
                         localNotification.fireDate = nil
@@ -223,21 +245,11 @@ class ViewController: UIViewController {
                     saveWifi(currentSSID, bssid: currentBSSID)
                     
                     
-                    println(currentSSID + " with BSSID=" + currentBSSID)
-                    println("===================")
+                    print(currentSSID + " with BSSID=" + currentBSSID)
+                    print("===================")
 //                    hasDisconnected = false
-                } else {
-                    hasDisconnected = true
-                }
-            } else {
-                hasDisconnected = true
-            }
-            
-        } else {
-            hasDisconnected = true
-        }
         
-        println("just called getSSID(), after which hasDisconnected has a value of \(hasDisconnected)")
+        print("just called getSSID(), after which hasDisconnected has a value of \(hasDisconnected)")
         
         return currentSSID
         
@@ -252,12 +264,12 @@ class ViewController: UIViewController {
         ApiManager.sharedInstance.getData {
             json -> Void in
             let results = json["data"]
-            for (index: String, subJson: JSON) in results {
+            for (index, subJson): (String, JSON) in results {
                 let id: String = subJson["id"].string!
                 let name: String = subJson["name"].string!
                 let tflid: String = subJson["tflid"].string!
-                println("id:\(id) name: \(name) tflid: \(tflid)")
-                ApiManager.sharedInstance.saveLine(id.toInt()!, name: name, tflid: tflid)
+                print("id:\(id) name: \(name) tflid: \(tflid)")
+                ApiManager.sharedInstance.saveLine(Int(id)!, name: name, tflid: tflid)
             }
         }
     }
@@ -278,15 +290,15 @@ class ViewController: UIViewController {
     
     func rightNavItemClick(sender: UIButton){
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("settingViewController") as! UIViewController
+        let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("settingViewController") 
         self.navigationController?.pushViewController(settingViewController, animated: true)
-        println("settings clicked")
+        print("settings clicked")
     }
     
     
     func autoScan() {
         self.getSSID()
-        println(items)
+        print(items)
         if(!(getLastScanned()["timestamp"]! as! NSObject==0)) {
 //            self.outputTable.reloadData()
         }
@@ -321,43 +333,21 @@ class ViewController: UIViewController {
         
         fetchRequest.predicate = resultPredicate
         
+        do {
         let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as? [NSManagedObject]
+        try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
         
-        if (fetchedResults?.count !== 0)  {
-            if let results = fetchedResults {
-                println("found unsubmitted bssid's")
-            
-                var parseObjects: [PFObject] = [PFObject]()
-                var key = 0
-                for wifi in results {
+            if (fetchedResults?.count !== 0)  {
+                if let results = fetchedResults {
+                    print("found unsubmitted bssid's")
                     
-                    var parseObject = PFObject(className: "locationRecords")
-                    println("created parseObject")
-                    
-                    parseObject.addObject((wifi.valueForKey("ssid") as? String)!, forKey: "ssid")
-                    println("added property 'ssid'")
-                    parseObject["bssid"] = wifi.valueForKey("bssid") as? String
-                    parseObject["timestamp"] = wifi.valueForKey("timestamp")
-                    parseObject["timespan"] = wifi.valueForKey("timespan")
-                    
-                    wifi.setValue(true, forKey: "submitted")
-                    var saveError : NSError? = nil
-                    if !managedContext.save(&saveError) {
-                        println("Could not update record")
-                    } else {
-
-                    }
-                    parseObjects.insert(parseObject, atIndex: key)
-                    key++
                 }
-                println("will call saveAllInBackground now!")
-                PFObject.saveAllInBackground(parseObjects)
-                println("called saveAllInBackground!")
             }
-        }
 
+        } catch {
+            print(error)
+        }
+        
         
         
         
@@ -405,7 +395,7 @@ class ViewController: UIViewController {
 //        
 //        object.saveEventually()
         
-        var alert = UIAlertController(title: "Thank you", message: "Your contribution is appreciated ! Thank you !", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Thank you", message: "Your contribution is appreciated ! Thank you !", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
@@ -433,52 +423,62 @@ class ViewController: UIViewController {
 
         fetchRequest.predicate = resultPredicate
         
+        do {
         let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as? [NSManagedObject]
-        
-        var lastScanned = getLastScanned()
-        if ((fetchedResults?.count == 0 && lastScanned["bssid"] as! String != bssid) || hasDisconnected == true)  {
-            println("line 398 now will set hasDisconnected = false !!!!!!#!#!#!#!#!#!#")
-            hasDisconnected = false
-            let wifi = NSManagedObject(entity: entity!,
-                insertIntoManagedObjectContext:managedContext)
-
-            wifi.setValue(ssid, forKey: "ssid")
-            wifi.setValue(bssid, forKey: "bssid")
-            wifi.setValue(NSDate().timeIntervalSince1970, forKey: "timestamp")
-            wifi.setValue(0, forKey: "timespan")
-            wifi.setValue(false, forKey: "submitted")
-            println(ssid + "has been added in db")
-            //4
-            if !managedContext.save(&error) {
-                println("Could not save \(error), \(error?.userInfo)")
-            }
-            //5
-            wifis.append(wifi)
+        try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
             
-            //Notification
-            var localNotification:UILocalNotification = UILocalNotification()
-            localNotification.alertAction = "New wifi"
-            localNotification.alertBody = "You just found a new wifi !"
-            localNotification.fireDate = nil
-            localNotification.soundName = UILocalNotificationDefaultSoundName
-            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-
-        } else {
-            println("same bssid as last check")
-            var result = fetchedResults?.last
-            var newTimespan = NSDate().timeIntervalSinceDate(NSDate(timeIntervalSince1970: result?.valueForKey("timestamp") as! NSTimeInterval  ))
-            result!.setValue(newTimespan, forKey: "timespan")
-            result!.setValue(false, forKey: "submitted")
-            println(newTimespan)
-            var saveError : NSError? = nil
-            if !managedContext.save(&saveError) {
-                println("Could not update record")
+            var lastScanned = getLastScanned()
+            if ((fetchedResults?.count == 0 && lastScanned["bssid"] as! String != bssid) || hasDisconnected == true)  {
+                print("line 398 now will set hasDisconnected = false !!!!!!#!#!#!#!#!#!#")
+                hasDisconnected = false
+                let wifi = NSManagedObject(entity: entity!,
+                    insertIntoManagedObjectContext:managedContext)
+                
+                wifi.setValue(ssid, forKey: "ssid")
+                wifi.setValue(bssid, forKey: "bssid")
+                wifi.setValue(NSDate().timeIntervalSince1970, forKey: "timestamp")
+                wifi.setValue(0, forKey: "timespan")
+                wifi.setValue(false, forKey: "submitted")
+                print(ssid + "has been added in db")
+                //4
+                do {
+                    try managedContext.save()
+                } catch let error1 as NSError {
+                    error = error1
+                    print("Could not save \(error), \(error?.userInfo)")
+                }
+                //5
+                wifis.append(wifi)
+                
+                //Notification
+                let localNotification:UILocalNotification = UILocalNotification()
+                localNotification.alertAction = "New wifi"
+                localNotification.alertBody = "You just found a new wifi !"
+                localNotification.fireDate = nil
+                localNotification.soundName = UILocalNotificationDefaultSoundName
+                UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+                
             } else {
-
+                print("same bssid as last check")
+                let result = fetchedResults?.last
+                let newTimespan = NSDate().timeIntervalSinceDate(NSDate(timeIntervalSince1970: result?.valueForKey("timestamp") as! NSTimeInterval  ))
+                result!.setValue(newTimespan, forKey: "timespan")
+                result!.setValue(false, forKey: "submitted")
+                print(newTimespan)
+                var saveError : NSError? = nil
+                do {
+                    try managedContext.save()
+                    
+                } catch let error as NSError {
+                    saveError = error
+                    print("Could not update record")
+                }
             }
+            
+        } catch {
+            print(error)
         }
+
         
 //        dispatch_after(5,
 //            dispatch_get_main_queue()){
@@ -490,7 +490,7 @@ class ViewController: UIViewController {
     
     
     func getLastScanned() -> [String:AnyObject] {
-        var last = wifis.last
+        let last = wifis.last
         var result:[String:AnyObject]
         if((last) != nil) {
             result = [
@@ -512,7 +512,7 @@ class ViewController: UIViewController {
     
     func scrollToBottom(tableView: UITableView){
         
-        let numberOfSections = tableView.numberOfSections()
+        let numberOfSections = tableView.numberOfSections
         let numberOfRows = tableView.numberOfRowsInSection(0)
         
         if numberOfRows > 0 {

@@ -9,6 +9,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 typealias ServiceResponse = (JSON, NSError?) -> Void
 
@@ -29,7 +30,7 @@ class ApiManager: NSObject {
         let session = NSURLSession.sharedSession()
         
         let task = session.dataTaskWithRequest(request, completionHandler: { data, response, error in
-            let json:JSON = JSON(data: data)
+            let json:JSON = JSON(data: data!)
             onCompletion(json, error)
             })
         task.resume()
@@ -45,7 +46,7 @@ class ApiManager: NSObject {
         fetchRequest.predicate = NSPredicate(format: "id = \(id)")
 
         
-        var fetchRequestResults = managedContext.executeFetchRequest(fetchRequest, error: nil)
+        let fetchRequestResults = try? managedContext.executeFetchRequest(fetchRequest)
         
             if fetchRequestResults?.count == 0 {
                 let entity = NSEntityDescription.entityForName("Line", inManagedObjectContext: managedContext)
@@ -53,16 +54,19 @@ class ApiManager: NSObject {
                 station.setValue(id, forKey: "id")
                 station.setValue(name, forKey: "name")
                 station.setValue(tflid, forKey: "tflid")
-                println("new line added successfully")
+                print("new line added successfully")
                 
             } else {
-                println("already in coredata")
+                print("already in coredata")
             }
 
         
         var error: NSError?
-        if !managedContext.save(&error){
-            println("Could not save \(error), \(error?.userInfo)")
+        do {
+            try managedContext.save()
+        } catch let error1 as NSError {
+            error = error1
+            print("Could not save \(error), \(error?.userInfo)")
         }
 
     }
@@ -77,7 +81,7 @@ class ApiManager: NSObject {
         fetchRequest.predicate = NSPredicate(format: "id = \(id)")
         
         
-        var fetchRequestResults = managedContext.executeFetchRequest(fetchRequest, error: nil)
+        let fetchRequestResults = try? managedContext.executeFetchRequest(fetchRequest)
         
         if fetchRequestResults?.count == 0 {
             let entity = NSEntityDescription.entityForName("Station", inManagedObjectContext: managedContext)
@@ -90,16 +94,19 @@ class ApiManager: NSObject {
             station.setValue(wifi, forKey: "wifi")
             station.setValue(lines, forKey: "lines")
 
-            println("new station added successfully")
+            print("new station added successfully")
             
         } else {
-            println("already in coredata")
+            print("already in coredata")
         }
         
         
         var error: NSError?
-        if !managedContext.save(&error){
-            println("Could not save \(error), \(error?.userInfo)")
+        do {
+            try managedContext.save()
+        } catch let error1 as NSError {
+            error = error1
+            print("Could not save \(error), \(error?.userInfo)")
         }
         
     }

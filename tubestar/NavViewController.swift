@@ -34,11 +34,11 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         backButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Aller", size: 16)!], forState: UIControlState.Normal)
         self.navigationItem.backBarButtonItem = backButton
         
-        let buttonSetting: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let buttonSetting: UIButton = UIButton(type: UIButtonType.Custom)
         buttonSetting.frame = CGRectMake(0, 0, 40, 40)
         buttonSetting.setImage(UIImage(named:"Setting.png"), forState: UIControlState.Normal)
         buttonSetting.addTarget(self, action: "rightNavItemClick:", forControlEvents: UIControlEvents.TouchUpInside)
-        var rightBarButtonSetting: UIBarButtonItem = UIBarButtonItem(customView: buttonSetting)
+        let rightBarButtonSetting: UIBarButtonItem = UIBarButtonItem(customView: buttonSetting)
         
         self.navigationItem.setRightBarButtonItem(rightBarButtonSetting, animated: false)
         
@@ -46,7 +46,7 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         tableViewLines.dataSource = self
         
         
-        var tblViewFooter = UIView(frame: CGRectZero)
+        let tblViewFooter = UIView(frame: CGRectZero)
         
         tableViewLines.tableFooterView = tblViewFooter
         tableViewLines.backgroundColor = UIColor.clearColor()
@@ -56,8 +56,8 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     override func viewWillAppear(animated: Bool) {
         
-        if ( self.tableViewLines.indexPathForSelectedRow() != nil ){
-            tableViewLines.deselectRowAtIndexPath(self.tableViewLines.indexPathForSelectedRow()!, animated: true)
+        if ( self.tableViewLines.indexPathForSelectedRow != nil ){
+            tableViewLines.deselectRowAtIndexPath(self.tableViewLines.indexPathForSelectedRow!, animated: true)
         }
         
     }
@@ -121,16 +121,16 @@ class NavViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
                     as! StationViewContoller
             
                 stationVC.line = labelSelected
-                println(labelSelected)
+                print(labelSelected)
                 
 
     }
     
     func rightNavItemClick(sender: UIButton){
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("settingViewController") as! UIViewController
+        let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("settingViewController") 
         self.navigationController?.pushViewController(settingViewController, animated: true)
-        println("settings clicked")
+        print("settings clicked")
     }
     
 }

@@ -10,7 +10,6 @@
 		171C8AA71B979FBE0015222D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171C8AA61B979FBE0015222D /* Database.swift */; };
 		173C64491B7B45B300F0834C /* BackgroundMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173C64481B7B45B300F0834C /* BackgroundMode.swift */; };
 		173E0F051B652BFC007FE050 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */; };
-		177B86671B66838A001F4DE8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177B86661B66838A001F4DE8 /* Reachability.swift */; };
 		177F6FE21B6EA82B00B342A4 /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F6FE11B6EA82B00B342A4 /* StationViewController.swift */; };
 		177F6FE41B6EA87A00B342A4 /* Tfl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F6FE31B6EA87A00B342A4 /* Tfl.swift */; };
 		17A692901B6E64DD0097B549 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6928F1B6E64DD0097B549 /* NavViewController.swift */; };
@@ -37,12 +36,6 @@
 		731549D21B69A01B005CC183 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549C81B69A01B005CC183 /* Security.framework */; };
 		731549D31B69A01B005CC183 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549C91B69A01B005CC183 /* StoreKit.framework */; };
 		731549D41B69A01B005CC183 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549CA1B69A01B005CC183 /* SystemConfiguration.framework */; };
-		731549DB1B69A064005CC183 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549D51B69A064005CC183 /* Bolts.framework */; };
-		731549DC1B69A064005CC183 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549D61B69A064005CC183 /* Parse.framework */; };
-		731549DD1B69A064005CC183 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549D71B69A064005CC183 /* ParseCrashReporting.framework */; };
-		731549DE1B69A064005CC183 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549D81B69A064005CC183 /* ParseFacebookUtils.framework */; };
-		731549DF1B69A064005CC183 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549D91B69A064005CC183 /* ParseFacebookUtilsV4.framework */; };
-		731549E01B69A064005CC183 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731549DA1B69A064005CC183 /* ParseUI.framework */; };
 		73A7DA7D1B6408B0002F4483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A7DA7C1B6408B0002F4483 /* AppDelegate.swift */; };
 		73A7DA801B6408B0002F4483 /* tubestar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 73A7DA7E1B6408B0002F4483 /* tubestar.xcdatamodeld */; };
 		73A7DA821B6408B0002F4483 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A7DA811B6408B0002F4483 /* ViewController.swift */; };
@@ -65,7 +58,6 @@
 		171C8AA61B979FBE0015222D /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		173C64481B7B45B300F0834C /* BackgroundMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundMode.swift; sourceTree = "<group>"; };
 		173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		177B86661B66838A001F4DE8 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		177F6FE11B6EA82B00B342A4 /* StationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationViewController.swift; sourceTree = "<group>"; };
 		177F6FE31B6EA87A00B342A4 /* Tfl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tfl.swift; sourceTree = "<group>"; };
 		17A6928F1B6E64DD0097B549 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +90,6 @@
 		731549D81B69A064005CC183 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		731549D91B69A064005CC183 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		731549DA1B69A064005CC183 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
-		731549E11B69A0C8005CC183 /* tubestar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tubestar-Bridging-Header.h"; sourceTree = "<group>"; };
 		73A7DA771B6408B0002F4483 /* tubestar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tubestar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73A7DA7B1B6408B0002F4483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73A7DA7C1B6408B0002F4483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,15 +110,9 @@
 				731549CB1B69A01B005CC183 /* AudioToolbox.framework in Frameworks */,
 				731549CC1B69A01B005CC183 /* CFNetwork.framework in Frameworks */,
 				731549CD1B69A01B005CC183 /* CoreGraphics.framework in Frameworks */,
-				731549DB1B69A064005CC183 /* Bolts.framework in Frameworks */,
 				731549CE1B69A01B005CC183 /* CoreLocation.framework in Frameworks */,
-				731549DD1B69A064005CC183 /* ParseCrashReporting.framework in Frameworks */,
 				731549CF1B69A01B005CC183 /* libz.dylib in Frameworks */,
-				731549DC1B69A064005CC183 /* Parse.framework in Frameworks */,
-				731549DE1B69A064005CC183 /* ParseFacebookUtils.framework in Frameworks */,
-				731549E01B69A064005CC183 /* ParseUI.framework in Frameworks */,
 				731549D01B69A01B005CC183 /* MobileCoreServices.framework in Frameworks */,
-				731549DF1B69A064005CC183 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				731549D11B69A01B005CC183 /* QuartzCore.framework in Frameworks */,
 				731549D21B69A01B005CC183 /* Security.framework in Frameworks */,
 				731549D31B69A01B005CC183 /* StoreKit.framework in Frameworks */,
@@ -211,7 +196,6 @@
 				73A7DA791B6408B0002F4483 /* tubestar */,
 				73A7DA921B6408B0002F4483 /* tubestarTests */,
 				73A7DA781B6408B0002F4483 /* Products */,
-				731549E11B69A0C8005CC183 /* tubestar-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,7 +225,6 @@
 				73A7DA881B6408B0002F4483 /* LaunchScreen.xib */,
 				73A7DA7E1B6408B0002F4483 /* tubestar.xcdatamodeld */,
 				73A7DA7A1B6408B0002F4483 /* Supporting Files */,
-				177B86661B66838A001F4DE8 /* Reachability.swift */,
 			);
 			path = tubestar;
 			sourceTree = "<group>";
@@ -315,7 +298,9 @@
 		73A7DA6F1B6408B0002F4483 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Myintranet;
 				TargetAttributes = {
 					73A7DA761B6408B0002F4483 = {
@@ -392,7 +377,6 @@
 				17CD46C91BA487ED007A4A9C /* ApiManager.swift in Sources */,
 				173E0F051B652BFC007FE050 /* CustomTableViewCell.swift in Sources */,
 				17F35FE31BA9B4DD005BEF25 /* DestinationViewController.swift in Sources */,
-				177B86671B66838A001F4DE8 /* Reachability.swift in Sources */,
 				17CD46CB1BA4895B007A4A9C /* SwiftyJSON.swift in Sources */,
 				73A7DA801B6408B0002F4483 /* tubestar.xcdatamodeld in Sources */,
 				177F6FE41B6EA87A00B342A4 /* Tfl.swift in Sources */,
@@ -459,6 +443,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -526,15 +511,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/tubestar",
-					"/Users/vpiskunov/Xcode/parse-library-1.7.5",
-					"$(PROJECT_DIR)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = tubestar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "info.myintranet.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "tubestar-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -548,15 +529,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/tubestar",
-					"/Users/vpiskunov/Xcode/parse-library-1.7.5",
-					"$(PROJECT_DIR)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = tubestar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "info.myintranet.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "tubestar-Bridging-Header.h";
 			};

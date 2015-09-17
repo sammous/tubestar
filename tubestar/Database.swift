@@ -14,8 +14,8 @@ class Database {
     
     func dataOfJson(url: String) -> NSArray {
         
-        var data = NSData(contentsOfURL: NSURL(string: url)!)
-        return (NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray)
+        let data = NSData(contentsOfURL: NSURL(string: url)!)
+        return ((try! NSJSONSerialization.JSONObjectWithData(data!, options: [])) as! NSArray)
 
 
 //        let jsonURL = NSBundle.mainBundle().URLForResource("http://tubestar.uk/api/locations/lines?udid=Y00YVfbIvMJ4uyqiRSUi0svEVcvZUHbjvfMfKB8Z", withExtension: "json")!

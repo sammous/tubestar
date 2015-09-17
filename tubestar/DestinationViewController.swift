@@ -20,19 +20,19 @@ class DestinationViewController: UIViewController{
     
     override func viewDidLoad() {
         
-        let buttonSetting: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let buttonSetting: UIButton = UIButton(type: UIButtonType.Custom)
         buttonSetting.frame = CGRectMake(0, 0, 40, 40)
         buttonSetting.setImage(UIImage(named:"Setting.png"), forState: UIControlState.Normal)
         buttonSetting.addTarget(self, action: "rightNavItemClick:", forControlEvents: UIControlEvents.TouchUpInside)
-        var rightBarButtonSetting: UIBarButtonItem = UIBarButtonItem(customView: buttonSetting)
+        let rightBarButtonSetting: UIBarButtonItem = UIBarButtonItem(customView: buttonSetting)
         
         self.navigationItem.setRightBarButtonItem(rightBarButtonSetting, animated: false)
         
         self.navigationItem.title = "Destination"
         
-        var stationVC = StationViewContoller()
+        let stationVC = StationViewContoller()
         let destination = stationVC.destinationSelected
-        println(destination)
+        print(destination)
 //        let font = UIFont(name: "Aller", size: 18.0)
 //        lineTitle.numberOfLines = 0
 //        lineTitle.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -64,9 +64,9 @@ class DestinationViewController: UIViewController{
     func changeDestinationPressed(sender: UIButton!) {
         
         
-        var alert = UIAlertController(title: "Destination", message: "Are you sure you want to change destination ?", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
-            println("change destination")
+        let alert = UIAlertController(title: "Destination", message: "Are you sure you want to change destination ?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction) in
+            print("change destination")
             self.navigationController?.popToRootViewControllerAnimated(true)
         }))
         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel, handler: nil))
@@ -79,9 +79,9 @@ class DestinationViewController: UIViewController{
     
     func rightNavItemClick(sender: UIButton){
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("settingViewController") as! UIViewController
+        let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("settingViewController") 
         self.navigationController?.pushViewController(settingViewController, animated: true)
-        println("settings clicked")
+        print("settings clicked")
     }
     
 }

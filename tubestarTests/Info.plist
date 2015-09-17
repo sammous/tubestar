@@ -2,27 +2,27 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key></key>
+	<false/>
 	<key>CFBundleIdentifier</key>
 	<string></string>
-	<key>CFBundleExecutable</key>
-	<string></string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>LSApplicationCategoryType</key>
+	<key>CFBundleShortVersionString</key>
 	<string></string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>CFBundleName</key>
 	<string></string>
-	<key></key>
-	<false/>
 	<key>CFBundleDisplayName</key>
 	<string></string>
-	<key>CFBundleVersion</key>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>LSApplicationCategoryType</key>
 	<string></string>
-	<key>CFBundleShortVersionString</key>
+	<key>CFBundleExecutable</key>
 	<string></string>
 	<key>CFBundleGetInfoString</key>
+	<string></string>
+	<key>CFBundleVersion</key>
 	<string></string>
 </dict>
 </plist>

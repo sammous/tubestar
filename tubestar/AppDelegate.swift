@@ -17,27 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AVAudioPlayerDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        Parse.setApplicationId("Y00YVfbIvMJ4uyqiRSUi0svEVcvZUHbjvfMfKB8Z",
-            clientKey: "ExKznnuhcyc61E0IqGDIYP1SKsp7o69SimE7rvIG")
-//        Parse.setApplicationId(“Y00YVfbIvMJ4uyqiRSUi0svEVcvZUHbjvfMfKB8Z”, clientKey: “ExKznnuhcyc61E0IqGDIYP1SKsp7o69SimE7rvIG”) // DAMN STUPID QUOTEMARKS - BEWARE of them on PARSE.COM
-        println("Parse.com >>> setApplicationId : Done")
-        
-        PFUser.enableAutomaticUser()
-        println("Parse.com >>> enableAutomaticUser : Done")
-        
-        var defaultACL = PFACL()
-        // If you would like all objects to be private by default, remove this line.
-        defaultACL.setPublicReadAccess(true)
-        println("Parse.com >>> defaultACL.setPublicReadAccess(true) : Done")
-        
-        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
-        println("Parse.com >>> setDefaultACL : Done")
+
         
         
         //Allow sending notifications
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound |
-            UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Sound, UIUserNotificationType.Alert, UIUserNotificationType.Badge], categories: nil))
         
         
 
@@ -78,21 +62,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AVAudioPlayerDelegate {
             
         } else {
             autoScanTimer.invalidate()
-            println("autoScanTimer.invalidate() called")
+            print("autoScanTimer.invalidate() called")
         }
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        println("app active")
+        print("app active")
         NSNotificationCenter.defaultCenter().postNotificationName("BecameActive", object: nil)
-        var object = PFObject(className: "historyAppViewDidAppear")
-        println("Parse.com >>> Created PFObject(className: \""+object.parseClassName+"\")")
-        object.addObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "UDID")
-        object.addObject(UIDevice.currentDevice().modelName, forKey: "Model")
-        object.addObject(NSDate().timeIntervalSince1970, forKey: "timestamp")
-        object.saveEventually()
-        println("Parse.com >>> PFObject(className: \""+object.parseClassName+"\").saveEventually() called")
         timer(true)
     }
 
@@ -109,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AVAudioPlayerDelegate {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "info.myintranet.tubestar" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as! NSURL
+        return urls[urls.count-1] 
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -125,7 +102,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AVAudioPlayerDelegate {
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("tubestar.sqlite")
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+        do {
+            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+        } catch var error1 as NSError {
+            error = error1
             coordinator = nil
             // Report any error we got.
             var dict = [String: AnyObject]()
@@ -137,6 +117,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AVAudioPlayerDelegate {
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(error), \(error!.userInfo)")
             abort()
+        } catch {
+            fatalError()
         }
         
         return coordinator
@@ -158,11 +140,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AVAudioPlayerDelegate {
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
-            if moc.hasChanges && !moc.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
+            if moc.hasChanges {
+                do {
+                    try moc.save()
+                } catch let error1 as NSError {
+                    error = error1
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    NSLog("Unresolved error \(error), \(error!.userInfo)")
+                    abort()
+                }
             }
         }
     }

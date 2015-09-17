@@ -24,12 +24,12 @@ class BackgroundMode {
         switch UIApplication.sharedApplication().applicationState {
         case .Active:
             self.enabled = false
-            println("app active")
+            print("app active")
         case .Background:
             self.enabled = true
-            println("app in background")
+            print("app in background")
         case .Inactive:
-            println("app inactive")
+            print("app inactive")
             break
         }
     
