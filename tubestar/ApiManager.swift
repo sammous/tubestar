@@ -16,10 +16,12 @@ typealias ServiceResponse = (JSON, NSError?) -> Void
 class ApiManager: NSObject {
     static let sharedInstance = ApiManager()
     
-    let baseURL = "http://tubestar.uk/api/locations/lines?udid=Y00YVfbIvMJ4uyqiRSUi0svEVcvZUHbjvfMfKB8Z"
+    let urlLines = "http://tubestar.uk/api/locations/lines?udid=Y00YVfbIvMJ4uyqiRSUi0svEVcvZUHbjvfMfKB8Z"
+    let urlStations = "http://tubestar.uk/api/locations/stops?udid=Y00YVfbIvMJ4uyqiRSUi0svEVcvZUHbjvfMfKB8Z"
 
-    func getData(onCompletion: (JSON) -> Void){
-        makeHTTPGetRequest(baseURL, onCompletion: { json, err -> Void in
+
+    func getData(url: String, onCompletion: (JSON) -> Void){
+        makeHTTPGetRequest(url, onCompletion: { json, err -> Void in
             onCompletion(json)
         })
     }
@@ -36,6 +38,7 @@ class ApiManager: NSObject {
         task.resume()
     }
     
+
     //Save new Line
     func saveLine(id: Int, name: String, tflid: String){
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -108,6 +111,46 @@ class ApiManager: NSObject {
             error = error1
             print("Could not save \(error), \(error?.userInfo)")
         }
+        
+    }
+    
+    func populateDB() {
+        self.getData(urlLines, onCompletion: {
+            json -> Void in
+            let results = json["data"]
+            for (index, subJson): (String, JSON) in results {
+                let id: String = subJson["id"].string!
+                let name: String = subJson["name"].string!
+                let tflid: String = subJson["tflid"].string!
+                print("id:\(id) name: \(name) tflid: \(tflid)")
+                self.saveLine(Int(id)!, name: name, tflid: tflid)
+            }
+        })
+        self.getData(urlStations, onCompletion: {
+            json -> Void in
+            let results = json["data"]
+            for (index, subJson): (String, JSON) in results {
+                let id: String = subJson["id"].string!
+                let name: String = subJson["name"].string!
+                let tflid: String = subJson["tflid"].string!
+                var lat: String = "0"
+                if subJson["lat"] != nil {
+                    lat = subJson["lat"].string!
+                }
+                var lon:String = "0"
+                if subJson["lon"] != nil {
+                    lon = subJson["lon"].string!
+                }
+                var wifi: String = "0"
+                if subJson["wifi"] != nil{
+                     wifi = "1"
+                }
+                let lines: String = subJson["lines"].string!
+                
+                print("id:\(id) name: \(name) tflid: \(tflid)")
+                self.saveStation(Int(id)!, name: name, tflid: tflid, lat: Float(lat)!, lon: Float(lon)!, wifi: Int(wifi)!, lines: lines)
+            }
+        })
         
     }
 }

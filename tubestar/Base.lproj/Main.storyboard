@@ -500,24 +500,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destination Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IzU-0A-FYw">
-                                <rect key="frame" x="21" y="89" width="372" height="32"/>
-                                <fontDescription key="fontDescription" name="Aller-Bold" family="Aller" pointSize="27"/>
-                                <color key="textColor" red="0.29803921568627451" green="0.68627450980392157" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3x-d8-9Wc">
-                                <rect key="frame" x="127" y="157" width="160" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="er7-X4-tLP"/>
-                                    <constraint firstAttribute="width" constant="160" id="sDW-wQ-O2A"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Aller" family="Aller" pointSize="15"/>
-                                <state key="normal" title="Change Destination">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ENJOY YOUR TRAVEL" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYM-ty-bZm">
                                 <rect key="frame" x="50" y="623" width="315" height="23"/>
                                 <fontDescription key="fontDescription" name="Aller-Bold" family="Aller" pointSize="19"/>
@@ -543,16 +525,33 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PyP-iY-htK">
+                                <rect key="frame" x="140" y="158" width="135" height="30"/>
+                                <color key="backgroundColor" red="0.18431372549019609" green="0.22352941176470589" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8Fx-zF-3nM"/>
+                                    <constraint firstAttribute="width" constant="135" id="cxH-NQ-Lva"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Aller" family="Aller" pointSize="14"/>
+                                <state key="normal" title="Change Destination">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destination Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IzU-0A-FYw">
+                                <rect key="frame" x="21" y="89" width="372" height="32"/>
+                                <fontDescription key="fontDescription" name="Aller-Bold" family="Aller" pointSize="27"/>
+                                <color key="textColor" red="0.29803921568627451" green="0.68627450980392157" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1333333333" green="0.1843137255" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="VUW-H1-DMR" firstAttribute="trailing" secondItem="EPU-RJ-Vcc" secondAttribute="trailingMargin" id="3iS-CW-eua"/>
-                            <constraint firstAttribute="centerX" secondItem="M3x-d8-9Wc" secondAttribute="centerX" id="3wP-Ec-EfO"/>
-                            <constraint firstAttribute="centerY" secondItem="M3x-d8-9Wc" secondAttribute="centerY" constant="196" id="5tJ-sR-Xek"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yYM-ty-bZm" secondAttribute="trailing" constant="93" id="6ZQ-IZ-jRJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IzU-0A-FYw" secondAttribute="trailing" constant="1" id="6j6-15-COR"/>
                             <constraint firstItem="yYM-ty-bZm" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="34" id="8n6-gj-jxs"/>
-                            <constraint firstItem="M3x-d8-9Wc" firstAttribute="top" secondItem="IzU-0A-FYw" secondAttribute="bottom" constant="36" id="AH3-Eu-Nc0"/>
                             <constraint firstItem="Rxd-Gl-8Pn" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leading" id="BtX-bf-GmW"/>
+                            <constraint firstItem="VUW-H1-DMR" firstAttribute="top" secondItem="PyP-iY-htK" secondAttribute="bottom" constant="49" id="Btw-9O-E9Q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IzU-0A-FYw" secondAttribute="trailing" constant="1" id="DEH-e4-rAQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VUW-H1-DMR" secondAttribute="trailing" constant="-4" id="GAv-Jg-ET5"/>
                             <constraint firstItem="yYM-ty-bZm" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="94" id="GmN-I3-8hM"/>
@@ -560,11 +559,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="IzU-0A-FYw" secondAttribute="trailing" constant="5" id="KP1-Fx-Z3R"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IzU-0A-FYw" secondAttribute="trailing" constant="5" id="MVM-XO-k8b"/>
                             <constraint firstItem="IzU-0A-FYw" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="5" id="Oex-aK-KM6"/>
-                            <constraint firstItem="M3x-d8-9Wc" firstAttribute="top" secondItem="IzU-0A-FYw" secondAttribute="bottom" constant="36" id="Pab-FT-z6T"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8er-7Q-L0L" secondAttribute="trailing" constant="74" id="RTI-2X-hRB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rxd-Gl-8Pn" secondAttribute="trailing" constant="-16" id="SRb-S9-A8d"/>
                             <constraint firstItem="IzU-0A-FYw" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="5" id="UdF-8Y-u5Y"/>
+                            <constraint firstItem="IzU-0A-FYw" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="1" id="VJP-Uk-m4o"/>
                             <constraint firstItem="yYM-ty-bZm" firstAttribute="top" secondItem="Rxd-Gl-8Pn" secondAttribute="bottom" constant="126" id="Vgg-Lb-HSZ"/>
+                            <constraint firstItem="PyP-iY-htK" firstAttribute="top" secondItem="IzU-0A-FYw" secondAttribute="bottom" constant="37" id="WUq-0C-xCW"/>
                             <constraint firstItem="KQr-XD-wcS" firstAttribute="top" secondItem="8er-7Q-L0L" secondAttribute="bottom" constant="60" id="WZv-zN-nj5"/>
                             <constraint firstItem="VUW-H1-DMR" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="-4" id="WtB-it-vkC"/>
                             <constraint firstItem="VUW-H1-DMR" firstAttribute="trailing" secondItem="EPU-RJ-Vcc" secondAttribute="trailingMargin" id="aVj-fn-0lf"/>
@@ -574,40 +574,35 @@
                             <constraint firstAttribute="trailingMargin" secondItem="IzU-0A-FYw" secondAttribute="trailing" constant="5" id="eTo-9Q-Wnw"/>
                             <constraint firstItem="8er-7Q-L0L" firstAttribute="top" secondItem="yYM-ty-bZm" secondAttribute="bottom" constant="8" id="eqQ-vl-gp3"/>
                             <constraint firstItem="IzU-0A-FYw" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="5" id="fRH-FV-Wxj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="M3x-d8-9Wc" secondAttribute="trailing" constant="111" id="fZB-b7-pPN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yYM-ty-bZm" secondAttribute="trailing" constant="33" id="jIK-Xu-69u"/>
-                            <constraint firstItem="M3x-d8-9Wc" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="111" id="jQE-AZ-bWH"/>
-                            <constraint firstItem="VUW-H1-DMR" firstAttribute="top" secondItem="M3x-d8-9Wc" secondAttribute="bottom" constant="50" id="k1C-k4-Ljs"/>
                             <constraint firstItem="IzU-0A-FYw" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="1" id="kSh-la-fVq"/>
                             <constraint firstItem="VUW-H1-DMR" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" id="laN-cc-7P7"/>
                             <constraint firstItem="yYM-ty-bZm" firstAttribute="top" secondItem="Rxd-Gl-8Pn" secondAttribute="bottom" constant="126" id="o5c-Ol-zkc"/>
+                            <constraint firstItem="PyP-iY-htK" firstAttribute="centerX" secondItem="VUW-H1-DMR" secondAttribute="centerX" id="sVR-FP-0wn"/>
                             <constraint firstItem="VUW-H1-DMR" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="1" id="tJm-EK-V3P"/>
                             <constraint firstItem="Rxd-Gl-8Pn" firstAttribute="leading" secondItem="EPU-RJ-Vcc" secondAttribute="leadingMargin" constant="-16" id="tby-W4-lhI"/>
                             <constraint firstItem="VUW-H1-DMR" firstAttribute="trailing" secondItem="EPU-RJ-Vcc" secondAttribute="trailingMargin" id="tkB-kL-LMj"/>
                             <constraint firstItem="IzU-0A-FYw" firstAttribute="top" secondItem="jt2-bB-byz" secondAttribute="bottom" constant="69" id="ut5-l5-2He"/>
-                            <constraint firstItem="VUW-H1-DMR" firstAttribute="top" secondItem="M3x-d8-9Wc" secondAttribute="bottom" constant="50" id="vOs-qL-4F8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IzU-0A-FYw" secondAttribute="trailing" constant="5" id="yR8-IY-rqI"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="6j6-15-COR"/>
                                 <exclude reference="KP1-Fx-Z3R"/>
                                 <exclude reference="MVM-XO-k8b"/>
                                 <exclude reference="Oex-aK-KM6"/>
                                 <exclude reference="UdF-8Y-u5Y"/>
+                                <exclude reference="VJP-Uk-m4o"/>
                                 <exclude reference="eAE-Tb-R6V"/>
                                 <exclude reference="eTo-9Q-Wnw"/>
                                 <exclude reference="fRH-FV-Wxj"/>
                                 <exclude reference="yR8-IY-rqI"/>
-                                <exclude reference="AH3-Eu-Nc0"/>
-                                <exclude reference="fZB-b7-pPN"/>
-                                <exclude reference="jQE-AZ-bWH"/>
                                 <exclude reference="3iS-CW-eua"/>
                                 <exclude reference="aVj-fn-0lf"/>
                                 <exclude reference="bIb-cT-23U"/>
                                 <exclude reference="laN-cc-7P7"/>
                                 <exclude reference="tJm-EK-V3P"/>
                                 <exclude reference="tkB-kL-LMj"/>
-                                <exclude reference="vOs-qL-4F8"/>
                                 <exclude reference="SRb-S9-A8d"/>
                                 <exclude reference="tby-W4-lhI"/>
                                 <exclude reference="6ZQ-IZ-jRJ"/>
@@ -618,7 +613,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="changeDestination" destination="M3x-d8-9Wc" id="yrM-0f-uGC"/>
+                        <outlet property="changeDestination" destination="PyP-iY-htK" id="v12-N8-Xnq"/>
                         <outlet property="lineTitle" destination="IzU-0A-FYw" id="VZs-l4-MwO"/>
                     </connections>
                 </viewController>

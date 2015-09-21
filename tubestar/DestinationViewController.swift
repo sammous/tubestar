@@ -14,9 +14,10 @@ import UIKit
 class DestinationViewController: UIViewController{
     
     var line: String = ""
-    
+    var stop:String = ""
     @IBOutlet weak var lineTitle: UILabel!
     @IBOutlet weak var changeDestination: UIButton!
+
     
     override func viewDidLoad() {
         
@@ -30,9 +31,7 @@ class DestinationViewController: UIViewController{
         
         self.navigationItem.title = "Destination"
         
-        let stationVC = StationViewContoller()
-        let destination = stationVC.destinationSelected
-        print(destination)
+
 //        let font = UIFont(name: "Aller", size: 18.0)
 //        lineTitle.numberOfLines = 0
 //        lineTitle.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -42,7 +41,7 @@ class DestinationViewController: UIViewController{
 //        
 //        lineTitle.sizeToFit()
         
-        self.lineTitle.text = destination
+        self.lineTitle.text = stop
         self.changeDestination.addTarget(self, action: "changeDestinationPressed:", forControlEvents: .TouchUpInside)
         
     }
@@ -83,5 +82,8 @@ class DestinationViewController: UIViewController{
         self.navigationController?.pushViewController(settingViewController, animated: true)
         print("settings clicked")
     }
+    
+    
+
     
 }

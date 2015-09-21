@@ -149,10 +149,10 @@ class ViewController: UIViewController {
         player.play()
         player.volume = 0.0
         
-        fact = ["The busiest Tube station is Oxford Circus, used by around 98 million passengers in 2014", "Compared to Paris, London sucks zhzufhzeufhiuzhe fiuzhefuh zef uziefh uzehf uizehf uzehf iuhzef uhzef uhzefh zeufh zeiuhf uizehf iuzehf uizehf uhzefuih zefuh zaefhzeof uzoefuia izofu oziefo azeuf pazmfizeif azeifu aizoef sdhvaevo   avjamqcja mvazemvh aev oevh erhv eohv erohv erv ezoh"]
+        fact = ["The busiest Tube station is Oxford Circus, used by around 98 million passengers in 2014", "Compared to Paris, London sucks"]
         
         loadFact(homeFact,fact: fact)
-        
+                
     }
    
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
@@ -212,7 +212,8 @@ class ViewController: UIViewController {
 //                    let interfaceData = unsafeInterfaceData.takeRetainedValue() as Dictionary!
         
 //Swift 2.0
-            let interfaces:CFArray! = CNCopySupportedInterfaces()
+        let interfaces = CNCopySupportedInterfaces()
+        if interfaces != nil {
             for i in 0..<CFArrayGetCount(interfaces){
                 let interfaceName: UnsafePointer<Void> = CFArrayGetValueAtIndex(interfaces, i)
                 let rec = unsafeBitCast(interfaceName, AnyObject.self)
@@ -222,12 +223,11 @@ class ViewController: UIViewController {
                     
                 currentBSSID = interfaceData.valueForKey("BSSID")! as! String
                 currentSSID = interfaceData.valueForKey("SSID")! as! String
-
+            
 
                 }
             }
-
-        
+        }
         
 //                    let ssiddata = NSString(data:interfaceData[kCNNetworkInfoKeySSID]! as! NSData, encoding:NSUTF8StringEncoding) as! String
                     
@@ -261,17 +261,7 @@ class ViewController: UIViewController {
         player.play()
         player.volume = 0.0
 
-        ApiManager.sharedInstance.getData {
-            json -> Void in
-            let results = json["data"]
-            for (index, subJson): (String, JSON) in results {
-                let id: String = subJson["id"].string!
-                let name: String = subJson["name"].string!
-                let tflid: String = subJson["tflid"].string!
-                print("id:\(id) name: \(name) tflid: \(tflid)")
-                ApiManager.sharedInstance.saveLine(Int(id)!, name: name, tflid: tflid)
-            }
-        }
+    
     }
     
     func loadFact(label: UILabel, fact:[String]){
@@ -348,52 +338,6 @@ class ViewController: UIViewController {
             print(error)
         }
         
-        
-        
-        
-        
-//        var object = PFObject(className: "locations")
-        
-//        var temp_wifi_ssid_array:[String] = []
-//        var temp_wifi_bssid_array:[String] = []
-//        var temp_wifi_timestamp_array:[Double] = []
-//        var temp_wifi_timespan_array:[Float] = []
-        
-//        var parseObjects: [PFObject] = [PFObject]()
-//        
-//        for wifi in wifis {
-//            if( wifi.valueForKey("submitted") === false) {
-////                temp_wifi_ssid_array.append((wifi.valueForKey("ssid") as? String)!)
-////                temp_wifi_bssid_array.append((wifi.valueForKey("bssid") as? String)!)
-////                temp_wifi_timestamp_array.append((wifi.valueForKey("timestamp")) as! Double)
-////                temp_wifi_timespan_array.append((wifi.valueForKey("timespan") as? Float)!)
-////                wifi.setValue(true, forKey: "submitted")
-//                
-//                var parseObject = PFObject(className: "locationRecords")
-//                println("created parseObject")
-//                parseObject["ssid"] = wifi.valueForKey("ssid") as? String
-//                println("added property 'ssid'")
-//                parseObject["bssid"] = wifi.valueForKey("bssid") as? String
-//                parseObject["timestamp"] = wifi.valueForKey("timestamp") as? String
-//                parseObject["timespan"] = wifi.valueForKey("timespan") as? String
-//            }
-//        }
-//        println("will call saveAllInBackground now!")
-//        PFObject.saveAllInBackground(parseObjects)
-//        println("called saveAllInBackground!")
-
-//        object.addObject(UIDevice.currentDevice().identifierForVendor.UUIDString, forKey: "UDID")
-//        object.addObject((temp_wifi_ssid_array), forKey: "ssid")
-//        object.addObject((temp_wifi_bssid_array), forKey: "bssid")
-//        object.addObject((temp_wifi_timestamp_array), forKey: "timestamp")
-//        object.addObject((temp_wifi_timespan_array), forKey: "timespan")
-//        
-//        temp_wifi_ssid_array.removeAll(keepCapacity: false)
-//        temp_wifi_bssid_array.removeAll(keepCapacity: false)
-//        temp_wifi_timestamp_array.removeAll(keepCapacity: false)
-//        temp_wifi_timespan_array.removeAll(keepCapacity: false)
-//        
-//        object.saveEventually()
         
         let alert = UIAlertController(title: "Thank you", message: "Your contribution is appreciated ! Thank you !", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.Default, handler: nil))
@@ -478,12 +422,6 @@ class ViewController: UIViewController {
         } catch {
             print(error)
         }
-
-        
-//        dispatch_after(5,
-//            dispatch_get_main_queue()){
-//                self.scanWifis()
-//        };
     }
     
     

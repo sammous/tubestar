@@ -565,5 +565,17 @@ let linesAtStation:[String:[String]] = [
     "VUX": ["V"],
     "WAL": ["V"]
 ]
+    
+    func get_stops_from_line(line: String) -> [String]{
+        var stops:[String] = []
+        for i in 0...self.stationsOnLine[line]!.count-1 {
+            let stop_id = self.stationsOnLine[line]![i]
+            let stop = self.stations[stop_id]
+            stops.append(stop!)
+        }
+        print("tfl:\(stops)")
+        return stops
+    }
+    
 
 }

@@ -1,3 +1,4 @@
+
 //
 //  DatabaseTest.swift
 //  tubestar
@@ -7,3 +8,26 @@
 //
 
 import Foundation
+import XCTest
+@testable import tubestar
+
+
+class DatabaseTest: XCTestCase {
+    
+    func test_get_name_of_station() {
+        
+        let database = Database()
+        let id:Int = 1
+        XCTAssertEqual(database.get_name_of_station(id), "Angel Underground Station")
+        
+    }
+    
+    func test_get_name_of_line() {
+        
+        let database = Database()
+        let id:Int = 1
+        print("result is: \(database.get_name_of_station(id))")
+        XCTAssertEqual(database.get_name_of_line(id), "Bakerloo")
+        
+    }
+}

@@ -12,16 +12,17 @@
 		173E0F051B652BFC007FE050 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */; };
 		177F6FE21B6EA82B00B342A4 /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F6FE11B6EA82B00B342A4 /* StationViewController.swift */; };
 		177F6FE41B6EA87A00B342A4 /* Tfl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F6FE31B6EA87A00B342A4 /* Tfl.swift */; };
+		178700F21BAB1C6E00BCF697 /* DatabaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178700F11BAB1C6D00BCF697 /* DatabaseTest.swift */; settings = {ASSET_TAGS = (); }; };
+		1788438D1BAC212D00BCCC07 /* Aller_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 178843861BAC212D00BCCC07 /* Aller_Bd.ttf */; settings = {ASSET_TAGS = (); }; };
+		1788438E1BAC212D00BCCC07 /* Aller_BdIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 178843871BAC212D00BCCC07 /* Aller_BdIt.ttf */; settings = {ASSET_TAGS = (); }; };
+		1788438F1BAC212D00BCCC07 /* Aller_It.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 178843881BAC212D00BCCC07 /* Aller_It.ttf */; settings = {ASSET_TAGS = (); }; };
+		178843901BAC212D00BCCC07 /* Aller_Lt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 178843891BAC212D00BCCC07 /* Aller_Lt.ttf */; settings = {ASSET_TAGS = (); }; };
+		178843911BAC212D00BCCC07 /* Aller_LtIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1788438A1BAC212D00BCCC07 /* Aller_LtIt.ttf */; settings = {ASSET_TAGS = (); }; };
+		178843921BAC212D00BCCC07 /* Aller_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1788438B1BAC212D00BCCC07 /* Aller_Rg.ttf */; settings = {ASSET_TAGS = (); }; };
+		178843931BAC212D00BCCC07 /* AllerDisplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1788438C1BAC212D00BCCC07 /* AllerDisplay.ttf */; settings = {ASSET_TAGS = (); }; };
 		17A692901B6E64DD0097B549 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6928F1B6E64DD0097B549 /* NavViewController.swift */; };
 		17CD46C91BA487ED007A4A9C /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CD46C81BA487ED007A4A9C /* ApiManager.swift */; };
 		17CD46CB1BA4895B007A4A9C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CD46CA1BA4895B007A4A9C /* SwiftyJSON.swift */; };
-		17F35FD31BA86D3A005BEF25 /* Aller_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FCC1BA86D39005BEF25 /* Aller_Bd.ttf */; };
-		17F35FD41BA86D3A005BEF25 /* Aller_BdIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FCD1BA86D39005BEF25 /* Aller_BdIt.ttf */; };
-		17F35FD51BA86D3A005BEF25 /* Aller_It.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FCE1BA86D39005BEF25 /* Aller_It.ttf */; };
-		17F35FD61BA86D3A005BEF25 /* Aller_Lt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FCF1BA86D39005BEF25 /* Aller_Lt.ttf */; };
-		17F35FD71BA86D3A005BEF25 /* Aller_LtIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FD01BA86D39005BEF25 /* Aller_LtIt.ttf */; };
-		17F35FD81BA86D3A005BEF25 /* Aller_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FD11BA86D3A005BEF25 /* Aller_Rg.ttf */; };
-		17F35FD91BA86D3A005BEF25 /* AllerDisplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FD21BA86D3A005BEF25 /* AllerDisplay.ttf */; };
 		17F35FDB1BA87B38005BEF25 /* Mesmerize.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FDA1BA87B38005BEF25 /* Mesmerize.mp3 */; };
 		17F35FE11BA9A084005BEF25 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FE01BA9A084005BEF25 /* Media.xcassets */; };
 		17F35FE31BA9B4DD005BEF25 /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F35FE21BA9B4DD005BEF25 /* DestinationViewController.swift */; };
@@ -60,16 +61,17 @@
 		173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		177F6FE11B6EA82B00B342A4 /* StationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationViewController.swift; sourceTree = "<group>"; };
 		177F6FE31B6EA87A00B342A4 /* Tfl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tfl.swift; sourceTree = "<group>"; };
+		178700F11BAB1C6D00BCF697 /* DatabaseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTest.swift; sourceTree = "<group>"; };
+		178843861BAC212D00BCCC07 /* Aller_Bd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Aller_Bd.ttf; path = tubestar/fonts/Aller_Bd.ttf; sourceTree = "<group>"; };
+		178843871BAC212D00BCCC07 /* Aller_BdIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Aller_BdIt.ttf; path = tubestar/fonts/Aller_BdIt.ttf; sourceTree = "<group>"; };
+		178843881BAC212D00BCCC07 /* Aller_It.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Aller_It.ttf; path = tubestar/fonts/Aller_It.ttf; sourceTree = "<group>"; };
+		178843891BAC212D00BCCC07 /* Aller_Lt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Aller_Lt.ttf; path = tubestar/fonts/Aller_Lt.ttf; sourceTree = "<group>"; };
+		1788438A1BAC212D00BCCC07 /* Aller_LtIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Aller_LtIt.ttf; path = tubestar/fonts/Aller_LtIt.ttf; sourceTree = "<group>"; };
+		1788438B1BAC212D00BCCC07 /* Aller_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Aller_Rg.ttf; path = tubestar/fonts/Aller_Rg.ttf; sourceTree = "<group>"; };
+		1788438C1BAC212D00BCCC07 /* AllerDisplay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AllerDisplay.ttf; path = tubestar/fonts/AllerDisplay.ttf; sourceTree = "<group>"; };
 		17A6928F1B6E64DD0097B549 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		17CD46C81BA487ED007A4A9C /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		17CD46CA1BA4895B007A4A9C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		17F35FCC1BA86D39005BEF25 /* Aller_Bd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_Bd.ttf; sourceTree = "<group>"; };
-		17F35FCD1BA86D39005BEF25 /* Aller_BdIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_BdIt.ttf; sourceTree = "<group>"; };
-		17F35FCE1BA86D39005BEF25 /* Aller_It.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_It.ttf; sourceTree = "<group>"; };
-		17F35FCF1BA86D39005BEF25 /* Aller_Lt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_Lt.ttf; sourceTree = "<group>"; };
-		17F35FD01BA86D39005BEF25 /* Aller_LtIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_LtIt.ttf; sourceTree = "<group>"; };
-		17F35FD11BA86D3A005BEF25 /* Aller_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_Rg.ttf; sourceTree = "<group>"; };
-		17F35FD21BA86D3A005BEF25 /* AllerDisplay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AllerDisplay.ttf; sourceTree = "<group>"; };
 		17F35FDA1BA87B38005BEF25 /* Mesmerize.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mesmerize.mp3; sourceTree = "<group>"; };
 		17F35FE01BA9A084005BEF25 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		17F35FE21BA9B4DD005BEF25 /* DestinationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
@@ -177,13 +179,13 @@
 		17F35FB61BA86C44005BEF25 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				17F35FCC1BA86D39005BEF25 /* Aller_Bd.ttf */,
-				17F35FCD1BA86D39005BEF25 /* Aller_BdIt.ttf */,
-				17F35FCE1BA86D39005BEF25 /* Aller_It.ttf */,
-				17F35FCF1BA86D39005BEF25 /* Aller_Lt.ttf */,
-				17F35FD01BA86D39005BEF25 /* Aller_LtIt.ttf */,
-				17F35FD11BA86D3A005BEF25 /* Aller_Rg.ttf */,
-				17F35FD21BA86D3A005BEF25 /* AllerDisplay.ttf */,
+				178843861BAC212D00BCCC07 /* Aller_Bd.ttf */,
+				178843871BAC212D00BCCC07 /* Aller_BdIt.ttf */,
+				178843881BAC212D00BCCC07 /* Aller_It.ttf */,
+				178843891BAC212D00BCCC07 /* Aller_Lt.ttf */,
+				1788438A1BAC212D00BCCC07 /* Aller_LtIt.ttf */,
+				1788438B1BAC212D00BCCC07 /* Aller_Rg.ttf */,
+				1788438C1BAC212D00BCCC07 /* AllerDisplay.ttf */,
 			);
 			name = fonts;
 			sourceTree = "<group>";
@@ -241,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				73A7DA951B6408B0002F4483 /* tubestarTests.swift */,
+				178700F11BAB1C6D00BCF697 /* DatabaseTest.swift */,
 				73A7DA931B6408B0002F4483 /* Supporting Files */,
 			);
 			path = tubestarTests;
@@ -341,17 +344,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17F35FD91BA86D3A005BEF25 /* AllerDisplay.ttf in Resources */,
+				178843931BAC212D00BCCC07 /* AllerDisplay.ttf in Resources */,
 				17F35FDB1BA87B38005BEF25 /* Mesmerize.mp3 in Resources */,
-				17F35FD81BA86D3A005BEF25 /* Aller_Rg.ttf in Resources */,
-				17F35FD41BA86D3A005BEF25 /* Aller_BdIt.ttf in Resources */,
-				17F35FD31BA86D3A005BEF25 /* Aller_Bd.ttf in Resources */,
 				73A7DA851B6408B0002F4483 /* Main.storyboard in Resources */,
+				178843921BAC212D00BCCC07 /* Aller_Rg.ttf in Resources */,
+				1788438E1BAC212D00BCCC07 /* Aller_BdIt.ttf in Resources */,
+				1788438D1BAC212D00BCCC07 /* Aller_Bd.ttf in Resources */,
 				73A7DA8A1B6408B0002F4483 /* LaunchScreen.xib in Resources */,
-				17F35FD51BA86D3A005BEF25 /* Aller_It.ttf in Resources */,
-				17F35FD71BA86D3A005BEF25 /* Aller_LtIt.ttf in Resources */,
 				17F35FE11BA9A084005BEF25 /* Media.xcassets in Resources */,
-				17F35FD61BA86D3A005BEF25 /* Aller_Lt.ttf in Resources */,
+				1788438F1BAC212D00BCCC07 /* Aller_It.ttf in Resources */,
+				178843911BAC212D00BCCC07 /* Aller_LtIt.ttf in Resources */,
+				178843901BAC212D00BCCC07 /* Aller_Lt.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				178700F21BAB1C6E00BCF697 /* DatabaseTest.swift in Sources */,
 				73A7DA961B6408B0002F4483 /* tubestarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

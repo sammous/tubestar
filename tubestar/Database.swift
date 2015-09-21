@@ -8,38 +8,56 @@
 //
 
 import Foundation
-
+import UIKit
+import CoreData
 
 class Database {
     
-    func dataOfJson(url: String) -> NSArray {
-        
-        let data = NSData(contentsOfURL: NSURL(string: url)!)
-        return ((try! NSJSONSerialization.JSONObjectWithData(data!, options: [])) as! NSArray)
+    func get_name_of_station(id: Int) -> String {
+        var station: String = ""
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let fetchRequest = NSFetchRequest(entityName:"Station")
+        let resultPredicate = NSPredicate(format: "id = \(id)")
+        fetchRequest.predicate = resultPredicate
+        do {
+            let fetchedResults =
+            try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            
+            if (fetchedResults?.count !== 0)  {
+                station = fetchedResults?.first!.valueForKey("name") as! String
+            }
 
-
-//        let jsonURL = NSBundle.mainBundle().URLForResource("http://tubestar.uk/api/locations/lines?udid=Y00YVfbIvMJ4uyqiRSUi0svEVcvZUHbjvfMfKB8Z", withExtension: "json")!
-//        println(jsonURL)
-//        
-//        let jsonData = NSData(contentsOfURL: jsonURL)
-//        println(jsonData)
-//        
-//        var error: NSError?
-//        let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as! NSArray
-//    
-//        println(jsonArray)
+        } catch {
+            print(error)
+        }
         
+        return station
     }
     
-//    func loadPosts(posts:NSArray){
-//        for post in posts {
-//            var data = post["data"]! as! NSDictionary
-//            var id = (post["id"]! as! String).toInt()
-//            var name = post["name"]as! String
-//            var tlfid = post["tflid"]as! String
-//            
-//            var postObj = Post(id: id, name: name, tflid:tfid)
-//        }
-//    }
-//    
+    func get_name_of_line(id: Int) -> String {
+        var line: String = ""
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let fetchRequest = NSFetchRequest(entityName:"Line")
+        let resultPredicate = NSPredicate(format: "id = \(id)")
+        fetchRequest.predicate = resultPredicate
+        do {
+            let fetchedResults =
+            try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            
+            if (fetchedResults?.count !== 0)  {
+                line = fetchedResults?.first!.valueForKey("name") as! String
+            }
+            
+        } catch {
+            print(error)
+        }
+        print("lines is \(line)")
+        return line
+    }
+
+
 }

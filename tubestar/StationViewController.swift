@@ -121,9 +121,10 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction) in
             self.destinationSelected = destination!
             let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("destinationViewController") 
+            let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("destinationViewController") as! DestinationViewController
             print(self.destinationSelected)
-            self.navigationController?.pushViewController(settingViewController, animated: true)
+            destinationViewController.stop = self.destinationSelected
+            self.navigationController?.pushViewController(destinationViewController, animated: true)
             
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
@@ -147,13 +148,18 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
     func filterContentForSearchText(searchText: String) {
         // Filter the array using the filter method
         
+        let tflObject = Tfl()
         let lineID = String(Array(line.characters)[0])
         
-        let station = tfl.stationsOnLine[lineID]
-        print(station)
+        let stations = tflObject.get_stops_from_line(lineID)
+//        var stations: [String] = []
+//        for i in 0...station_id!.count{
+//            stations.append(tflObject.stations[station_id![i]]!)
+//        }
+//        print(stations)
         
-        filteredStations = station!.filter({( station: String) -> Bool in
-            let stringMatch = station.rangeOfString(searchText)
+        filteredStations = stations.filter({( stations: String) -> Bool in
+            let stringMatch = stations.rangeOfString(searchText)
             return (stringMatch != nil)
         })
     }
@@ -174,7 +180,6 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("settingViewController") 
         self.navigationController?.pushViewController(settingViewController, animated: true)
     }
-    
 
     
 }

@@ -23,9 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AVAudioPlayerDelegate {
         //Allow sending notifications
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Sound, UIUserNotificationType.Alert, UIUserNotificationType.Badge], categories: nil))
         
+        //Allow geolocation
         
 
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
+        
+        ApiManager.sharedInstance.populateDB()
         
         return true
     }
