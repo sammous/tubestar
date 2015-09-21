@@ -18,6 +18,7 @@ class DestinationViewController: UIViewController{
     @IBOutlet weak var lineTitle: UILabel!
     @IBOutlet weak var changeDestination: UIButton!
 
+    @IBOutlet weak var joke: UILabel!
     
     override func viewDidLoad() {
         
@@ -44,6 +45,11 @@ class DestinationViewController: UIViewController{
         self.lineTitle.text = stop
         self.changeDestination.addTarget(self, action: "changeDestinationPressed:", forControlEvents: .TouchUpInside)
         
+        self.joke.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        self.joke.numberOfLines = 0
+        self.joke.adjustsFontSizeToFitWidth = true
+        self.joke.text = loadRandomJoke()
+
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -83,7 +89,16 @@ class DestinationViewController: UIViewController{
         print("settings clicked")
     }
     
-    
+    func loadRandomJoke() -> String{
+        var joke:String = ""
+        let filePath = NSBundle.mainBundle().pathForResource("jokes",ofType:"json")
+        let url = NSURL(fileURLWithPath: filePath!)
+        let data = NSData(contentsOfURL: url)
+        let json = JSON(data: data!)
+        let diceRoll = Int(arc4random_uniform(UInt32(json.count)))
+        joke = json[diceRoll]["joke"].string!
+        return joke
+    }
 
     
 }

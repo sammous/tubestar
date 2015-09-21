@@ -16,9 +16,10 @@ typealias ServiceResponse = (JSON, NSError?) -> Void
 class ApiManager: NSObject {
     static let sharedInstance = ApiManager()
     
-    let urlLines = "http://tubestar.uk/api/locations/lines?udid=Y00YVfbIvMJ4uyqiRSUi0svEVcvZUHbjvfMfKB8Z"
-    let urlStations = "http://tubestar.uk/api/locations/stops?udid=Y00YVfbIvMJ4uyqiRSUi0svEVcvZUHbjvfMfKB8Z"
-
+    static let udid: String = (UIDevice.currentDevice().identifierForVendor?.UUIDString)!
+    let urlLines = "http://tubestar.uk/api/locations/lines?udid=" + udid
+    let urlStations = "http://tubestar.uk/api/locations/stops?udid=" + udid
+    
 
     func getData(url: String, onCompletion: (JSON) -> Void){
         makeHTTPGetRequest(url, onCompletion: { json, err -> Void in
