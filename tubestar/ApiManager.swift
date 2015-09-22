@@ -20,7 +20,7 @@ class ApiManager: NSObject {
     let urlLines = "http://tubestar.uk/api/locations/lines?udid=" + udid
     let urlStations = "http://tubestar.uk/api/locations/stops?udid=" + udid
     
-
+    
     func getData(url: String, onCompletion: (JSON) -> Void){
         makeHTTPGetRequest(url, onCompletion: { json, err -> Void in
             onCompletion(json)

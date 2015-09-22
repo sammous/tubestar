@@ -22,6 +22,9 @@
 		178843931BAC212D00BCCC07 /* AllerDisplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1788438C1BAC212D00BCCC07 /* AllerDisplay.ttf */; settings = {ASSET_TAGS = (); }; };
 		17A692901B6E64DD0097B549 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6928F1B6E64DD0097B549 /* NavViewController.swift */; };
 		17CBC80F1BB069D800CF4A6D /* jokes.json in Resources */ = {isa = PBXBuildFile; fileRef = 17CBC80E1BB069D800CF4A6D /* jokes.json */; settings = {ASSET_TAGS = (); }; };
+		17CBC8121BB15A3800CF4A6D /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CBC8111BB15A3800CF4A6D /* Navigation.swift */; settings = {ASSET_TAGS = (); }; };
+		17CBC8141BB1630B00CF4A6D /* standard-tube-map.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 17CBC8131BB1630B00CF4A6D /* standard-tube-map.pdf */; settings = {ASSET_TAGS = (); }; };
+		17CBC8161BB167CC00CF4A6D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CBC8151BB167CC00CF4A6D /* MapViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		17CD46C91BA487ED007A4A9C /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CD46C81BA487ED007A4A9C /* ApiManager.swift */; };
 		17CD46CB1BA4895B007A4A9C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CD46CA1BA4895B007A4A9C /* SwiftyJSON.swift */; };
 		17F35FDB1BA87B38005BEF25 /* Mesmerize.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17F35FDA1BA87B38005BEF25 /* Mesmerize.mp3 */; };
@@ -72,6 +75,9 @@
 		1788438C1BAC212D00BCCC07 /* AllerDisplay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AllerDisplay.ttf; path = tubestar/fonts/AllerDisplay.ttf; sourceTree = "<group>"; };
 		17A6928F1B6E64DD0097B549 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		17CBC80E1BB069D800CF4A6D /* jokes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jokes.json; sourceTree = "<group>"; };
+		17CBC8111BB15A3800CF4A6D /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		17CBC8131BB1630B00CF4A6D /* standard-tube-map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "standard-tube-map.pdf"; sourceTree = "<group>"; };
+		17CBC8151BB167CC00CF4A6D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		17CD46C81BA487ED007A4A9C /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		17CD46CA1BA4895B007A4A9C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		17F35FDA1BA87B38005BEF25 /* Mesmerize.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mesmerize.mp3; sourceTree = "<group>"; };
@@ -162,9 +168,18 @@
 		17CBC80B1BB0590900CF4A6D /* db */ = {
 			isa = PBXGroup;
 			children = (
+				17CBC8131BB1630B00CF4A6D /* standard-tube-map.pdf */,
 				17CBC80E1BB069D800CF4A6D /* jokes.json */,
 			);
 			name = db;
+			sourceTree = "<group>";
+		};
+		17CBC8101BB15A1A00CF4A6D /* navigation */ = {
+			isa = PBXGroup;
+			children = (
+				17CBC8111BB15A3800CF4A6D /* Navigation.swift */,
+			);
+			name = navigation;
 			sourceTree = "<group>";
 		};
 		17CD46C11BA47E8F007A4A9C /* api */ = {
@@ -224,12 +239,14 @@
 		73A7DA791B6408B0002F4483 /* tubestar */ = {
 			isa = PBXGroup;
 			children = (
+				17CBC8101BB15A1A00CF4A6D /* navigation */,
 				17F35FDA1BA87B38005BEF25 /* Mesmerize.mp3 */,
 				73A7DA7C1B6408B0002F4483 /* AppDelegate.swift */,
 				73A7DA811B6408B0002F4483 /* ViewController.swift */,
 				17A6928F1B6E64DD0097B549 /* NavViewController.swift */,
 				177F6FE11B6EA82B00B342A4 /* StationViewController.swift */,
 				17F35FE21BA9B4DD005BEF25 /* DestinationViewController.swift */,
+				17CBC8151BB167CC00CF4A6D /* MapViewController.swift */,
 				177F6FE31B6EA87A00B342A4 /* Tfl.swift */,
 				173E0F041B652BFB007FE050 /* CustomTableViewCell.swift */,
 				173C64481B7B45B300F0834C /* BackgroundMode.swift */,
@@ -360,6 +377,7 @@
 				73A7DA851B6408B0002F4483 /* Main.storyboard in Resources */,
 				178843921BAC212D00BCCC07 /* Aller_Rg.ttf in Resources */,
 				1788438E1BAC212D00BCCC07 /* Aller_BdIt.ttf in Resources */,
+				17CBC8141BB1630B00CF4A6D /* standard-tube-map.pdf in Resources */,
 				1788438D1BAC212D00BCCC07 /* Aller_Bd.ttf in Resources */,
 				17CBC80F1BB069D800CF4A6D /* jokes.json in Resources */,
 				73A7DA8A1B6408B0002F4483 /* LaunchScreen.xib in Resources */,
@@ -393,9 +411,11 @@
 				173E0F051B652BFC007FE050 /* CustomTableViewCell.swift in Sources */,
 				17F35FE31BA9B4DD005BEF25 /* DestinationViewController.swift in Sources */,
 				17CD46CB1BA4895B007A4A9C /* SwiftyJSON.swift in Sources */,
+				17CBC8121BB15A3800CF4A6D /* Navigation.swift in Sources */,
 				73A7DA801B6408B0002F4483 /* tubestar.xcdatamodeld in Sources */,
 				177F6FE41B6EA87A00B342A4 /* Tfl.swift in Sources */,
 				177F6FE21B6EA82B00B342A4 /* StationViewController.swift in Sources */,
+				17CBC8161BB167CC00CF4A6D /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

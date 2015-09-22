@@ -704,6 +704,40 @@
             </objects>
             <point key="canvasLocation" x="715" y="1686"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="2ro-gS-sdL">
+            <objects>
+                <viewController storyboardIdentifier="mapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w9W-GS-9aX" userLabel="Map View Controller" customClass="MapViewController" customModule="tubestar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qq3-JM-VwM"/>
+                        <viewControllerLayoutGuide type="bottom" id="RjO-HO-saK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sXs-9N-Mdc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleAspectFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K0R-i2-pWk" userLabel="Map">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="K0R-i2-pWk" firstAttribute="top" secondItem="sXs-9N-Mdc" secondAttribute="topMargin" id="BjR-nz-P9X"/>
+                            <constraint firstItem="RjO-HO-saK" firstAttribute="top" secondItem="K0R-i2-pWk" secondAttribute="bottom" id="IFB-PE-MnA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="K0R-i2-pWk" secondAttribute="trailing" constant="-20" id="pEv-bm-TAa"/>
+                            <constraint firstItem="K0R-i2-pWk" firstAttribute="leading" secondItem="sXs-9N-Mdc" secondAttribute="leadingMargin" constant="-20" id="uA8-Nf-M0y"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="map" destination="K0R-i2-pWk" id="qN9-G5-Y1O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KK5-p5-gdl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="748" y="-522"/>
+        </scene>
         <!--SettingViewController-->
         <scene sceneID="1UB-iw-xsg">
             <objects>

@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AVAudioPlayerDelegate {
         
         
         ApiManager.sharedInstance.populateDB()
+        _ = Navigation.init()
+
         
         return true
     }

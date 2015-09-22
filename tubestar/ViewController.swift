@@ -106,6 +106,14 @@ class ViewController: UIViewController {
         
         self.navigationItem.setRightBarButtonItem(rightBarButtonSetting, animated: false)
 
+        let buttonMap: UIButton = UIButton(type: UIButtonType.Custom)
+        buttonMap.frame = CGRectMake(0, 0, 40, 40)
+        buttonMap.setImage(UIImage(named:"Map.png"), forState: UIControlState.Normal)
+        buttonMap.addTarget(self, action: "leftNavItemClick:", forControlEvents: UIControlEvents.TouchUpInside)
+        let leftBarButtonSetting: UIBarButtonItem = UIBarButtonItem(customView: buttonMap)
+        
+        self.navigationItem.setLeftBarButtonItem(leftBarButtonSetting, animated: false)
+        
         var error: NSError?
         var success: Bool
         do {
@@ -152,7 +160,7 @@ class ViewController: UIViewController {
         fact = ["The busiest Tube station is Oxford Circus, used by around 98 million passengers in 2014", "Compared to Paris, London sucks"]
         
         loadFact(homeFact,fact: fact)
-                
+                        
     }
    
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
@@ -281,6 +289,13 @@ class ViewController: UIViewController {
     func rightNavItemClick(sender: UIButton){
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("settingViewController") 
+        self.navigationController?.pushViewController(settingViewController, animated: true)
+        print("settings clicked")
+    }
+    
+    func leftNavItemClick(sender: UIButton){
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let settingViewController: UIViewController = storyboard.instantiateViewControllerWithIdentifier("mapViewController")
         self.navigationController?.pushViewController(settingViewController, animated: true)
         print("settings clicked")
     }
