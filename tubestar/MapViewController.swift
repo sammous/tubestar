@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var map: UIWebView!
     override func viewDidLoad() {
@@ -23,6 +23,13 @@ class MapViewController: UIViewController {
         
         let url = NSURL.fileURLWithPath(path!)
         
+        self.map.delegate = self
+        
         self.map.loadRequest(NSURLRequest(URL:url))
+        
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        webView.scrollView.zoomScale = 5.0
     }
 }

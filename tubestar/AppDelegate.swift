@@ -18,20 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AVAudioPlayerDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        
-        
+        //Request navigation permission
+
         //Allow sending notifications
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Sound, UIUserNotificationType.Alert, UIUserNotificationType.Badge], categories: nil))
-        
-        //Allow geolocation
         
 
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         
         
-        ApiManager.sharedInstance.populateDB()
-        _ = Navigation.init()
-
         
         return true
     }

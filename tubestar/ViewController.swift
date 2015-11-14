@@ -87,8 +87,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         hasDisconnected = true
-        
-        
+        _ = Navigation.init()
         
         print("devide id:\n")
         print(UIDevice.currentDevice().identifierForVendor!.UUIDString)
@@ -258,7 +257,7 @@ class ViewController: UIViewController {
 //                    hasDisconnected = false
         
         print("just called getSSID(), after which hasDisconnected has a value of \(hasDisconnected)")
-        
+
         return currentSSID
         
     }
@@ -411,8 +410,8 @@ class ViewController: UIViewController {
                 
                 //Notification
                 let localNotification:UILocalNotification = UILocalNotification()
-                localNotification.alertAction = "New wifi"
-                localNotification.alertBody = "You just found a new wifi !"
+                localNotification.alertAction = "New wifi id: " + bssid
+                localNotification.alertBody = "You just found: " + ssid
                 localNotification.fireDate = nil
                 localNotification.soundName = UILocalNotificationDefaultSoundName
                 UIApplication.sharedApplication().scheduleLocalNotification(localNotification)

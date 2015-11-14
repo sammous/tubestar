@@ -13,15 +13,17 @@ import CoreLocation
 
 class Navigation: NSObject, CLLocationManagerDelegate, UIApplicationDelegate {
     
-    var locationManager:CLLocationManager = CLLocationManager()
+    let locationManager = CLLocationManager()
     var seenError : Bool = false
     var locationStatus : NSString = "Not Started"
     
     override init() {
         super.init()
-        self.locationManager.delegate = self
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -29,11 +31,12 @@ class Navigation: NSObject, CLLocationManagerDelegate, UIApplicationDelegate {
         
         switch status {
         case .NotDetermined:
+            locationManager.startUpdatingLocation()
             print(".NotDetermined")
             break
             
         case .Authorized:
-            self.locationManager.startUpdatingLocation()
+            locationManager.startUpdatingLocation()
             print(".Authorized")
             break
             

@@ -22,6 +22,12 @@
 	<string></string>
 	<key>CFBundleGetInfoString</key>
 	<string></string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This application needs access to your location information</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>CFBundleVersion</key>
 	<string></string>
 </dict>
