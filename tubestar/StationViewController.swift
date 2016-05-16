@@ -101,12 +101,19 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         let font = UIFont(name: "Aller", size: 18)
 
         let lineID = String(Array(line.characters)[0])
-
-        let station = tfl.stationsOnLine[lineID]
         
+        var stations = [String]()
+        
+        if tableView == self.searchDisplayController?.searchResultsTableView{
+            stations = self.filteredStations
+            cell.textLabel!.text = stations[indexPath.row]
+        } else {
+            stations = tfl.stationsOnLine[lineID]!
+            cell.textLabel!.text = tfl.stations[stations[indexPath.row]]
+
+        }
         cell.selectionStyle = UITableViewCellSelectionStyle.None
 
-        cell.textLabel!.text = tfl.stations[station![indexPath.row]]
         cell.textLabel?.font = font
         
         return cell
@@ -156,12 +163,14 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
 //        for i in 0...station_id!.count{
 //            stations.append(tflObject.stations[station_id![i]]!)
 //        }
-//        print(stations)
         
-        filteredStations = stations.filter({( stations: String) -> Bool in
+        self.filteredStations = stations.filter({( stations: String) -> Bool in
             let stringMatch = stations.rangeOfString(searchText)
             return (stringMatch != nil)
         })
+        
+        stationTableView.reloadData()
+        
     }
     
     func searchDisplayController(controller: UISearchController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
@@ -169,10 +178,10 @@ class StationViewContoller: UIViewController,UITableViewDelegate,UITableViewData
         return true
     }
     
-    func searchDisplayController(controller: UISearchController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
-        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text!)
-        return true
-    }
+//    func searchDisplayController(controller: UISearchController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
+//        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text!)
+//        return true
+//    }
     
     
     func rightNavItemClick(sender: UIButton){
